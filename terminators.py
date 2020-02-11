@@ -62,7 +62,7 @@ class AnalyseTerminators:
         output_table = pd.util.testing.rands_array(12, 1)[0] + '.csv'
         inp_f = self.tempdir + '/' + self.tempfname +'.fa'
         self.tblout_fname = self.tempdir + '/' + output_table
-        proc = run(['cmsearch', '--tblout',  self.tblout_fname, '--max', \
+        proc = run(['cmsearch', '--tblout',  self.tblout_fname, \
                     self.cm, inp_f], stdout=PIPE, stderr=DEVNULL, \
                    encoding='utf-8')
         os.remove(inp_f)
