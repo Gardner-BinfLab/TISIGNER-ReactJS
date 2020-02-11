@@ -25,17 +25,6 @@ import data
 app = Flask(__name__, static_folder='build')
 cors = CORS(app)
 
-
-# Serve React App
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def serve(path):
-    if path != "" and os.path.exists(app.static_folder + '/' + path):
-        return send_from_directory(app.static_folder, path)
-    else:
-        return send_from_directory(app.static_folder, 'index.html')
-
-
 @app.route('/optimise', methods=["POST"])
 def optimiser():
     '''Optimisation
@@ -52,7 +41,7 @@ def optimiser():
             threshold = None
 
 
-        termcheck = False
+        termcheck = functions.parse_term_check(request.json)
 
         seed = functions.parse_seed(request.json)
         if request.json.get('optimisationDirection'):
@@ -93,11 +82,20 @@ def optimiser():
         if 'pools' in locals():
             pools.close()
             pools.join()
-        # response = str(exp).split(':')
-        # response_status = response[0].split(' ')[0]
-        # response_data = response[1]
-        # print(response)
         return make_response(jsonify({'data':str(exp), 'status':500}), 500)
+
+
+# Serve React App
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
+
+
+
 
 
 if __name__ == '__main__':

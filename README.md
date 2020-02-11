@@ -8,8 +8,9 @@ TIsigner also requires Infernal installed on your machine. Instructions to insta
 
 After that you can simply use these commands to setup a local TISIGNER website.
 ```sh
-$ npm install https://github.com/Gardner-BinfLab/TISIGNER-ReactJS.git
-$ cd  TISIGNER-ReactJS
+$ git clone https://github.com/Gardner-BinfLab/TISIGNER-ReactJS.git
+$ cd  TISIGNER-ReactJS/
+$ npm install
 $ pip3 install -r requirements.txt
 $ npm run build
 $ python3 tisigner.py
