@@ -12,7 +12,7 @@ TISIGNER includes gene optimisation tool **TIsigner** and protein solubility opt
  - ```ViennaRNA v2.4.11```. Newer versions may also work. Instructions on [ViennaRNA website](https://www.tbi.univie.ac.at/RNA/).
  - ```INFERNAL v1.1.2 ```. Newer versions may also work. Instructions on [INFERNAL website](http://eddylab.org/infernal/).
 
-You can download the source and extract to a folder. If you have ```git``` installed, you can directly do so by using this commands:
+You can download the source and extract to a folder. If you have ```git``` installed, you can directly do so by using these commands:
 
 ```sh
 $ git clone https://github.com/Gardner-BinfLab/TISIGNER-ReactJS.git
