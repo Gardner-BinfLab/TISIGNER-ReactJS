@@ -7,7 +7,7 @@ The programs and source code of TIsigner and SoDoPE are free software. They are 
 
 If you want to include this software in a commercial product, please contact the authors.
 
-# TIsigner website license
-TIsigner website is licensed under [Creative Commons Attribution-NoDerivs 3.0 New Zealand License](https://creativecommons.org/licenses/by-nd/3.0/nz/).
+# TISIGNER website license
+TISIGNER website is licensed under [Creative Commons Attribution-NoDerivs 3.0 New Zealand License](https://creativecommons.org/licenses/by-nd/3.0/nz/).
 
 © [Bikash K. Bhandari](https://bkb3.github.io/homepage), [Chun Shen Lim](https://otago.ac.nz/biochemistry/people/profile/index.html?id=3136), [Paul P. Gardner](https://otago.ac.nz/biochemistry/people/profile/index.html?id=2817) (2019-2020)
