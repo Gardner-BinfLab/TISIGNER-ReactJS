@@ -4,7 +4,7 @@ This is the repository for TISIGNER website. It consists source code for both fr
 # Installation
 You need to have ```npm``` installed on your computer. Check [npm website](https://www.npmjs.com/get-npm) for instructions.
 We also require ViennaRNA suite to be installed on your machine. The instructions to do so can be found [here](https://www.tbi.univie.ac.at/RNA/documentation.html#install).
-TIsigner also requires Infernal installed on your machine. Instructions to install Infernal can be found [here](http://eddylab.org/infernal/).
+TIsigner also requires Infernal installed on your machine. Instructions to install Infernal can be found [here](http://eddylab.org/infernal/).  We also need Python 3.6 +. 
 
 After that you can simply use these commands to setup a local TISIGNER website.
 ```sh
