@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Slider from "@material-ui/core/Slider";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 const marks = [
   {
@@ -53,9 +53,9 @@ class Extra extends Component {
       substitutionMode: event.target.value
     });
     ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Substitution mode: ' + event.target.value,
-      label: 'Extra'
+      category: "TIsigner Customisation",
+      action: "Substitution mode: " + event.target.value,
+      label: "Extra"
     });
   }
 
@@ -84,9 +84,9 @@ class Extra extends Component {
       isValidated: isValid
     });
     ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Custom RMS was entered.',
-      label: 'Extra'
+      category: "TIsigner Customisation",
+      action: "Custom RMS was entered.",
+      label: "Extra"
     });
   }
 
@@ -171,9 +171,9 @@ class Extra extends Component {
         });
 
     ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Extra Tab was clicked.',
-      label: 'Extra'
+      category: "TIsigner Customisation",
+      action: "Extra Tab was clicked.",
+      label: "Extra"
     });
   }
 
@@ -215,9 +215,11 @@ class Extra extends Component {
               onChange={this.sliderChange}
               onChangeCommitted={() => {
                 ReactGA.event({
-                  category: 'TIsigner Customisation',
-                  action: 'Number of codons to substitute: ' + this.state.numberOfCodons,
-                  label: 'Extra'
+                  category: "TIsigner Customisation",
+                  action:
+                    "Number of codons to substitute: " +
+                    this.state.numberOfCodons,
+                  label: "Extra"
                 });
               }}
             />

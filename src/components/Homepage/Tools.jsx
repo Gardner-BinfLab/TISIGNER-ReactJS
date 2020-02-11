@@ -50,7 +50,12 @@ class Tools extends Component {
                 <div className="columns">
                   <Fade left>
                     <div className="column has-text-right">
-                      <Typography variant="h4" component="h5" fontWeight="fontWeightLight"  gutterBottom>
+                      <Typography
+                        variant="h4"
+                        component="h5"
+                        fontWeight="fontWeightLight"
+                        gutterBottom
+                      >
                         {item.text}
                       </Typography>
                     </div>
@@ -60,7 +65,7 @@ class Tools extends Component {
                     <div className="column">
                       <div className="box">
                         <article className="media">
-{/*                           <div className="media-left">
+                          {/*                           <div className="media-left">
                             <figure className="image is-128x128">
                               <img
                                 src={item.image}

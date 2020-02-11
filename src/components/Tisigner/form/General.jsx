@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import Slider from "@material-ui/core/Slider";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 const hosts = [
   { value: "Escherichia coli", label: "Escherichia coli" },
@@ -73,9 +73,9 @@ class General extends Component {
         option.value !== "Escherichia coli" ? "Empty custom promoter." : ""
     });
     ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Host selected: ' + option.value,
-      label: 'General'
+      category: "TIsigner Customisation",
+      action: "Host selected: " + option.value,
+      label: "General"
     });
   };
 
@@ -88,11 +88,10 @@ class General extends Component {
       customPromoterError: option.value === "T7" ? "" : "Empty custom promoter."
     });
     ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Promoter selected: ' + option.value,
-      label: 'General'
+      category: "TIsigner Customisation",
+      action: "Promoter selected: " + option.value,
+      label: "General"
     });
-
   };
 
   sliderChange = (event, value) => {
@@ -107,11 +106,10 @@ class General extends Component {
     });
 
     ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Optimisation Direction: ' + event.target.value,
-      label: 'General'
+      category: "TIsigner Customisation",
+      action: "Optimisation Direction: " + event.target.value,
+      label: "General"
     });
-
   }
 
   customPromoterInput(event) {
@@ -140,13 +138,11 @@ class General extends Component {
       customPromoterError: errors
     });
 
-
     ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Custom promoter was entered.',
-      label: 'General'
+      category: "TIsigner Customisation",
+      action: "Custom promoter was entered.",
+      label: "General"
     });
-
   }
 
   componentDidMount() {
@@ -234,11 +230,11 @@ class General extends Component {
           customPromoterError: !(promoter === "T7") ? customPromoterError : ""
         });
 
-  ReactGA.event({
-    category: 'TIsigner Customisation',
-    action: 'General Tab was clicked.',
-    label: 'General'
-  });
+    ReactGA.event({
+      category: "TIsigner Customisation",
+      action: "General Tab was clicked.",
+      label: "General"
+    });
   }
 
   componentDidUpdate() {
@@ -266,8 +262,6 @@ class General extends Component {
     !(this.state.promoter === "T7")
       ? localStorage.setItem("customPromoterError", JSON.stringify(errors))
       : localStorage.setItem("customPromoterError", JSON.stringify(""));
-
-
   }
 
   render() {
@@ -371,13 +365,13 @@ class General extends Component {
               onChange={this.sliderChange}
               onChangeCommitted={() => {
                 ReactGA.event({
-                  category: 'TIsigner Customisation',
-                  action: 'Target Expression: ' + this.state.targetExpression,
-                  label: 'General'
+                  category: "TIsigner Customisation",
+                  action: "Target Expression: " + this.state.targetExpression,
+                  label: "General"
                 });
               }}
             />
-          {/*this.state.targetExpression <= 80 ? null : (
+            {/*this.state.targetExpression <= 80 ? null : (
               <Fragment>
                 <p className="help is-danger">
                   <span className="icon is-small is-right">

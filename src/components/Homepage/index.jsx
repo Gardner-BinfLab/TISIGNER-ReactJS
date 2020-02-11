@@ -11,7 +11,7 @@ const Homepage = () => {
     <Fragment>
       <Banner />
       <Tools />
-{/*      <Collabs />*/}
+      {/*      <Collabs />*/}
       <Footer />
       <CookieConsent>
         This website uses cookies and local storage to enhance the user

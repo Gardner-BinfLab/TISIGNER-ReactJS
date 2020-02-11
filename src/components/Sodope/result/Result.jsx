@@ -336,7 +336,6 @@ class SodopeResults extends Component {
                 </Fragment>
               ) : null}
 
-
               <p>
                 Protein domains annotated by
                 <a
@@ -350,7 +349,7 @@ class SodopeResults extends Component {
                   {" "}
                   HMMER
                 </a>
-                </p>
+              </p>
               <br />
             </Fragment>
           )}
@@ -443,8 +442,8 @@ class SodopeResults extends Component {
 
           <br />
           {!this.state.suggestedRegions ||
-          this.state.sequenceTooSmall ? null : (
-            !this.state.suggestedRegions.Positions.length ? null:
+          this.state.sequenceTooSmall ? null : !this.state.suggestedRegions
+              .Positions.length ? null : (
             <Typography
               variant="body2"
               color="textSecondary"
@@ -459,7 +458,7 @@ class SodopeResults extends Component {
             {!this.state.suggestedRegions || this.state.sequenceTooSmall
               ? null
               : this.state.suggestedRegions.Positions.map((e, i) => (
-                    <Fragment key={"suggested_region_fragment_" + i}>
+                  <Fragment key={"suggested_region_fragment_" + i}>
                     <StyleRoot>
                       <button
                         key={"suggested_region_" + i}
@@ -471,9 +470,8 @@ class SodopeResults extends Component {
                       >
                         {e[0]} - {e[1]}
                       </button>
-                      </StyleRoot>
-                    </Fragment>
-
+                    </StyleRoot>
+                  </Fragment>
                 ))}
           </div>
 
@@ -539,40 +537,39 @@ class SodopeResults extends Component {
                 readOnly
                 value={this.state.sequenceToShow}
               />
-              </p>
+            </p>
 
-              <p className="control">
-                <button
-                  className="button is-danger is-rounded"
-                  onClick={() => {
-                    let clip = navigator.clipboard
-                    if (clip === undefined) {
-                        this.setState({
-                          copyToClipboard:true,
-                          clipboardCopiedMessage:'Upgrade your browser to use the clipboard feature.'
-                        });
-                    } else {
-                      navigator.clipboard.writeText(this.state.sequenceToShow);
-                      this.setState({
-                        copyToClipboard : true,
-                        clipboardCopiedMessage:'Copied to clipboard!'
-                      })}
-                     setTimeout(() => {
-                         this.setState({
-                             copyToClipboard: false,
-                             clipboardCopiedMessage:'',
+            <p className="control">
+              <button
+                className="button is-danger is-rounded"
+                onClick={() => {
+                  let clip = navigator.clipboard;
+                  if (clip === undefined) {
+                    this.setState({
+                      copyToClipboard: true,
+                      clipboardCopiedMessage:
+                        "Upgrade your browser to use the clipboard feature."
+                    });
+                  } else {
+                    navigator.clipboard.writeText(this.state.sequenceToShow);
+                    this.setState({
+                      copyToClipboard: true,
+                      clipboardCopiedMessage: "Copied to clipboard!"
+                    });
+                  }
+                  setTimeout(() => {
+                    this.setState({
+                      copyToClipboard: false,
+                      clipboardCopiedMessage: ""
+                    });
+                  }, 1000);
+                  // this.setState({ : true });
+                }}
+              >
+                <i className="fas fa-copy"></i>
+              </button>
 
-                         });
-                     }, 1000)
-                      // this.setState({ : true });
-                    }
-                    }
-
-                >
-                  <i className="fas fa-copy"></i>
-                </button>
-
-{/*              <span className="icon is-small is-left">
+              {/*              <span className="icon is-small is-left">
                 <Avatar>{this.state.avatarLetter}</Avatar>
               </span>*/}
             </p>
@@ -584,7 +581,10 @@ class SodopeResults extends Component {
                     onClick={this.convertSequenceButton}
                   >
                     {this.state.convertClicked
-                      ? "View DNA " + (!this.props.calledFromSodope? '' : "| Optimise expression")
+                      ? "View DNA " +
+                        (!this.props.calledFromSodope
+                          ? ""
+                          : "| Optimise expression")
                       : "Translate"}
                   </button>
                 </p>
@@ -606,10 +606,11 @@ class SodopeResults extends Component {
             )}
           </div>
 
-          {this.state.copyToClipboard ?
+          {this.state.copyToClipboard ? (
             <p className="help is-success has-text-right">
               {this.state.clipboardCopiedMessage}
-            </p>:null}
+            </p>
+          ) : null}
           {/*!this.props.calledFromSodope ? null : this.state.convertClicked ? (
             <p className="help is-success has-text-right">
               Nucleotide can be optimised for expression.

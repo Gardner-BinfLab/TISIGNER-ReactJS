@@ -76,7 +76,7 @@ const Footer = () => {
             </p>
             <p>
               <a
-                href="https://github.com/Gardner-BinfLab/TIsigner"
+                href="https://github.com/Gardner-BinfLab/TISIGNER-ReactJS"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -91,9 +91,33 @@ const Footer = () => {
           <div className="column is-3">
             <p className="title has-text-white">Institutions</p>
             <ul>
-              <li><a href="https://www.callaghaninnovation.govt.nz/" target="_blank" rel="noopener noreferrer">Callaghan Innovation</a></li>
-              <li><a href="https://www.otago.ac.nz/biochemistry" target="_blank" rel="noopener noreferrer">Department of Biochemistry, University of Otago</a></li>
-              <li><a href="https://www.mbie.govt.nz/" target="_blank" rel="noopener noreferrer">Ministry of Business, Innovation and Employment</a></li>
+              <li>
+                <a
+                  href="https://www.callaghaninnovation.govt.nz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Callaghan Innovation
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.otago.ac.nz/biochemistry"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Department of Biochemistry, University of Otago
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.mbie.govt.nz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ministry of Business, Innovation and Employment
+                </a>
+              </li>
             </ul>
           </div>
         </div>

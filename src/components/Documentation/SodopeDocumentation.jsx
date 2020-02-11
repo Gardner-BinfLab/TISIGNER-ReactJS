@@ -1,39 +1,35 @@
-import React, { Fragment , useEffect} from "react";
+import React, { Fragment, useEffect } from "react";
 import Navigation from "../Common/Navigation";
 import Footer from "../Homepage/Footer";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
-import ReactGA from 'react-ga';
-
+import ReactGA from "react-ga";
 
 const SodopeDocumentation = props => {
-
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   ReactGA.event({
-    category: 'Documentation',
-    action: 'Documentation clicked.',
-    label: 'SoDoPE'
+    category: "Documentation",
+    action: "Documentation clicked.",
+    label: "SoDoPE"
   });
 
   return (
     <Fragment>
-    <Navigation link={"/sodope"} />
+      <Navigation link={"/sodope"} />
       <section
         className="hero is-fullheight"
         style={{
           backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
         }}
       >
-        <div className="hero-head">
-
-        </div>
+        <div className="hero-head"></div>
         <div className="hero-body">
           <div className="container is-fluid is-paddingless">
-          <br/>
+            <br />
             <div className="box">
               <div className="content">
                 <Typography variant="h2" component="h3" gutterBottom>
@@ -63,7 +59,8 @@ const SodopeDocumentation = props => {
                   >
                     https://www.ebi.ac.uk/Tools/hmmer/{" "}
                   </a>
-                ). We also provide a link to the HMMER results page, which will expire after a week.
+                  ). We also provide a link to the HMMER results page, which
+                  will expire after a week.
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>

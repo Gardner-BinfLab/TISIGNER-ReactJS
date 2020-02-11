@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 class Advanced extends Component {
   constructor(props) {
@@ -28,25 +28,24 @@ class Advanced extends Component {
     });
 
     ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Sampling method: ' + event.target.value,
-      label: 'Advanced'
+      category: "TIsigner Customisation",
+      action: "Sampling method: " + event.target.value,
+      label: "Advanced"
     });
-
   }
 
   updateCheck() {
-    this.setState({
-      terminatorCheck: !this.state.terminatorCheck
-    }, () =>
-    ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Terminator check: ' + this.state.terminatorCheck,
-      label: 'Advanced'
-    })
-  );
-
-
+    this.setState(
+      {
+        terminatorCheck: !this.state.terminatorCheck
+      },
+      () =>
+        ReactGA.event({
+          category: "TIsigner Customisation",
+          action: "Terminator check: " + this.state.terminatorCheck,
+          label: "Advanced"
+        })
+    );
   }
 
   customRegionInput(event) {
@@ -95,11 +94,10 @@ class Advanced extends Component {
     });
 
     ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Custom Region; ' + event.target.value,
-      label: 'Advanced'
+      category: "TIsigner Customisation",
+      action: "Custom Region; " + event.target.value,
+      label: "Advanced"
     });
-
   }
 
   customSeedInput(event) {
@@ -125,11 +123,10 @@ class Advanced extends Component {
     });
 
     ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Custom Seed: ' + event.target.value,
-      label: 'Advanced'
+      category: "TIsigner Customisation",
+      action: "Custom Seed: " + event.target.value,
+      label: "Advanced"
     });
-
   }
 
   componentDidMount() {
@@ -212,12 +209,10 @@ class Advanced extends Component {
     //   isValidated: errors
     //   });
     ReactGA.event({
-      category: 'TIsigner Customisation',
-      action: 'Advanced Tab was clicked.',
-      label: 'Advanced'
+      category: "TIsigner Customisation",
+      action: "Advanced Tab was clicked.",
+      label: "Advanced"
     });
-
-
   }
 
   componentDidUpdate() {

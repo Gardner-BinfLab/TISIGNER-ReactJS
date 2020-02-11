@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import Chart from "../../Chart/Chart";
 import axios from "axios";
 import SodopeResults from "../../Sodope/result/Result";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 class TisignerResult extends Component {
   constructor(props) {
@@ -28,8 +28,8 @@ class TisignerResult extends Component {
     });
 
     ReactGA.event({
-      category: 'TIsigner Result Page',
-      action: 'View Plot clicked'
+      category: "TIsigner Result Page",
+      action: "View Plot clicked"
     });
   }
 
@@ -41,18 +41,15 @@ class TisignerResult extends Component {
       hmmdb: "pfam"
     };
 
-
     ReactGA.event({
-      category: 'TIsigner Result Page',
-      action: 'Analyse solubility button clicked.'
+      category: "TIsigner Result Page",
+      action: "Analyse solubility button clicked."
     });
-
 
     event.preventDefault();
     this.setState({ [event.target.name + "isSubmitting"]: true });
     !this.state.result
-      ? // axios.post('https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan', userObject) //http://10.96.88.251:5000/hmmer
-        axios
+      ? axios
           .post("https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan", userObject)
           .then(res => {
             // console.log(res)
@@ -61,9 +58,9 @@ class TisignerResult extends Component {
               [event.target.name + "isSubmitting"]: false
             });
             ReactGA.event({
-              category: 'TIsigner Result Page',
-              action: 'Analyse solubility: ',
-              label: 'HMMER results received.'
+              category: "TIsigner Result Page",
+              action: "Analyse solubility: ",
+              label: "HMMER results received."
             });
           })
           .catch(error => {
@@ -73,17 +70,15 @@ class TisignerResult extends Component {
               [event.target.name + "isSubmitting"]: false
             });
             ReactGA.event({
-              category: 'TIsigner Result Page',
-              action: 'Analyse solubility: ',
-              label: 'HMMER query failed.'
+              category: "TIsigner Result Page",
+              action: "Analyse solubility: ",
+              label: "HMMER query failed."
             });
             // console.log(error); //error message
             // console.log(error.response.status); //error status
             // console.log(error.response.headers); //error header
           })
       : this.setState({ [event.target.name + "isSubmitting"]: false });
-
-
   }
 
   reOptimise(event) {
@@ -128,9 +123,9 @@ class TisignerResult extends Component {
       };
 
       !this.state.reOptimiseResult
-        ? // https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan
+        ? // https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan //http://10.96.88.251:5000/optimise1
           axios
-            .post("http://localhost:5050/optimise", userObject)
+            .post("https://tisigner.otago.ac.nz/optimise", userObject)
             .then(res => {
               this.setState({
                 showResult: true,
@@ -138,9 +133,9 @@ class TisignerResult extends Component {
                 [event.target.name + "isSubmitting"]: false
               });
               ReactGA.event({
-                category: 'TIsigner Result Page',
-                action: 'Reoptimise with full sequence option clicked. ',
-                label: 'Reoptimisation success.'
+                category: "TIsigner Result Page",
+                action: "Reoptimise with full sequence option clicked. ",
+                label: "Reoptimisation success."
               });
             })
             .catch(error => {
@@ -150,9 +145,11 @@ class TisignerResult extends Component {
                 [event.target.name + "isSubmitting"]: false
               });
               ReactGA.event({
-                category: 'TIsigner Result Page',
-                action: 'Reoptimise with full sequence option clicked. ',
-                label: 'Reoptimisation failed with error: ' + JSON.stringify(error.response)
+                category: "TIsigner Result Page",
+                action: "Reoptimise with full sequence option clicked. ",
+                label:
+                  "Reoptimisation failed with error: " +
+                  JSON.stringify(error.response)
               });
               // console.log(error.response.data);
               // console.log(error.response.status);
@@ -162,18 +159,19 @@ class TisignerResult extends Component {
     }
 
     ReactGA.event({
-      category: 'TIsigner Result Page',
-      action: 'Reoptimise with full sequence option clicked. ',
-      label: 'This button appears when there is a terminator.'
+      category: "TIsigner Result Page",
+      action: "Reoptimise with full sequence option clicked. ",
+      label: "This button appears when there is a terminator."
     });
   }
 
   componentDidMount() {
-
     ReactGA.event({
-      category: 'TIsigner Result Page',
-      action: 'TIsigner result page shown.',
-      label: this.props.calledFromSodope ? 'Called from SoDoPE':'Called from TIsigner'
+      category: "TIsigner Result Page",
+      action: "TIsigner result page shown.",
+      label: this.props.calledFromSodope
+        ? "Called from SoDoPE"
+        : "Called from TIsigner"
     });
   }
 
@@ -353,7 +351,12 @@ class TisignerResult extends Component {
                         <div id="ignorePDF">
                           <br />
                           {!this.state.result && !this.state.isServerError ? (
-                            <progress className="progress is-large is-info" max="100">60%</progress>
+                            <progress
+                              className="progress is-large is-info"
+                              max="100"
+                            >
+                              60%
+                            </progress>
                           ) : !this.state.isServerError ? (
                             <SodopeResults
                               data={this.state.result}

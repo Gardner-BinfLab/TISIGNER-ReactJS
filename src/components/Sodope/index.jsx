@@ -6,13 +6,12 @@ import CookieConsent from "react-cookie-consent";
 import { Link } from "react-router-dom";
 
 class Sodope extends Component {
-
   componentDidMount() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
 
   componentDidUpdate() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -20,16 +19,14 @@ class Sodope extends Component {
       <Fragment
         key={!this.props.location.key ? "initial" : this.props.location.key}
       >
-      <Navigation link={"/sodope"} />
+        <Navigation link={"/sodope"} />
         <section
           className="hero is-fullheight"
           style={{
             backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
           }}
         >
-          <div className="hero-head">
-
-          </div>
+          <div className="hero-head"></div>
           <div className="hero-body">
             <div className="container is-fluid is-paddingless">
               <SodopeInput />
@@ -42,7 +39,7 @@ class Sodope extends Component {
           experience. You can read our privacy policy{" "}
           <Link to="/privacy">here</Link>.
         </CookieConsent>
-        
+
         <Footer />
       </Fragment>
     );

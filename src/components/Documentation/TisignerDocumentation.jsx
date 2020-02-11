@@ -4,36 +4,32 @@ import Footer from "../Homepage/Footer";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
-import ReactGA from 'react-ga';
-
+import ReactGA from "react-ga";
 
 const TisignerDocumentation = props => {
-
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   ReactGA.event({
-    category: 'Documentation',
-    action: 'Documentation clicked.',
-    label: 'TIsigner'
+    category: "Documentation",
+    action: "Documentation clicked.",
+    label: "TIsigner"
   });
 
   return (
     <Fragment>
-    <Navigation link={"/tisigner"} />
+      <Navigation link={"/tisigner"} />
       <section
         className="hero is-fullheight"
         style={{
           backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
         }}
       >
-        <div className="hero-head">
-
-        </div>
+        <div className="hero-head"></div>
         <div className="hero-body">
           <div className="container is-fluid is-paddingless">
-          <br />
+            <br />
             <div className="box">
               <div className="content">
                 <Typography variant="h2" component="h3" gutterBottom>

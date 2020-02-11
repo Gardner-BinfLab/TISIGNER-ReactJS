@@ -2,32 +2,28 @@ import React, { Fragment, useEffect } from "react";
 import Navigation from "../Common/Navigation";
 import Footer from "../Homepage/Footer";
 import Typography from "@material-ui/core/Typography";
-import ReactGA from 'react-ga';
-
+import ReactGA from "react-ga";
 
 const Privacy = props => {
-
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   ReactGA.event({
-    category: 'Privacy',
-    action: 'Privacy clicked.',
+    category: "Privacy",
+    action: "Privacy clicked."
   });
 
   return (
     <Fragment>
-    <Navigation link={"/sodope"} />
+      <Navigation link={"/sodope"} />
       <section
         className="hero is-fullheight"
         style={{
           backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
         }}
       >
-        <div className="hero-head">
-
-        </div>
+        <div className="hero-head"></div>
         <div className="hero-body">
           <div className="container is-fluid is-paddingless">
             <div className="box">
@@ -52,8 +48,8 @@ const Privacy = props => {
                   Google analytics
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  We use google analytics on this webapp. You can read their terms
-                  of service{" "}
+                  We use google analytics on this webapp. You can read their
+                  terms of service{" "}
                   <a
                     href="https://marketingplatform.google.com/about/analytics/terms/us/"
                     target="_blank"

@@ -286,7 +286,7 @@ class SodopeChart extends Component {
                 </button>
               </p>
 
-{/*              <Link to={{ pathname: "/sodope", key: "retry-sodope" }}>
+              {/*              <Link to={{ pathname: "/sodope", key: "retry-sodope" }}>
               <p className="control">
                 <button
                   className="button are-medium is-inverted is-outlined is-rounded"
@@ -294,7 +294,6 @@ class SodopeChart extends Component {
                 </button>
               </p>
               </Link>*/}
-
             </div>
             <br />
           </Fragment>

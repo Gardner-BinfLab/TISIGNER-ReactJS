@@ -4,33 +4,28 @@ import Footer from "../Homepage/Footer";
 import Typography from "@material-ui/core/Typography";
 import CookieConsent from "react-cookie-consent";
 import { Link } from "react-router-dom";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 const License = props => {
-
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
+    window.scrollTo(0, 0);
+  }, []);
 
   ReactGA.event({
-    category: 'License',
-    action: 'License clicked.',
+    category: "License",
+    action: "License clicked."
   });
-
 
   return (
     <Fragment>
-    <Navigation link={"/sodope"} />
+      <Navigation link={"/sodope"} />
       <section
         className="hero is-fullheight"
         style={{
           backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
         }}
       >
-        <div className="hero-head">
-
-        </div>
+        <div className="hero-head"></div>
         <div className="hero-body">
           <div className="container is-fluid is-paddingless">
             <div className="box">
@@ -90,7 +85,7 @@ const License = props => {
           </div>
         </div>
       </section>
-      
+
       <CookieConsent>
         This website uses cookies and local storage to enhance the user
         experience. You can read our privacy policy{" "}

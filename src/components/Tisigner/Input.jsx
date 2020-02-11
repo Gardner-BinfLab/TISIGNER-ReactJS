@@ -10,8 +10,8 @@ import ReactGA from "react-ga";
 const style = {
   margin: 0,
   top: "auto",
-  right: 20,
-  bottom: 20,
+  right: 40,
+  bottom: 40,
   left: "auto",
   position: "fixed"
 };
@@ -53,14 +53,14 @@ class Input extends Component {
     // this.validateForm = this.validateForm.bind(this);
     this.submitInput = this.submitInput.bind(this);
     this.example = this.example.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      this.submitInput(event)
+  handleKeyDown = event => {
+    if (event.key === "Enter") {
+      this.submitInput(event);
     }
-  }
+  };
 
   saveAsPdf = () => {
     const pdfConverter = require("jspdf");
@@ -553,7 +553,7 @@ class Input extends Component {
         userObject: userObject
       });
       axios
-        .post("http://localhost:5050/optimise", userObject)
+        .post("https://tisigner.otago.ac.nz/optimise", userObject)
         .then(res => {
           this.setState({
             showResult: true,
@@ -595,7 +595,7 @@ class Input extends Component {
       return (
         <Fragment>
           <br />
-{/*          <div className="field has-addons">
+          {/*          <div className="field has-addons">
             <p className="control">
               <button
                 className="button is-rounded"
@@ -723,8 +723,7 @@ class Input extends Component {
                     : { color: "#FFFFFF" }
                 }
               >
-
-{/*                This will default to optimisation for <i>Escherichia coli </i>
+                {/*                This will default to optimisation for <i>Escherichia coli </i>
                 with T7 lac promoter. You can customise all available options
                 before submitting by clicking Settings.*/}
               </p>
@@ -734,12 +733,12 @@ class Input extends Component {
           <Customise isShowCustomise={this.state.isShowCustomise} />
 
           <div className="buttons has-addons is-grouped is-multiline is-centered">
-          <button
-            className="button are-medium is-success is-outlined is-rounded"
-            onClick={this.toggleCustomise}
-          >
-            {this.state.isShowCustomise ? "Save settings" : "Settings"}
-          </button>
+            <button
+              className="button are-medium is-success is-outlined is-rounded"
+              onClick={this.toggleCustomise}
+            >
+              {this.state.isShowCustomise ? "Save settings" : "Settings"}
+            </button>
             {!this.state.isShowCustomise && !this.props.calledFromSodope ? (
               <Fragment>
                 <button
@@ -756,7 +755,6 @@ class Input extends Component {
                 </button>
               </Fragment>
             ) : null}
-
           </div>
         </Fragment>
       );

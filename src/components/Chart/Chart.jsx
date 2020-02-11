@@ -165,7 +165,7 @@ class Chart extends Component {
 
                 scaleLabel: {
                   display: true,
-                  labelString: "Opening energy (KCal/mol)"
+                  labelString: "Opening energy (kcal/mol)"
                 },
 
                 ticks: {

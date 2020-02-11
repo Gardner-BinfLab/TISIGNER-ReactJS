@@ -2,13 +2,12 @@ import React, { Component, Fragment } from "react";
 import axios from "axios";
 import SodopeResults from "./result/Result";
 import Error from "../Error/Error";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 import {
   demoSodope,
   defaultProteinSodope,
   defaultNucleotideSodope
 } from "./Utils/Utils";
-
 
 class SodopeInput extends Component {
   constructor(props) {
@@ -34,11 +33,11 @@ class SodopeInput extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      this.submitInput(event)
+  handleKeyDown = event => {
+    if (event.key === "Enter") {
+      this.submitInput(event);
     }
-  }
+  };
 
   handleChangeSequenceType(event) {
     if (event.target.value) {
@@ -49,8 +48,8 @@ class SodopeInput extends Component {
         inputSequenceNucleotide: ""
       });
       ReactGA.event({
-        category: 'SoDoPE sequence type selection',
-        action: 'Type: ' + event.target.value,
+        category: "SoDoPE sequence type selection",
+        action: "Type: " + event.target.value
       });
     }
   }
@@ -91,10 +90,9 @@ class SodopeInput extends Component {
     }
 
     ReactGA.event({
-      category: 'SoDoPE example',
-      action: 'SoDoPE example button clicked.',
+      category: "SoDoPE example",
+      action: "SoDoPE example button clicked."
     });
-
   }
 
   showDemo = () => {
@@ -110,8 +108,8 @@ class SodopeInput extends Component {
       sequenceType: "Nucleotide"
     });
     ReactGA.event({
-      category: 'SoDoPE demo',
-      action: 'SoDoPE demo button clicked.',
+      category: "SoDoPE demo",
+      action: "SoDoPE demo button clicked."
     });
   };
 
@@ -316,10 +314,9 @@ class SodopeInput extends Component {
     let isValid = this.state.isValidatedSequence;
 
     ReactGA.event({
-      category: 'SoDoPE Input Page',
-      action: 'Submit button clicked.'
+      category: "SoDoPE Input Page",
+      action: "Submit button clicked."
     });
-
 
     event.preventDefault();
     if (sequence && isValid) {
@@ -340,9 +337,9 @@ class SodopeInput extends Component {
             isSubmitting: false
           });
           ReactGA.event({
-            category: 'SoDoPE Input Page',
-            action: 'Submit button clicked.',
-              label: 'HMMER results received.'
+            category: "SoDoPE Input Page",
+            action: "Submit button clicked.",
+            label: "HMMER results received."
           });
         })
         .catch(error => {
@@ -352,9 +349,9 @@ class SodopeInput extends Component {
             isSubmitting: false
           });
           ReactGA.event({
-            category: 'SoDoPE Input Page',
-            action: 'Submit button clicked.',
-              label: 'HMMER query failed.'
+            category: "SoDoPE Input Page",
+            action: "Submit button clicked.",
+            label: "HMMER query failed."
           });
           //console.log(error); //error message
           //console.log(error.response.status); //error status
@@ -375,7 +372,7 @@ class SodopeInput extends Component {
           >
             <div className="hero-body">
               <div className="container is-fluid is-paddingless">
-{/*                <br />
+                {/*                <br />
                 <div className="field has-addons">
                   <p className="control">
                     <button
@@ -395,7 +392,8 @@ class SodopeInput extends Component {
                     data={this.state.result}
                     protein={this.state.inputSequenceProtein}
                     nucleotide={this.state.inputSequenceNucleotide}
-                    calledFromSodope={true} key={"new-sodope"}
+                    calledFromSodope={true}
+                    key={"new-sodope"}
                   />
                 </div>
               </div>
@@ -437,8 +435,11 @@ class SodopeInput extends Component {
               <input
                 className="input is-rounded"
                 type="text"
-                placeholder={this.state.sequenceType === "Nucleotide"
-                  ? 'Nucleotide sequence': 'Amino acid sequence'}
+                placeholder={
+                  this.state.sequenceType === "Nucleotide"
+                    ? "Nucleotide sequence"
+                    : "Amino acid sequence"
+                }
                 onChange={this.handleInput}
                 value={this.state.currentInputSequence}
                 disabled={!this.state.sequenceType ? true : false}
@@ -482,7 +483,10 @@ class SodopeInput extends Component {
               className="button are-medium is-info is-outlined is-rounded"
               onClick={this.example}
             >
-              Demo {this.state.sequenceType === 'Nucleotide' ? "nucleotide":"protein"}
+              Demo{" "}
+              {this.state.sequenceType === "Nucleotide"
+                ? "nucleotide"
+                : "protein"}
             </button>
             <button
               className="button are-medium is-primary is-outlined is-rounded"

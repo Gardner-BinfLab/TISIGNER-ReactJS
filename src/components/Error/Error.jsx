@@ -23,7 +23,7 @@ class Error extends Component {
       errorMessage = error.response.data.seq;
     } else if (error.response && error.response.data) {
       if (error.response.data.data) {
-        errorMessage = error.response.data.data
+        errorMessage = error.response.data.data;
       } else {
         errorMessage = error.response.data;
       }
@@ -88,7 +88,7 @@ class Error extends Component {
                   <p>
                     Refresh the page and try again. If the error persists,{" "}
                     <a
-                      href="https://bkb3.github.io/homepage"
+                      href="https://github.com/Gardner-BinfLab/TISIGNER-ReactJS"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

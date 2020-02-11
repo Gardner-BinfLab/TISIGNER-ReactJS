@@ -5,7 +5,6 @@ import Footer from "../Homepage/Footer";
 import CookieConsent from "react-cookie-consent";
 import { Link } from "react-router-dom";
 
-
 class TIsigner extends Component {
   componentDidMount() {
     localStorage.setItem("isValidatedGeneral", true);
