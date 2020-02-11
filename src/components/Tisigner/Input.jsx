@@ -553,7 +553,7 @@ class Input extends Component {
         userObject: userObject
       });
       axios
-        .post("https://tisigner.otago.ac.nz/optimise", userObject)
+        .post("http://localhost:5050/optimise", userObject)
         .then(res => {
           this.setState({
             showResult: true,

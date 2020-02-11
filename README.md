@@ -1,8 +1,8 @@
 # TISIGNER
-This is a reimplementation of older TISIGNER in ReactJS, with more features and smoother integration between tools. The source code for old website can be found [here](https://github.com/Gardner-BinfLab/TIsigner/tree/master/TIsigner_web).
+This is a reimplementation of older TISIGNER in ReactJS, with more features and smoother integration between the available tools. The source code for old website can be found [here](https://github.com/Gardner-BinfLab/TIsigner/tree/master/TIsigner_web).
 
 ## About TISIGNER
-TISIGNER includes gene optimisation tool **TIsigner** and protein solubility optimisation tool **SoDoPE**.
+TISIGNER includes gene optimisation tool **TIsigner** and protein solubility optimisation tool **SoDoPE**. The website runs at [https://tisigner.otago.ac.nz](https://tisigner.otago.ac.nz).
 
 # Installation
 
