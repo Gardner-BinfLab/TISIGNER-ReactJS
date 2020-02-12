@@ -2,7 +2,7 @@
 This is a reimplementation of TISIGNER in ReactJS, with more features and smoother integration between the biological sequence optimisation tools. The source code for the older website can be found [here](https://github.com/Gardner-BinfLab/TIsigner/tree/master/TIsigner_web).
 
 ## About TISIGNER
-TISIGNER includes **TIsigner** and **SoDoPE**, the protein expression and solubility optimisation tools, respectively. The website runs at [https://tisigner.com](https://tisigner.com).
+TISIGNER runs at [https://tisigner.com](https://tisigner.com), which includes **TIsigner** and **SoDoPE**, the protein expression and solubility optimisation tools, respectively.
 
 # Installation
 
