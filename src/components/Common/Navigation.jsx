@@ -12,17 +12,6 @@ const Navigation = props => {
       aria-label="main navigation"
     >
       <div className="navbar-brand">
-        {/*}        <Link to="/">
-          <p className="navbar-item" alt="TIsigner logo">
-            <img
-              src="/favicon.png"
-              width="28"
-              height="28"
-              alt="TIsigner icon"
-            />
-          </p>
-        </Link>*/}
-
         <p
           role="button"
           className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
@@ -95,20 +84,6 @@ const Navigation = props => {
               <span>FAQ</span>
             </Link>
           </p>
-
-          {/*          <p className="navbar-item">
-            <a
-              href="https://github.com/Gardner-BinfLab/TIsigner"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "inherit", textDecoration: "inherit" }}
-            >
-              <span className="icon">
-                <i className="fab fa-circle fa-github"></i>
-              </span>
-              <span>GitHub</span>
-            </a>
-          </p>*/}
         </div>
       </div>
     </nav>

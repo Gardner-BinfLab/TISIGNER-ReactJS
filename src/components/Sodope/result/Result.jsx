@@ -584,7 +584,7 @@ class SodopeResults extends Component {
                       ? "View DNA " +
                         (!this.props.calledFromSodope
                           ? ""
-                          : "| Optimise expression")
+                          : "| optimise expression")
                       : "Translate"}
                   </button>
                 </p>

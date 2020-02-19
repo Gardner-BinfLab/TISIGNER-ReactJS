@@ -24,7 +24,8 @@ class Tools extends Component {
             sequence.
           </Fragment>
         ),
-        link: "/tisigner"
+        link: "/tisigner",
+        preprint: "https://doi.org/10.1101/726752"
       },
       {
         name: "SoDoPE",
@@ -35,7 +36,8 @@ class Tools extends Component {
         image: "/sodope.png",
         cardText:
           "SoDoPE enables users to navigate a protein sequence and its domains for predicting and maximising solubility. SoDoPE is linked with TIsigner, and therefore empowers protein biochemists to design sequences for tuning both protein expression and solubility for a gene of interest.",
-        link: "/sodope"
+        link: "/sodope",
+        preprint: "https://doi.org/10.1101/2020.02.15.951012"
       }
     ]
   };
@@ -65,14 +67,6 @@ class Tools extends Component {
                     <div className="column">
                       <div className="box">
                         <article className="media">
-                          {/*                           <div className="media-left">
-                            <figure className="image is-128x128">
-                              <img
-                                src={item.image}
-                                alt={item.name + "_logo_image"}
-                              />
-                            </figure>
-                          </div>*/}
                           <div className="media-content">
                             <div className="content">
                               <p>
@@ -84,12 +78,27 @@ class Tools extends Component {
                             </div>
                             <nav className="level is-mobile">
                               <div className="level-left">
-                                <p className="control">
-                                  <Link to={item.link}>
-                                    <button className="button are-medium is-black is-outlined is-rounded">
-                                      {item.name}
-                                    </button>
-                                  </Link>
+                                <p classNmae="level-item">
+                                  <div className="field is-grouped">
+                                    <p className="control">
+                                      <Link to={item.link}>
+                                        <button className="button are-medium is-black is-outlined is-rounded">
+                                          {item.name}
+                                        </button>
+                                      </Link>
+                                    </p>
+
+                                    <p className="control">
+                                      <a
+                                        href={item.preprint}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="button are-medium is-link is-rounded"
+                                      >
+                                        <span>Preprint</span>
+                                      </a>
+                                    </p>
+                                  </div>
                                 </p>
                               </div>
                             </nav>

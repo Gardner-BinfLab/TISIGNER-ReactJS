@@ -64,34 +64,36 @@ export default function Customise(props) {
     <Fragment>
       {props.isShowCustomise ? (
         <Fragment>
-          <div className={classes.root}>
-            <AppBar position="static" color="default">
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                variant="fullWidth"
-                aria-label="Customise"
+          <div className="container">
+            <div className={classes.root}>
+              <AppBar position="static" color="default">
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  variant="fullWidth"
+                  aria-label="Customise"
+                >
+                  <Tab label="General" {...a11yProps(0)} />
+                  <Tab label="Extra" {...a11yProps(1)} />
+                  <Tab label="Advanced" {...a11yProps(2)} />
+                </Tabs>
+              </AppBar>
+              <SwipeableViews
+                axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+                index={value}
+                onChangeIndex={handleChangeIndex}
               >
-                <Tab label="General" {...a11yProps(0)} />
-                <Tab label="Extra" {...a11yProps(1)} />
-                <Tab label="Advanced" {...a11yProps(2)} />
-              </Tabs>
-            </AppBar>
-            <SwipeableViews
-              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-              index={value}
-              onChangeIndex={handleChangeIndex}
-            >
-              <TabPanel value={value} index={0} dir={theme.direction}>
-                <General />
-              </TabPanel>
-              <TabPanel value={value} index={1} dir={theme.direction}>
-                <Extra />
-              </TabPanel>
-              <TabPanel value={value} index={2} dir={theme.direction}>
-                <Advanced />
-              </TabPanel>
-            </SwipeableViews>
+                <TabPanel value={value} index={0} dir={theme.direction}>
+                  <General />
+                </TabPanel>
+                <TabPanel value={value} index={1} dir={theme.direction}>
+                  <Extra />
+                </TabPanel>
+                <TabPanel value={value} index={2} dir={theme.direction}>
+                  <Advanced />
+                </TabPanel>
+              </SwipeableViews>
+            </div>
           </div>
           <br />
         </Fragment>

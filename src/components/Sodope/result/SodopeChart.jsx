@@ -358,7 +358,7 @@ class SodopeChart extends Component {
               {this.state.showProfilePlot ? (
                 <div className="column has-text-centered">
                   <p className="heading">
-                    Hydrophilicity and Flexibility of the selected region
+                    Hydrophobicity and Flexibility of the selected region
                   </p>
                   <Profile
                     hydropathy={this.props.hydropathy}
@@ -375,7 +375,7 @@ class SodopeChart extends Component {
         {this.state.showProfilePlot && !this.state.showCustomTagInput ? (
           <div className="column has-text-centered">
             <p className="heading">
-              Hydrophilicity and Flexibility of the selected region
+              Hydrophobicity and Flexibility of the selected region
             </p>
             <Profile
               hydropathy={this.props.hydropathy}

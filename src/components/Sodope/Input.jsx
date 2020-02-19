@@ -435,11 +435,7 @@ class SodopeInput extends Component {
               <input
                 className="input is-rounded"
                 type="text"
-                placeholder={
-                  this.state.sequenceType === "Nucleotide"
-                    ? "Nucleotide sequence"
-                    : "Amino acid sequence"
-                }
+                placeholder="Enter a sequence to optimise solubility."
                 onChange={this.handleInput}
                 value={this.state.currentInputSequence}
                 disabled={!this.state.sequenceType ? true : false}

@@ -48,14 +48,14 @@ const Banner = () => {
               <p className="control" style={styles.fadeInLeft}>
                 <Link to="/tisigner">
                   <button className="button are-medium is-black is-inverted is-outlined is-rounded">
-                    TIsigner
+                    TIsigner | optimise expression
                   </button>
                 </Link>
               </p>
               <p className="control" style={styles.fadeInUp}>
                 <Link to="/sodope">
                   <button className="button are-medium is-black is-inverted is-outlined is-rounded">
-                    SoDoPE
+                    SoDoPE | optimise solubility
                   </button>
                 </Link>
               </p>

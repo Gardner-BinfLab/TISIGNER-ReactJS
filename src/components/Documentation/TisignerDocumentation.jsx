@@ -37,6 +37,14 @@ const TisignerDocumentation = props => {
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
+                  What is TIsigner?
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  TIsigner (Translation Initiation coding region designer) is a
+                  gene optimisation tool.
+                </Typography>
+
+                <Typography variant="subtitle2" gutterBottom>
                   Why TIsigner requires a 5&prime; UTR (promoter) sequence to
                   run?
                 </Typography>
@@ -118,18 +126,18 @@ const TisignerDocumentation = props => {
                   How to cite TIsigner?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Bikash K Bhandari, Chun Shen Lim, Paul P Gardner.{" "}
+                  Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019){" "}
                   <cite title="Highly accessible translation initiation sites are predictive of successful heterologous protein expression.">
                     Highly accessible translation initiation sites are
                     predictive of successful heterologous protein expression
                   </cite>
-                  . BioRxiv. (2019). DOI:
+                  . BioRxiv.{" "}
                   <a
                     href="https://doi.org/10.1101/726752"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    10.1101/726752
+                    DOI:10.1101/726752
                   </a>
                   .
                 </Typography>

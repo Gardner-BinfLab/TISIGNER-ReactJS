@@ -37,6 +37,14 @@ const SodopeDocumentation = props => {
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
+                  What is SoDoPE?
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  SoDoPE (Soluble Domain for Protein Expression) is a tool for
+                  solubility prediction and optimisation.
+                </Typography>
+
+                <Typography variant="subtitle2" gutterBottom>
                   What should I do after submitting a sequence?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
@@ -146,17 +154,24 @@ const SodopeDocumentation = props => {
                   How to cite SoDoPE?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Bikash K Bhandari, Paul P Gardner, Chun Shen Lim. (2019){" "}
+                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020){" "}
                   <cite title="Protein solubility is controlled by global structural flexibility.">
                     Protein solubility is controlled by global structural
                     flexibility
                   </cite>
-                  . BioRxiv. DOI:
+                  . BioRxiv.{" "}
+                  <a
+                    href="https://doi.org/10.1101/2020.02.15.951012"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    DOI:10.1101/2020.02.15.951012
+                  </a>
                   <br />
                   If you find optimising protein expression useful, please also
                   cite the following preprint:
                   <br />
-                  Bikash K Bhandari, Chun Shen Lim, Paul P Gardner. (2019){" "}
+                  Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019){" "}
                   <cite title="Highly accessible translation initiation sites are predictive of successful heterologous protein expression.">
                     Highly accessible translation initiation sites are
                     predictive of successful heterologous protein expression
@@ -184,7 +199,7 @@ const SodopeDocumentation = props => {
                 </Typography>
                 <ul>
                   <li>
-                    Kyte,J. and Doolittle,R.F. (1982){" "}
+                    Kyte, J. and Doolittle, R.F. (1982){" "}
                     <cite title="A simple method for displaying the hydropathic character of a protein.">
                       A simple method for displaying the hydropathic character
                       of a protein.
@@ -192,14 +207,14 @@ const SodopeDocumentation = props => {
                     H J. Mol. Biol., 157, 105–132.
                   </li>
                   <li>
-                    Smith,D.K. et al. (2003){" "}
+                    Smith, D.K. et al. (2003){" "}
                     <cite title="Improved amino acid flexibility parameters.">
                       Improved amino acid flexibility parameters.
                     </cite>{" "}
                     Protein Sci., 12, 1060–1072.
                   </li>
                   <li>
-                    Vihinen,M. et al. (1994){" "}
+                    Vihinen, M. et al. (1994){" "}
                     <cite title="Accuracy of protein flexibility predictions.">
                       Accuracy of protein flexibility predictions.
                     </cite>{" "}

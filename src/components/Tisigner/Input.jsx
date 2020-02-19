@@ -6,6 +6,8 @@ import TisignerResult from "./result/TisignerResult";
 import Error from "../Error/Error";
 import { demoTisigner, defaultNucleotideTIsigner } from "../Sodope/Utils/Utils";
 import ReactGA from "react-ga";
+// import Typography from "@material-ui/core/Typography";
+// import { Link } from "react-router-dom";
 
 const style = {
   margin: 0,
@@ -553,7 +555,7 @@ class Input extends Component {
         userObject: userObject
       });
       axios
-        .post("http://localhost:5050/optimise", userObject)
+        .post("https://tisigner.otago.ac.nz/optimise", userObject)
         .then(res => {
           this.setState({
             showResult: true,
@@ -635,12 +637,59 @@ class Input extends Component {
         <Fragment>
           {this.state.isShowCustomise ? null : (
             <Fragment>
+            {/*this.props.calledFromSodope ? null:
+            <div className="container">
+              <p style={{ display: "flex", justifyContent: "center" }}>
+                <Typography variant="h2" component="h3" gutterBottom>
+                  <b>
+                    <span style={{ color: "#FFFFFF" }}>TI</span>
+                    <span style={{ color: "#EDA604" }}>signer</span>
+                  </b>
+                </Typography>
+                <br />
+              </p>
+
+              <p
+                className="has-text-centered"
+                style={{
+                  justifyContent: "center",
+                  color: "#FFFFFF"
+                }}
+              >
+                TIsigner optimises the translation initiation coding region of
+                a gene of interest to improve recombinant protein production
+                in <i>Escherichia coli </i> (default host),{" "}
+                <i>Saccharomyces cerevisiae</i> and <i>Mus musculus</i>. Click
+                settings to customise host and more. Read our{" "}
+                <Link
+                  to={{ pathname: "/tisigner/faq", key: "tisigner-home" }}
+                  style={{ color: "#EDA604", textDecoration: "inherit" }}
+                >
+                  FAQ
+                </Link>
+                .
+              </p>
+            </div>*/}
+            {/*}<p
+              className="has-text-centered"
+              style={
+                this.props.calledFromSodope
+                  ? { color: "#000000" }
+                  : { color: "#FFFFFF" }
+              }
+            >
+              This will default to protein expression optimisation for{" "}
+              <i>Escherichia coli </i>
+              with T7 lac promoter. You can customise all available options
+              before submitting by clicking Settings.
+            </p>*/}
+            <br />
               <div className="field has-addons">
                 <div className="control is-expanded">
                   <input
                     className="input is-rounded"
                     type="text"
-                    placeholder="A protein coding sequence"
+                    placeholder="Enter a nucleotide sequence to optimise protein expression."
                     onChange={this.sequenceInput}
                     value={this.state.inputSequence}
                     onKeyDown={this.handleKeyDown}
@@ -715,7 +764,7 @@ class Input extends Component {
                 </p>
               )}
 
-              <p
+              {/*<p
                 className="has-text-centered"
                 style={
                   this.props.calledFromSodope
@@ -723,10 +772,11 @@ class Input extends Component {
                     : { color: "#FFFFFF" }
                 }
               >
-                {/*                This will default to optimisation for <i>Escherichia coli </i>
+                This will default to protein expression optimisation for{" "}
+                <i>Escherichia coli </i>
                 with T7 lac promoter. You can customise all available options
-                before submitting by clicking Settings.*/}
-              </p>
+                before submitting by clicking Settings.
+              </p>*/}
             </Fragment>
           )}
           <br />

@@ -46,7 +46,7 @@ class Profile extends Component {
     this.state.flexibilities.map((e, i) => (flex[i + start] = e));
 
     var plotData = [
-      { name: "Hydrophilicity", data: hydro },
+      { name: "Hydrophobicity", data: hydro },
       { name: "Flexibility", data: flex }
     ];
 
