@@ -51,7 +51,6 @@ def optimiser():
 
         seeds = list(range(seed, seed+num_seq))
         rand_states = [np.random.RandomState(i) for i in seeds]
-#        print(direction, seq, ncodons, utr, host, niter, num_seq, rms, threshold, seeds, termcheck)
         new_opt = Optimiser(seq=seq, host=host, ncodons=ncodons, utr=utr, \
                          niter=niter, threshold=threshold, \
                          rms_sites=rms, direction=direction)

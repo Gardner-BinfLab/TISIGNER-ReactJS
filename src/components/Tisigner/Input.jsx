@@ -555,7 +555,7 @@ class Input extends Component {
         userObject: userObject
       });
       axios
-        .post("https://tisigner.otago.ac.nz/optimise", userObject)
+        .post("http://localhost:5050/optimise", userObject)
         .then(res => {
           this.setState({
             showResult: true,
@@ -574,8 +574,6 @@ class Input extends Component {
             serverError: error,
             isSubmitting: false
           });
-          // console.log(error.response.status);
-          // console.log(error.response.headers);
 
           ReactGA.event({
             category: "Submit Result Failed",
@@ -597,19 +595,6 @@ class Input extends Component {
       return (
         <Fragment>
           <br />
-          {/*          <div className="field has-addons">
-            <p className="control">
-              <button
-                className="button is-rounded"
-                onClick={() => this.setState({showResult:!this.state.showResult})}
-              >
-                <span className="icon is-small">
-                  <i className="fa fa-backward"></i>
-                </span>
-                <span>{this.state.showResult ? "Back" : ""}</span>
-              </button>
-            </p>
-          </div>*/}
           <br />
           <div id="tisignerResultPdf">
             <TisignerResult
@@ -637,53 +622,7 @@ class Input extends Component {
         <Fragment>
           {this.state.isShowCustomise ? null : (
             <Fragment>
-            {/*this.props.calledFromSodope ? null:
-            <div className="container">
-              <p style={{ display: "flex", justifyContent: "center" }}>
-                <Typography variant="h2" component="h3" gutterBottom>
-                  <b>
-                    <span style={{ color: "#FFFFFF" }}>TI</span>
-                    <span style={{ color: "#EDA604" }}>signer</span>
-                  </b>
-                </Typography>
-                <br />
-              </p>
-
-              <p
-                className="has-text-centered"
-                style={{
-                  justifyContent: "center",
-                  color: "#FFFFFF"
-                }}
-              >
-                TIsigner optimises the translation initiation coding region of
-                a gene of interest to improve recombinant protein production
-                in <i>Escherichia coli </i> (default host),{" "}
-                <i>Saccharomyces cerevisiae</i> and <i>Mus musculus</i>. Click
-                settings to customise host and more. Read our{" "}
-                <Link
-                  to={{ pathname: "/tisigner/faq", key: "tisigner-home" }}
-                  style={{ color: "#EDA604", textDecoration: "inherit" }}
-                >
-                  FAQ
-                </Link>
-                .
-              </p>
-            </div>*/}
-            {/*}<p
-              className="has-text-centered"
-              style={
-                this.props.calledFromSodope
-                  ? { color: "#000000" }
-                  : { color: "#FFFFFF" }
-              }
-            >
-              This will default to protein expression optimisation for{" "}
-              <i>Escherichia coli </i>
-              with T7 lac promoter. You can customise all available options
-              before submitting by clicking Settings.
-            </p>*/}
-            <br />
+              <br />
               <div className="field has-addons">
                 <div className="control is-expanded">
                   <input
@@ -763,20 +702,6 @@ class Input extends Component {
                   {JSON.parse(localStorage.getItem("randomSeedError"))}
                 </p>
               )}
-
-              {/*<p
-                className="has-text-centered"
-                style={
-                  this.props.calledFromSodope
-                    ? { color: "#000000" }
-                    : { color: "#FFFFFF" }
-                }
-              >
-                This will default to protein expression optimisation for{" "}
-                <i>Escherichia coli </i>
-                with T7 lac promoter. You can customise all available options
-                before submitting by clicking Settings.
-              </p>*/}
             </Fragment>
           )}
           <br />

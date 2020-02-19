@@ -7,13 +7,12 @@ class SodopeChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sequenceType: "Nucleotide",
+      sequenceType: "Protein",
       showCustomTagInput: false,
       showProfilePlot: false,
       inputSequenceProtein: "",
       isValidatedSequence: true,
       currentInputTag: ""
-      // currentSelectedSequence:this.props.currentSelectedSequence,
     };
     this.showTag = this.showTag.bind(this);
     this.showPlot = this.showPlot.bind(this);
@@ -144,26 +143,10 @@ class SodopeChart extends Component {
   }
 
   sequenceInput(event, seq = null) {
-    // let re = /\r\n|\n\r|\n|\r/g;
-    // let fasta = event.target.value
-    // let input = fasta.replace(re, "\n").split("\n");
-
     let isValid = true;
     let error = "";
     let s = seq === null ? event.target.value.replace(/U/gi, "T") : seq;
     let sequence = s.replace(/ /g, "").toUpperCase();
-    //check valid fasta
-    // if (input[0][0] == ">") {
-    //     input.shift()
-    //     let seq = input.join('').toUpperCase();
-    //     console.log(input, fasta, seq)
-    //     if (seq.split('>').length >= 2) {
-    //       isValid = false
-    //       error = "Multi-fasta not supported."
-    //     }
-    // } else {
-    //     sequence = input.join('').replace(/U/gi, 'T').toUpperCase();
-    // }
 
     if (sequence) {
       //check valid sequence
@@ -174,24 +157,15 @@ class SodopeChart extends Component {
           isValid = false;
           error = "Ambiguity/unrecognised nucleotide codes.";
         } else {
-          // console.log(sequence, 'filter test pass')
           if (sequence.length % 3 !== 0) {
             isValid = false;
             error = "Sequence length is not a multiple of 3 (codon).";
           } else {
             let codons = sequence.match(/.{1,3}/g);
-            // if (codons[0] !== 'ATG') {
-            //     isValid = false
-            //     error =  "ATG/AUG start codon is absent."
-            // } else if (!(stop.includes(codons[codons.length - 1]))) {
-            //     isValid = false
-            //     error =  "Stop codon is absent."
-            // } else {
+
             codons.shift();
             codons.pop();
-            // if (stop.includes(codons[codons.length - 1])) {
-            // codons.pop(); //remove stop codon 							}
-            // }
+
             let common = codons.filter(value => stop.includes(value));
             if (common.length !== 0) {
               isValid = false;
@@ -237,15 +211,11 @@ class SodopeChart extends Component {
           isValid = false;
           error = "* is allowed only at the end.";
         }
-        /* else if (seq[0] != 'M') {
-                   throw "Sequence did not start with Methionine."
-                 } */
       } else {
         isValid = false;
         error = "Sequence length should be less then 10,000 residues.";
       }
     } else {
-      //        throw "Possibly a nucleotide sequence!"
     }
 
     this.setState({
@@ -285,15 +255,6 @@ class SodopeChart extends Component {
                     : "Show profile plot"}
                 </button>
               </p>
-
-              {/*              <Link to={{ pathname: "/sodope", key: "retry-sodope" }}>
-              <p className="control">
-                <button
-                  className="button are-medium is-inverted is-outlined is-rounded"
-                >New solubility analysis
-                </button>
-              </p>
-              </Link>*/}
             </div>
             <br />
           </Fragment>
@@ -308,8 +269,8 @@ class SodopeChart extends Component {
                     value={this.state.sequenceType}
                     onChange={this.handleChangeSequenceType}
                   >
-                    <option value="Nucleotide">Nucleotide</option>
                     <option value="Protein">Protein</option>
+                    <option value="Nucleotide">Nucleotide</option>
                   </select>
                 </span>
               </p>

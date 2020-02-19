@@ -123,10 +123,6 @@ class SodopeResults extends Component {
   }
 
   sliderChange = (e, newValue) => {
-    // let a = newValue[0]
-    // let b = newValue[1]
-    // (Math.abs(a-b) < 11) ? a = a + 10 : a
-    // newValue = [a,b]
     this.setState(
       {
         sliderValue: newValue,
@@ -568,10 +564,6 @@ class SodopeResults extends Component {
               >
                 <i className="fas fa-copy"></i>
               </button>
-
-              {/*              <span className="icon is-small is-left">
-                <Avatar>{this.state.avatarLetter}</Avatar>
-              </span>*/}
             </p>
             {!this.props.nucleotide ? null : (
               <Fragment>
@@ -611,11 +603,6 @@ class SodopeResults extends Component {
               {this.state.clipboardCopiedMessage}
             </p>
           ) : null}
-          {/*!this.props.calledFromSodope ? null : this.state.convertClicked ? (
-            <p className="help is-success has-text-right">
-              Nucleotide can be optimised for expression.
-            </p>
-          ) : null*/}
 
           {!this.state.sequenceTooSmall ? (
             <SodopeChart

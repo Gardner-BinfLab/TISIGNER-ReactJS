@@ -326,7 +326,6 @@ class SodopeInput extends Component {
       };
       this.setState({ isSubmitting: true });
 
-      // axios.post('https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan', userObject) //http://10.96.88.251:5000/hmmer0
       axios
         .post("https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan", userObject)
         .then(res => {
@@ -353,9 +352,6 @@ class SodopeInput extends Component {
             action: "Submit button clicked.",
             label: "HMMER query failed."
           });
-          //console.log(error); //error message
-          //console.log(error.response.status); //error status
-          //console.log(error.response.headers); //error header
         });
     }
   }
@@ -372,21 +368,6 @@ class SodopeInput extends Component {
           >
             <div className="hero-body">
               <div className="container is-fluid is-paddingless">
-                {/*                <br />
-                <div className="field has-addons">
-                  <p className="control">
-                    <button
-                      className="button is-rounded"
-                      onClick={() => this.setState({showResult:!this.state.showResult})}
-                    >
-                      <span className="icon is-small">
-                        <i className="fa fa-backward"></i>
-                      </span>
-                      <span>{this.state.showResult ? "Back" : ""}</span>
-                    </button>
-                  </p>
-                </div>
-                <br />*/}
                 <div className="box">
                   <SodopeResults
                     data={this.state.result}
