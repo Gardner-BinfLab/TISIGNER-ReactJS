@@ -8,7 +8,7 @@ TISIGNER runs at [https://tisigner.com](https://tisigner.com), which includes **
 
 ## Requirements
  - ```Python 3.6``` and optionally ```git```.
- - ```Node.js```. See instructions on the [Node.js website](https://nodejs.org/en/).
+ - ```Node.js v8.10.0```. See instructions on the [Node.js website](https://nodejs.org/en/).
  - ```ViennaRNA v2.4.11```. Newer versions may also work. See instructions on the [ViennaRNA website](https://www.tbi.univie.ac.at/RNA/).
  - ```INFERNAL v1.1.2 ```. Newer versions may also work. See instructions on the [INFERNAL website](http://eddylab.org/infernal/).
 
