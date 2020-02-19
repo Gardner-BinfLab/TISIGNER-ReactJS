@@ -106,18 +106,17 @@ class Optimiser:
         num_nts = (ncodons)*3
         start = seq[:3]
         new_seq = seq[3:num_nts]
+        
 
 
         counter = 0
         while True:
-            for _ in range(nsubst):
-                codons = Optimiser.splitter(new_seq)
-                subst_codon_position = rand_state.choice(list(range(len(codons))))
-                subst_synonymous_codons = data.AA_TO_CODON[data.CODON_TO_AA[codons[\
-                                                        subst_codon_position]]]
-                subst_codon = rand_state.choice(subst_synonymous_codons)
-                new_seq = new_seq[:subst_codon_position*3]+ subst_codon +\
-                            new_seq[subst_codon_position*3+3:]
+            codons = Optimiser.splitter(new_seq)
+            subst_codon_position = rand_state.choice(list(range(len(codons))), nsubst)
+            for _, p in enumerate(subst_codon_position):
+                codons[p] = rand_state.choice(data.AA_TO_CODON[data.CODON_TO_AA[codons[\
+                                                    codons[p]]]])
+            new_seq = ''.join(codons)
             counter += 1
             if not re.findall(rms_sites, new_seq):
                 return start + new_seq + seq[num_nts:]
@@ -216,22 +215,17 @@ class Optimiser:
             snew = self.substitute_codon(sbest, ncodons, num_of_subst[idx], \
                                          rms_sites=rms_, rand_state=rand_state)
             new_cost = Optimiser.accessibility(self, snew) #new move
+            boltzmann = np.exp(-(new_cost - curr_cost)/(temp*self.cnst))
 
 
-            #simulated annealing
-            if new_cost/self.cnst <= curr_cost/self.cnst:
-                #is new move better then our current position?
-                scurr = snew #accept
-                curr_cost = Optimiser.accessibility(self, scurr)#update cost
+            #Metropolis-Hastings algorithm
+            if ((new_cost/self.cnst <= curr_cost/self.cnst ) \
+               or (boltzmann) >= rand_state.rand()):
+                scurr = snew 
+                curr_cost = Optimiser.accessibility(self, scurr)
                 if curr_cost/self.cnst <= curr_best_cost/self.cnst:
-                    #is the accepted move better then the best move so far?
-                    sbest = snew #accept
-                    curr_best_cost = Optimiser.accessibility(self, sbest)#update cost
-            elif np.exp(-(new_cost - curr_cost)/(temp*self.cnst)) >= \
-            np.random.rand(1)[0]:
-                #if the move wasn't better, accept or reject probabilistically
-                scurr = snew
-                curr_cost = Optimiser.accessibility(self, scurr)#update cost
+                    sbest = snew
+                    curr_best_cost = Optimiser.accessibility(self, sbest)
 
 
 
@@ -414,8 +408,6 @@ def sort_results(df, direction='decrease', termcheck=False):
 
     sequences_df = df[cols].copy()
     sequences_df['Type'] = 'Optimised'
-#    sequences_df.to_csv('seq_df.csv', index=None)
-#    sequences_df.drop_duplicates(inplace=True)
     sequences_df[cols_for_mismatches] = pd.DataFrame(sequences_df['Sequence']\
                 .apply(lambda x:min_dist_from_start(org_seq, x)).values.\
                 tolist(), index=sequences_df.index)
