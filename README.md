@@ -1,4 +1,8 @@
 # TISIGNER web app
+![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+[![GitHub contributors](https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg)](https://github.com/Gardner-BinfLab/TISIGNER-ReactJS/graphs/contributors/)
+
+
 This is a reimplementation of TISIGNER in ReactJS, with more features and smoother integration between the biological sequence optimisation tools. The source code for the older website can be found [here](https://github.com/Gardner-BinfLab/TIsigner/tree/master/TIsigner_web).
 
 ## About
