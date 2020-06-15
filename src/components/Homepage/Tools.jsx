@@ -78,7 +78,7 @@ class Tools extends Component {
                             </div>
                             <nav className="level is-mobile">
                               <div className="level-left">
-                                <p classNmae="level-item">
+                                <div className="level-item">
                                   <div className="field is-grouped">
                                     <p className="control">
                                       <Link to={item.link}>
@@ -99,7 +99,7 @@ class Tools extends Component {
                                       </a>
                                     </p>
                                   </div>
-                                </p>
+                                </div>
                               </div>
                             </nav>
                           </div>

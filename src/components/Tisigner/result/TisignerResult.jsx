@@ -180,7 +180,7 @@ class TisignerResult extends Component {
       ? this.props.result
       : this.state.reOptimiseResult;
     var names = [
-      "Optimised sequence close to selected parameters",
+      "Optimised sequence close to the selected parameters",
       "Input sequence",
       "Optimised sequence"
     ];
@@ -333,6 +333,11 @@ class TisignerResult extends Component {
                     </div>
 
                     {this.state[idx + "graph" + index] ? (
+                      <Fragment>
+                      <div className="column has-text-centered">
+                      <p className="heading">
+                      Distributions for PSI:Biology targets (8,780 'Success' and 2,650 'Failure') experiments
+                      </p>
                       <Chart
                         selected={allData[0][0]["Accessibility"]}
                         input={allData[1][0]["Accessibility"]}
@@ -344,6 +349,8 @@ class TisignerResult extends Component {
                             : item.Accessibility
                         }
                       />
+                      </div>
+                      </Fragment>
                     ) : null}
 
                     {this.state[idx + "solubility" + index] ? (

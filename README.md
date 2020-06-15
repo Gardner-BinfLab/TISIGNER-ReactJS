@@ -1,12 +1,14 @@
 # TISIGNER web app
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Gardner-BinfLab/TISIGNER-ReactJS)
+[![GitHub contributors](https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg)](https://github.com/Gardner-BinfLab/TISIGNER-ReactJS/graphs/contributors/)
+
+TISIGNER (tie-SIGN-er) runs at [https://tisigner.com](https://tisigner.com), which includes **TIsigner** and **SoDoPE**, the protein expression and solubility optimisation tools, respectively.
+
 This is a reimplementation of TISIGNER in ReactJS, with more features and smoother integration between the biological sequence optimisation tools. The source code for the older website can be found [here](https://github.com/Gardner-BinfLab/TIsigner/tree/master/TIsigner_web).
 
-## About
-TISIGNER runs at [https://tisigner.com](https://tisigner.com), which includes **TIsigner** and **SoDoPE**, the protein expression and solubility optimisation tools, respectively.
+## Installation
 
-# Installation
-
-## Requirements
+### Requirements
  - ```Python v3.6.9``` and optionally ```git```.
  - ```Node.js v8.10.0```. See instructions on the [Node.js website](https://nodejs.org/en/).
  - ```ViennaRNA v2.4.11```. Newer versions may also work. See instructions on the [ViennaRNA website](https://www.tbi.univie.ac.at/RNA/).
@@ -29,5 +31,5 @@ $ python3 tisigner.py
 The local website will run at [http://localhost:5050](http://localhost:5050).
 **TIsigner** will run at [http://localhost:5050/tisigner](http://localhost:5050/tisigner) and **SoDoPE** at [http://localhost:5050/sodope](http://localhost:5050/sodope).
 
-## Bugs/Errors
+### Bugs/Errors
 If you found any bugs or errors, please report it to us by opening an issue!

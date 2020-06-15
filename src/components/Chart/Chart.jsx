@@ -131,9 +131,9 @@ class Chart extends Component {
           title: {
             display: true,
             position: "bottom",
-            text:
-              "Distributions for PSI:Biology targets (8,780 'Success' and 2,650 'Failure' exper" +
-              "iments)."
+            // text:
+            //   "Distributions for PSI:Biology targets (8,780 'Success' and 2,650 'Failure' exper" +
+            //   "iments)."
           },
           scales: {
             yAxes: [
