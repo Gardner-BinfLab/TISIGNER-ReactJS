@@ -36,4 +36,4 @@ If you found any bugs or errors, please report it to us by opening an issue!
 
 ### Cite
 - Bhandari BK, Lim CS, Gardner PP. (2019). Highly accessible translation initiation sites are predictive of successful heterologous protein expression. bioRxiv. DOI:[10.1101/726752](https://www.biorxiv.org/content/10.1101/726752v1)
-- Bikash K Bhandari, Paul P Gardner, Chun Shen Lim. (2020). Protein solubility is controlled by global structural flexibility. Bioinformatics. DOI:[10.1093/bioinformatics/btaa578](https://dx.doi.org/10.1093/bioinformatics/btaa578)
+- Bikash K Bhandari, Paul P Gardner, Chun Shen Lim. (2020). Solubility-Weighted Index: fast and accurate prediction of protein solubility. Bioinformatics. DOI:[10.1093/bioinformatics/btaa578](https://dx.doi.org/10.1093/bioinformatics/btaa578)
