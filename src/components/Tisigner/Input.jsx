@@ -692,7 +692,6 @@ class Input extends Component {
         <Fragment>
           {this.state.isShowCustomise ? null : (
             <Fragment>
-              <br />
               <div className="field has-addons">
                 <div className="control is-expanded">
                   <input

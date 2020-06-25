@@ -167,7 +167,7 @@ const SodopeDocumentation = props => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    10.1101/2020.02.15.951012
+                    10.1093/bioinformatics/btaa578
                   </a>
                   .
                   <br />
@@ -193,10 +193,10 @@ const SodopeDocumentation = props => {
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
-                  Could I copy and distribute TIsigner for commercial purposes?
+                  Could I copy and distribute SoDoPE for commercial purposes?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  See our <Link to="/license">License</Link> page.
+                  See our <Link to="/license">License page</Link>.
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>

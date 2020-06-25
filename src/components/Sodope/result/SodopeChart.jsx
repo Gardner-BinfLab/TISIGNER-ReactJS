@@ -308,7 +308,7 @@ class SodopeChart extends Component {
             <div className="columns">
               {this.state.showProfilePlot ? (
                 <Fragment>
-                  <div className="column has-text-centered">
+                  <div className="column has-text-centered is-half">
                     <p className="heading">
                       Comparision of different tags with the selected region
                     </p>
@@ -321,7 +321,7 @@ class SodopeChart extends Component {
                     />
                   </div>
 
-                  <div className="column has-text-centered">
+                  <div className="column has-text-centered is-half">
                     <p className="heading">
                       Hydrophobicity and Flexibility of the selected region
                     </p>
@@ -335,7 +335,7 @@ class SodopeChart extends Component {
                   </div>
                 </Fragment>
               ) : (
-                <div className="column has-text-centered">
+                <div className="column has-text-centered is-full">
                   <p className="heading">
                     Comparision of different tags with the selected region
                   </p>
@@ -351,7 +351,7 @@ class SodopeChart extends Component {
         )}
 
         {this.state.showProfilePlot && !this.state.showCustomTagInput ? (
-          <div className="column has-text-centered">
+          <div className="column has-text-centered is-full">
             <p className="heading">
               Hydrophobicity and Flexibility of the selected region
             </p>
@@ -359,6 +359,7 @@ class SodopeChart extends Component {
               hydropathy={this.props.hydropathy}
               flexibilities={this.props.flexibilities}
               region={this.props.region}
+              key={"profile_plot_1" + this.state.inputSequenceProtein}
             />
           </div>
         ) : null}

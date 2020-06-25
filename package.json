@@ -28,7 +28,8 @@
     "react-scripts": "3.3.0",
     "react-scroll-into-view": "^1.8.2",
     "react-swipeable-views": "^0.13.9",
-    "round-to": "^4.1.0"
+    "round-to": "^4.1.0",
+    "update": "^0.7.4"
   },
   "scripts": {
     "start": "react-scripts start",

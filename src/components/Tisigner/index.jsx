@@ -30,7 +30,6 @@ class TIsigner extends Component {
             backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
           }}
         >
-          <div className="hero-head"></div>
           <div className="hero-body">
             <div className="container is-fluid is-paddingless">
               <Input />

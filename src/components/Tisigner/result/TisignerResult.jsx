@@ -334,7 +334,6 @@ class TisignerResult extends Component {
 
                     {this.state[idx + "graph" + index] ? (
                       <Fragment>
-                        <div className="column has-text-centered">
                           <p className="heading">
                             Distributions for PSI:Biology targets (8,780
                             'Success' and 2,650 'Failure') experiments
@@ -351,7 +350,6 @@ class TisignerResult extends Component {
                                 : item.Accessibility
                             }
                           />
-                        </div>
                       </Fragment>
                     ) : null}
 

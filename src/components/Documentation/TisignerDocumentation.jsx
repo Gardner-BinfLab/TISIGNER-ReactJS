@@ -119,7 +119,7 @@ const TisignerDocumentation = props => {
                   Could I copy and distribute TIsigner for commercial purposes?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  See our <Link to="/license">License</Link> page.
+                  See our <Link to="/license">License page</Link>.
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
