@@ -306,30 +306,46 @@ class SodopeChart extends Component {
 
             <hr />
             <div className="columns">
-              <div className="column has-text-centered">
-                <p className="heading">
-                  Comparision of different tags with the selected region
-                </p>
-                <Barplot
-                  customTag={this.state.inputSequenceProtein}
-                  currentSelectedSequence={this.props.currentSelectedSequence}
-                  key={"bar_plot_" + this.state.inputSequenceProtein}
-                />
-              </div>
               {this.state.showProfilePlot ? (
+                <Fragment>
+                  <div className="column has-text-centered">
+                    <p className="heading">
+                      Comparision of different tags with the selected region
+                    </p>
+                    <Barplot
+                      customTag={this.state.inputSequenceProtein}
+                      currentSelectedSequence={
+                        this.props.currentSelectedSequence
+                      }
+                      key={"bar_plot_" + this.state.inputSequenceProtein}
+                    />
+                  </div>
+
+                  <div className="column has-text-centered">
+                    <p className="heading">
+                      Hydrophobicity and Flexibility of the selected region
+                    </p>
+                    <Profile
+                      hydropathy={this.props.hydropathy}
+                      flexibilities={this.props.flexibilities}
+                      region={this.props.region}
+                      key={"profile_plot_" + this.state.inputSequenceProtein}
+                      inputProt={this.state.inputSequenceProtein}
+                    />
+                  </div>
+                </Fragment>
+              ) : (
                 <div className="column has-text-centered">
                   <p className="heading">
-                    Hydrophobicity and Flexibility of the selected region
+                    Comparision of different tags with the selected region
                   </p>
-                  <Profile
-                    hydropathy={this.props.hydropathy}
-                    flexibilities={this.props.flexibilities}
-                    region={this.props.region}
-                    key={"profile_plot_" + this.state.inputSequenceProtein}
-                    inputProt={this.state.inputSequenceProtein}
+                  <Barplot
+                    customTag={this.state.inputSequenceProtein}
+                    currentSelectedSequence={this.props.currentSelectedSequence}
+                    key={"bar_plot_1" + this.state.inputSequenceProtein}
                   />
                 </div>
-              ) : null}
+              )}
             </div>
           </Fragment>
         )}
