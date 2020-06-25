@@ -61,7 +61,7 @@ const Banner = () => {
               </p>
               <p className="control" style={styles.fadeInUp}>
                 <a
-                  href="https://github.com/Gardner-BinfLab/TIsigner"
+                  href="https://github.com/Gardner-BinfLab/TISIGNER-ReactJS"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="button are-medium is-link is-rounded"

@@ -68,7 +68,6 @@ class Profile extends Component {
           pointRadius: 1,
           pointHitRadius: 10,
           data: Object.values(hydro),
-          label: 'Hydrophobicity',
           yAxisID: 'Hydrophobicity',
         },
         {
@@ -91,7 +90,6 @@ class Profile extends Component {
           pointRadius: 1,
           pointHitRadius: 10,
           data: Object.values(flex),
-          label: 'Flexibility',
           yAxisID: 'Flexibility',
         }
       ]

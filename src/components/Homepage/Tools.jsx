@@ -22,10 +22,11 @@ class Tools extends Component {
             suggests minimum numbers of synonymous codon changes to the input
             sequence. This enables a standard PCR cloning for the optimised
             sequence.
+            <hr />
+            DOI: <a href="https://doi.org/10.1101/726752"  target="_blank"  rel="noopener noreferrer">10.1101/726752</a>
           </Fragment>
         ),
         link: "/tisigner",
-        preprint: "https://doi.org/10.1101/726752"
       },
       {
         name: "SoDoPE",
@@ -34,10 +35,14 @@ class Tools extends Component {
         text:
           "Leveraging 98,146 real-world experimental data points, our algorithms withstand the world's most stringent tests.",
         image: "/sodope.png",
-        cardText:
+        cardText:(
+          <Fragment>
           "SoDoPE enables users to navigate a protein sequence and its domains for predicting and maximising solubility. SoDoPE is linked with TIsigner, and therefore empowers protein biochemists to design sequences for tuning both protein expression and solubility for a gene of interest.",
+          <hr />
+          DOI: <a href="https://dx.doi.org/10.1093/bioinformatics/btaa578"  target="_blank"  rel="noopener noreferrer">10.1093/bioinformatics/btaa578</a>
+          </Fragment>
+        ),
         link: "/sodope",
-        preprint: "https://doi.org/10.1101/2020.02.15.951012"
       }
     ]
   };
@@ -88,7 +93,7 @@ class Tools extends Component {
                                       </Link>
                                     </p>
 
-                                    <p className="control">
+                                    {/*<p className="control">
                                       <a
                                         href={item.preprint}
                                         target="_blank"
@@ -97,7 +102,7 @@ class Tools extends Component {
                                       >
                                         <span>Preprint</span>
                                       </a>
-                                    </p>
+                                    </p>*/}
                                   </div>
                                 </div>
                               </div>

@@ -154,35 +154,35 @@ const SodopeDocumentation = props => {
                   How to cite SoDoPE?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020){" "}
-                  <cite title="Protein solubility is controlled by global structural flexibility.">
-                    Protein solubility is controlled by global structural
-                    flexibility
+                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020){" "}Solubility-Weighted Index: Fast and Accurate Prediction of Protein Solubility.
+                  <cite title="Solubility-Weighted Index: Fast and Accurate Prediction of Protein Solubility ">
+                  {" "}Bioinformatics.
                   </cite>
-                  . BioRxiv.{" "}
+                  {" "} DOI:
                   <a
-                    href="https://doi.org/10.1101/2020.02.15.951012"
+                    href="https://doi.org/10.1093/bioinformatics/btaa578"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    DOI:10.1101/2020.02.15.951012
+                    10.1101/2020.02.15.951012
                   </a>
+                  .
                   <br />
                   If you find optimising protein expression useful, please also
                   cite the following preprint:
                   <br />
                   Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019){" "}
+                  Highly accessible translation initiation sites are predictive of successful heterologous protein expression.
                   <cite title="Highly accessible translation initiation sites are predictive of successful heterologous protein expression.">
-                    Highly accessible translation initiation sites are
-                    predictive of successful heterologous protein expression
+                    {" "}BioRxiv
                   </cite>
-                  . BioRxiv.{" "}
+                  . {" "} DOI:
                   <a
                     href="https://doi.org/10.1101/726752"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    DOI:10.1101/726752
+                    10.1101/726752
                   </a>
                   .
                 </Typography>
@@ -200,25 +200,26 @@ const SodopeDocumentation = props => {
                 <ul>
                   <li>
                     Kyte, J. and Doolittle, R.F. (1982){" "}
+                    A simple method for displaying the hydropathic character
+                    of a protein.
                     <cite title="A simple method for displaying the hydropathic character of a protein.">
-                      A simple method for displaying the hydropathic character
-                      of a protein.
+                      {" "}Journal of molecular Biology
                     </cite>{" "}
-                    H J. Mol. Biol., 157, 105–132.
+                    , 157, 105–132.
                   </li>
                   <li>
-                    Smith, D.K. et al. (2003){" "}
+                    Smith, D.K. et al. (2003){" "}Improved amino acid flexibility parameters.
                     <cite title="Improved amino acid flexibility parameters.">
-                      Improved amino acid flexibility parameters.
+                      {" "}Protein Science,
                     </cite>{" "}
-                    Protein Sci., 12, 1060–1072.
+                     12, 1060–1072.
                   </li>
                   <li>
-                    Vihinen, M. et al. (1994){" "}
+                    Vihinen, M. et al. (1994){" "}Accuracy of protein flexibility predictions.
                     <cite title="Accuracy of protein flexibility predictions.">
-                      Accuracy of protein flexibility predictions.
+                      {" "}Proteins: Structure, Function, and Genetics,
                     </cite>{" "}
-                    Proteins: Structure, Function, and Genetics, 19, 141–149.
+                     19, 141–149.
                   </li>
                 </ul>
               </div>
