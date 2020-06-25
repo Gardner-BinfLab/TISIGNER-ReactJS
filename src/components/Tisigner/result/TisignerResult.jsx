@@ -334,7 +334,7 @@ class TisignerResult extends Component {
 
                     {this.state[idx + "graph" + index] ? (
                       <Fragment>
-                          <p className="heading">
+                          <p className="heading has-text-centered">
                             Distributions for PSI:Biology targets (8,780
                             'Success' and 2,650 'Failure') experiments
                           </p>
