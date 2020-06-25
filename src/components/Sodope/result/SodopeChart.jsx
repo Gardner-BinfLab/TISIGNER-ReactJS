@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Bar from "../../Chart/Bar";
+import Barplot from "../../Chart/Bar";
 import Profile from "../../Chart/Profile";
 import ReactGA from "react-ga";
 
@@ -310,7 +310,7 @@ class SodopeChart extends Component {
                 <p className="heading">
                   Comparision of different tags with the selected region
                 </p>
-                <Bar
+                <Barplot
                   customTag={this.state.inputSequenceProtein}
                   currentSelectedSequence={this.props.currentSelectedSequence}
                   key={this.state.inputSequenceProtein}
@@ -326,6 +326,7 @@ class SodopeChart extends Component {
                     flexibilities={this.props.flexibilities}
                     region={this.props.region}
                     key={"profile_plot_" + this.state.inputSequenceProtein}
+                    inputProt={this.state.inputSequenceProtein}
                   />
                 </div>
               ) : null}

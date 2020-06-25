@@ -238,7 +238,7 @@ export function hydropathy(seq) {
 
     let middle = subseq[Math.floor(win_size / 2) + 1];
     score += kd[middle];
-    scores.push(score / 5.25);
+    scores.push(score);
   }
   return scores;
 }

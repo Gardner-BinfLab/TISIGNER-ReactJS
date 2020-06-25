@@ -125,7 +125,7 @@ class TisignerResult extends Component {
       !this.state.reOptimiseResult
         ? // https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan //http://10.96.88.251:5000/optimise1
           axios
-            .post("http://localhost:5050/optimise", userObject)
+            .post("https://tisigner.otago.ac.nz/optimise", userObject)
             .then(res => {
               this.setState({
                 showResult: true,

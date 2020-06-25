@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { ColumnChart } from "react-chartkick";
-import "chart.js";
+// import { ColumnChart } from "react-chartkick";
+// import "chart.js";
+import {Bar} from 'react-chartjs-2';
 import { solubilityWeightedIndex, logistic } from "../Sodope/Utils/Utils";
 
-class Bar extends Component {
+class Barplot extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -162,21 +163,55 @@ class Bar extends Component {
           )
         ))
     );
-    return plotData;
+
+    const data = {
+      labels: Object.keys(plotData),
+      datasets: [
+        {
+          label: 'Probability of solubility',
+          backgroundColor: '#17becf',
+          borderColor: '#ff7f0e',
+          borderWidth: 1,
+          hoverBackgroundColor: '#9467bd',
+          hoverBorderColor: '##17becf',
+          data: Object.values(plotData)
+        }
+      ]
+    };
+    return data
   }
+
+
 
   render() {
     return (
-      <ColumnChart
-        data={this.barPlotValues()}
-        xtitle="Tags"
-        ytitle="Probability of solubility"
-        library={{
-          responsive: true
-        }}
+      <div>
+      <Bar
+      data={this.barPlotValues()}
+      width={400}
+      height={300}
+      options={{
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Probability of solubility'
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Tags'
+            }
+          }]
+        }
+      }}
       />
+      </div>
     );
   }
 }
 
-export default Bar;
+export default Barplot;
