@@ -334,22 +334,24 @@ class TisignerResult extends Component {
 
                     {this.state[idx + "graph" + index] ? (
                       <Fragment>
-                      <div className="column has-text-centered">
-                      <p className="heading">
-                      Distributions for PSI:Biology targets (8,780 'Success' and 2,650 'Failure') experiments
-                      </p>
-                      <Chart
-                        selected={allData[0][0]["Accessibility"]}
-                        input={allData[1][0]["Accessibility"]}
-                        current={
-                          item.Accessibility ===
-                            allData[0][0]["Accessibility"] ||
-                          item.Accessibility === allData[1][0]["Accessibility"]
-                            ? null
-                            : item.Accessibility
-                        }
-                      />
-                      </div>
+                        <div className="column has-text-centered">
+                          <p className="heading">
+                            Distributions for PSI:Biology targets (8,780
+                            'Success' and 2,650 'Failure') experiments
+                          </p>
+                          <Chart
+                            selected={allData[0][0]["Accessibility"]}
+                            input={allData[1][0]["Accessibility"]}
+                            current={
+                              item.Accessibility ===
+                                allData[0][0]["Accessibility"] ||
+                              item.Accessibility ===
+                                allData[1][0]["Accessibility"]
+                                ? null
+                                : item.Accessibility
+                            }
+                          />
+                        </div>
                       </Fragment>
                     ) : null}
 

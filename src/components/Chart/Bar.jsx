@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { ColumnChart } from "react-chartkick";
 // import "chart.js";
-import {Bar} from 'react-chartjs-2';
+import { Bar } from "react-chartjs-2";
 import { solubilityWeightedIndex, logistic } from "../Sodope/Utils/Utils";
 
 class Barplot extends Component {
@@ -168,47 +168,49 @@ class Barplot extends Component {
       labels: Object.keys(plotData),
       datasets: [
         {
-          label: 'Probability of solubility',
-          backgroundColor: '#17becf',
-          borderColor: '#ff7f0e',
+          label: "Probability of solubility",
+          backgroundColor: "#17becf",
+          borderColor: "#ff7f0e",
           borderWidth: 1,
-          hoverBackgroundColor: '#9467bd',
-          hoverBorderColor: '##17becf',
+          hoverBackgroundColor: "#9467bd",
+          hoverBorderColor: "##17becf",
           data: Object.values(plotData)
         }
       ]
     };
-    return data
+    return data;
   }
-
-
 
   render() {
     return (
       <div>
-      <Bar
-      data={this.barPlotValues()}
-      width={400}
-      height={300}
-      options={{
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          yAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: 'Probability of solubility'
+        <Bar
+          data={this.barPlotValues()}
+          width={400}
+          height={300}
+          options={{
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Probability of solubility"
+                  }
+                }
+              ],
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Tags"
+                  }
+                }
+              ]
             }
-          }],
-          xAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: 'Tags'
-            }
-          }]
-        }
-      }}
-      />
+          }}
+        />
       </div>
     );
   }

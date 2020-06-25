@@ -23,10 +23,17 @@ class Tools extends Component {
             sequence. This enables a standard PCR cloning for the optimised
             sequence.
             <hr />
-            DOI: <a href="https://doi.org/10.1101/726752"  target="_blank"  rel="noopener noreferrer">10.1101/726752</a>
+            DOI:{" "}
+            <a
+              href="https://doi.org/10.1101/726752"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              10.1101/726752
+            </a>
           </Fragment>
         ),
-        link: "/tisigner",
+        link: "/tisigner"
       },
       {
         name: "SoDoPE",
@@ -35,14 +42,25 @@ class Tools extends Component {
         text:
           "Leveraging 98,146 real-world experimental data points, our algorithms withstand the world's most stringent tests.",
         image: "/sodope.png",
-        cardText:(
+        cardText: (
           <Fragment>
-          "SoDoPE enables users to navigate a protein sequence and its domains for predicting and maximising solubility. SoDoPE is linked with TIsigner, and therefore empowers protein biochemists to design sequences for tuning both protein expression and solubility for a gene of interest.",
-          <hr />
-          DOI: <a href="https://dx.doi.org/10.1093/bioinformatics/btaa578"  target="_blank"  rel="noopener noreferrer">10.1093/bioinformatics/btaa578</a>
+            SoDoPE enables users to navigate a protein sequence and its domains
+            for predicting and maximising solubility. SoDoPE is linked with
+            TIsigner, and therefore empowers protein biochemists to design
+            sequences for tuning both protein expression and solubility for a
+            gene of interest.
+            <hr />
+            DOI:{" "}
+            <a
+              href="https://dx.doi.org/10.1093/bioinformatics/btaa578"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              10.1093/bioinformatics/btaa578
+            </a>
           </Fragment>
         ),
-        link: "/sodope",
+        link: "/sodope"
       }
     ]
   };
@@ -74,12 +92,12 @@ class Tools extends Component {
                         <article className="media">
                           <div className="media-content">
                             <div className="content">
-                              <p>
+                              <Typography component={'span'} variant={'body1'}>
                                 <strong>{item.name}</strong>{" "}
                                 <small>{item.fullname}</small>
                                 <br />
                                 {item.cardText}
-                              </p>
+                              </Typography>
                             </div>
                             <nav className="level is-mobile">
                               <div className="level-left">
@@ -92,17 +110,6 @@ class Tools extends Component {
                                         </button>
                                       </Link>
                                     </p>
-
-                                    {/*<p className="control">
-                                      <a
-                                        href={item.preprint}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="button are-medium is-link is-rounded"
-                                      >
-                                        <span>Preprint</span>
-                                      </a>
-                                    </p>*/}
                                   </div>
                                 </div>
                               </div>

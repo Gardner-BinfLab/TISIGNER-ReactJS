@@ -154,11 +154,14 @@ const SodopeDocumentation = props => {
                   How to cite SoDoPE?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020){" "}Solubility-Weighted Index: Fast and Accurate Prediction of Protein Solubility.
+                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020){" "}
+                  Solubility-Weighted Index: Fast and Accurate Prediction of
+                  Protein Solubility.
                   <cite title="Solubility-Weighted Index: Fast and Accurate Prediction of Protein Solubility ">
-                  {" "}Bioinformatics.
-                  </cite>
-                  {" "} DOI:
+                    {" "}
+                    Bioinformatics.
+                  </cite>{" "}
+                  DOI:
                   <a
                     href="https://doi.org/10.1093/bioinformatics/btaa578"
                     target="_blank"
@@ -171,12 +174,14 @@ const SodopeDocumentation = props => {
                   If you find optimising protein expression useful, please also
                   cite the following preprint:
                   <br />
-                  Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019){" "}
-                  Highly accessible translation initiation sites are predictive of successful heterologous protein expression.
+                  Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019) Highly
+                  accessible translation initiation sites are predictive of
+                  successful heterologous protein expression.
                   <cite title="Highly accessible translation initiation sites are predictive of successful heterologous protein expression.">
-                    {" "}BioRxiv
+                    {" "}
+                    bioRxiv
                   </cite>
-                  . {" "} DOI:
+                  . DOI:
                   <a
                     href="https://doi.org/10.1101/726752"
                     target="_blank"
@@ -199,27 +204,31 @@ const SodopeDocumentation = props => {
                 </Typography>
                 <ul>
                   <li>
-                    Kyte, J. and Doolittle, R.F. (1982){" "}
-                    A simple method for displaying the hydropathic character
-                    of a protein.
+                    Kyte, J. and Doolittle, R.F. (1982) A simple method for
+                    displaying the hydropathic character of a protein.
                     <cite title="A simple method for displaying the hydropathic character of a protein.">
-                      {" "}Journal of molecular Biology
+                      {" "}
+                      Journal of molecular Biology
                     </cite>{" "}
                     , 157, 105–132.
                   </li>
                   <li>
-                    Smith, D.K. et al. (2003){" "}Improved amino acid flexibility parameters.
+                    Smith, D.K. et al. (2003) Improved amino acid flexibility
+                    parameters.
                     <cite title="Improved amino acid flexibility parameters.">
-                      {" "}Protein Science,
+                      {" "}
+                      Protein Science,
                     </cite>{" "}
-                     12, 1060–1072.
+                    12, 1060–1072.
                   </li>
                   <li>
-                    Vihinen, M. et al. (1994){" "}Accuracy of protein flexibility predictions.
+                    Vihinen, M. et al. (1994) Accuracy of protein flexibility
+                    predictions.
                     <cite title="Accuracy of protein flexibility predictions.">
-                      {" "}Proteins: Structure, Function, and Genetics,
+                      {" "}
+                      Proteins: Structure, Function, and Genetics,
                     </cite>{" "}
-                     19, 141–149.
+                    19, 141–149.
                   </li>
                 </ul>
               </div>

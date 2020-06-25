@@ -68,7 +68,7 @@ class Profile extends Component {
           pointRadius: 1,
           pointHitRadius: 10,
           data: Object.values(hydro),
-          yAxisID: 'Hydrophobicity',
+          yAxisID: "Hydrophobicity"
         },
         {
           label: "Flexibility",
@@ -90,7 +90,7 @@ class Profile extends Component {
           pointRadius: 1,
           pointHitRadius: 10,
           data: Object.values(flex),
-          yAxisID: 'Flexibility',
+          yAxisID: "Flexibility"
         }
       ]
     };
@@ -106,29 +106,37 @@ class Profile extends Component {
               responsive: true,
               maintainAspectRatio: false,
               scales: {
-                yAxes: [{
-                  id: 'Hydrophobicity',
-                  type: 'linear',
-                  position: 'left',
-                  scaleLabel: {
-                    display: true,
-                    labelString: 'Hydrophobicity'
+                yAxes: [
+                  {
+                    id: "Hydrophobicity",
+                    type: "linear",
+                    position: "left",
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Hydrophobicity"
+                    }
+                  },
+                  {
+                    id: "Flexibility",
+                    type: "linear",
+                    position: "right",
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Flexibility"
+                    },
+                    ticks: {
+                      suggestedMin: 1,
+                    }
                   }
-                }, {
-                  id: 'Flexibility',
-                  type: 'linear',
-                  position: 'right',
-                  scaleLabel: {
-                    display: true,
-                    labelString: 'Flexibility'
+                ],
+                xAxes: [
+                  {
+                    scaleLabel: {
+                      display: true,
+                      labelString: "Position"
+                    }
                   }
-                }],
-                xAxes: [{
-                  scaleLabel: {
-                    display: true,
-                    labelString: 'Position'
-                  }
-                }]
+                ]
               }
             }}
           />

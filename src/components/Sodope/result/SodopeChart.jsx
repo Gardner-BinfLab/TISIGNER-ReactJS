@@ -313,7 +313,7 @@ class SodopeChart extends Component {
                 <Barplot
                   customTag={this.state.inputSequenceProtein}
                   currentSelectedSequence={this.props.currentSelectedSequence}
-                  key={this.state.inputSequenceProtein}
+                  key={"bar_plot_" + this.state.inputSequenceProtein}
                 />
               </div>
               {this.state.showProfilePlot ? (

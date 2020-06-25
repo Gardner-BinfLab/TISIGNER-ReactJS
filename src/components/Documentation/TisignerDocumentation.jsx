@@ -126,18 +126,20 @@ const TisignerDocumentation = props => {
                   How to cite TIsigner?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019){" "}
+                  Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019) Highly
+                  accessible translation initiation sites are predictive of
+                  successful heterologous protein expression.
                   <cite title="Highly accessible translation initiation sites are predictive of successful heterologous protein expression.">
-                    Highly accessible translation initiation sites are
-                    predictive of successful heterologous protein expression
+                    {" "}
+                    bioRxiv
                   </cite>
-                  . BioRxiv.{" "}
+                  . DOI:
                   <a
                     href="https://doi.org/10.1101/726752"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    DOI:10.1101/726752
+                    10.1101/726752
                   </a>
                   .
                 </Typography>

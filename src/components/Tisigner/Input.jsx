@@ -8,13 +8,11 @@ import { demoTisigner, defaultNucleotideTIsigner } from "../Sodope/Utils/Utils";
 import ReactGA from "react-ga";
 // import Typography from "@material-ui/core/Typography";
 // import { Link } from "react-router-dom";
-import SpeedDial from '@material-ui/lab/SpeedDial';
+import SpeedDial from "@material-ui/lab/SpeedDial";
 // import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
-import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
+import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
 // import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
 // import SaveIcon from '@material-ui/icons/Save';
-
-
 
 const style = {
   margin: 0,
@@ -63,12 +61,10 @@ class Input extends Component {
       isServerError: false,
       serverError: "",
       fabOpen: false,
-      actions:[
-        {icon: <i className="far fa-file-pdf"></i>, name: 'PDF'},
-        {icon: <i className="fas fa-file"></i>, name: 'CSV'},
-
-      ],
-
+      actions: [
+        { icon: <i className="far fa-file-pdf"></i>, name: "PDF" },
+        { icon: <i className="fas fa-file"></i>, name: "CSV" }
+      ]
     };
     this.toggleCustomise = this.toggleCustomise.bind(this);
     this.sequenceInput = this.sequenceInput.bind(this);
@@ -227,42 +223,46 @@ class Input extends Component {
     });
   };
 
-
   saveasCSV = () => {
-
     //First loop through data to get all values
-    let data = this.state.result
-    let colnames = ['', 'Type', 'Sequence', 'Accessibility', 'Expression score',
-                'Terminator Hits', 'E-value', '\n']
+    let data = this.state.result;
+    let colnames = [
+      "",
+      "Type",
+      "Sequence",
+      "Accessibility",
+      "Expression score",
+      "Terminator Hits",
+      "E-value",
+      "\n"
+    ];
 
-    Object.entries(data).forEach(
-      ([key, value]) => {
-        value.forEach(function(item, index) {
-          colnames.push(key); //Pushes type: Input, Optimised or Selected
-          Object.entries(item).forEach((v, k) => {
-            //For each type loop to get sequences and other info
-              if (String(v[1]).includes('<mark>')) {
-                colnames.push(v[1].replace(/<\/?[^>]+(>|$)/g, ""))
-                //remove tags
-              } else if (v[1] === null) {
-                colnames.push('NaN')
-              } else {
-              colnames.push(v[1])
-              }
-            }
-          );
-          colnames.push('\n');
+    Object.entries(data).forEach(([key, value]) => {
+      value.forEach(function(item, index) {
+        colnames.push(key); //Pushes type: Input, Optimised or Selected
+        Object.entries(item).forEach((v, k) => {
+          //For each type loop to get sequences and other info
+          if (String(v[1]).includes("<mark>")) {
+            colnames.push(v[1].replace(/<\/?[^>]+(>|$)/g, ""));
+            //remove tags
+          } else if (v[1] === null) {
+            colnames.push("NaN");
+          } else {
+            colnames.push(v[1]);
+          }
         });
-      }
+        colnames.push("\n");
+      });
+    });
+
+    var link = window.document.createElement("a");
+    link.setAttribute(
+      "href",
+      "data:text/csv;charset=utf-8,%EF%BB%BF" + encodeURI(colnames)
     );
-
-  var link = window.document.createElement("a");
-  link.setAttribute("href", "data:text/csv;charset=utf-8,%EF%BB%BF" + encodeURI(colnames));
-  link.setAttribute("download", "results_TIsigner.csv");
-  link.click();
-
-
-  }
+    link.setAttribute("download", "results_TIsigner.csv");
+    link.click();
+  };
 
   example(event) {
     let exSeq =
@@ -647,9 +647,6 @@ class Input extends Component {
     });
   }
 
-
-
-
   render() {
     if (this.state.showResult) {
       return (
@@ -669,20 +666,20 @@ class Input extends Component {
             ariaLabel="Download button"
             style={style}
             icon={<i className="fa fa-download" aria-hidden="true"></i>}
-            onClose={(e) => this.setState({fabOpen:false})}
-            onOpen={(e) => this.setState({fabOpen:true})}
+            onClose={e => this.setState({ fabOpen: false })}
+            onOpen={e => this.setState({ fabOpen: true })}
             open={this.state.fabOpen}
-            direction={'up'}
+            direction={"up"}
           >
-            {this.state.actions.map((action) => (
+            {this.state.actions.map(action => (
               <SpeedDialAction
                 key={action.name}
                 icon={action.icon}
                 tooltipTitle={action.name}
                 tooltipOpen
-                onClick={(e) => {
-                      action.name === 'PDF' ? this.saveAsPdf():this.saveasCSV()
-                 }}
+                onClick={e => {
+                  action.name === "PDF" ? this.saveAsPdf() : this.saveasCSV();
+                }}
               />
             ))}
           </SpeedDial>
@@ -721,7 +718,6 @@ class Input extends Component {
                 </div>
               </div>
 
-
               {!this.state.inputSequenceError ? null : (
                 <p className="help is-danger has-text-centered">
                   <span className="icon is-small is-right">
@@ -748,8 +744,8 @@ class Input extends Component {
               JSON.parse(localStorage.getItem("customRestrictionError")) ===
                 "" ? null : (
                 <p className="help is-danger has-text-centered">
-                  <span className="icon is-small is-right"><i className="fas fa-exclamation-triangle"></i>;
-
+                  <span className="icon is-small is-right">
+                    <i className="fas fa-exclamation-triangle"></i>;
                   </span>
                   {JSON.parse(localStorage.getItem("customRestrictionError"))}
                 </p>

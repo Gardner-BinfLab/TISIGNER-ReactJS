@@ -36,7 +36,7 @@ const Privacy = props => {
                   Cookie and local storage
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  TIsigner utilises cookie and local storage technologies to
+                  TISIGNER utilises cookie and local storage technologies to
                   validate input form data and provide functionalities inside
                   this web app. None of the user submitted data is stored on our
                   server. If you use this website, you agree that we can use
