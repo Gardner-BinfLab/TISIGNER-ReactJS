@@ -612,7 +612,7 @@ class Input extends Component {
         userObject: userObject
       });
       axios
-        .post("http://0.0.0.0:5000/optimise", userObject)
+        .post("http://0.0.0.0:5050/optimise", userObject)
         .then(res => {
           this.setState({
             showResult: true,
