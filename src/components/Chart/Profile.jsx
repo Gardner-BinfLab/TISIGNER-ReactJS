@@ -73,7 +73,7 @@ class Profile extends Component {
         {
           label: "Flexibility",
           fill: false,
-          lineTension: 0.1,
+          // lineTension: 0.01,
           backgroundColor: "rgba(75,192,192,0.4)",
           borderColor: "#d62728",
           borderCapStyle: "butt",

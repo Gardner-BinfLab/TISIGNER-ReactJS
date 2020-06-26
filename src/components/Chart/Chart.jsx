@@ -134,7 +134,7 @@ class Chart extends Component {
         {
           label: "Failure",
           fill: false,
-          lineTension: 0.1,
+          // lineTension: 0.01,
           backgroundColor: 'rgba(75,192,192,0.4)',
           borderColor: '#d62728',
           borderCapStyle: "butt",
