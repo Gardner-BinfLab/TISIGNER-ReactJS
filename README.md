@@ -24,11 +24,19 @@ Once you are in the source code directory, run the following commands:
 ```sh
 $ npm install
 $ npm run build
+```
+You may want to install the python dependencies on a ```venv```. This can be done by the following commands:
+```sh
+python3 -m venv env
+source env/bin/activate
+```
+Then you can run the following commands to activate the backend:
+```sh
 $ pip3 install -r requirements.txt
 $ python3 tisigner.py
 ```
 
-The local website will run at [http://localhost:5050](http://localhost:5050).
+The local website will now run at [http://localhost:5050](http://localhost:5050).
 **TIsigner** will run at [http://localhost:5050/tisigner](http://localhost:5050/tisigner) and **SoDoPE** at [http://localhost:5050/sodope](http://localhost:5050/sodope).
 
 ### Bugs/Errors
