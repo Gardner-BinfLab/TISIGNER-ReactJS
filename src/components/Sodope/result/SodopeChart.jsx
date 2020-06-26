@@ -317,7 +317,7 @@ class SodopeChart extends Component {
                       currentSelectedSequence={
                         this.props.currentSelectedSequence
                       }
-                      key={"bar_plot_" + this.state.inputSequenceProtein}
+                      key={"bar_plot_" + ""}
                     />
                   </div>
 
@@ -329,7 +329,7 @@ class SodopeChart extends Component {
                       hydropathy={this.props.hydropathy}
                       flexibilities={this.props.flexibilities}
                       region={this.props.region}
-                      key={"profile_plot_" + this.state.inputSequenceProtein}
+                      key={"profile_plot_" + ""}
                       inputProt={this.state.inputSequenceProtein}
                     />
                   </div>
@@ -342,7 +342,7 @@ class SodopeChart extends Component {
                   <Barplot
                     customTag={this.state.inputSequenceProtein}
                     currentSelectedSequence={this.props.currentSelectedSequence}
-                    key={"bar_plot_1" + this.state.inputSequenceProtein}
+                    key={"bar_plot_1" + ""}
                   />
                 </div>
               )}

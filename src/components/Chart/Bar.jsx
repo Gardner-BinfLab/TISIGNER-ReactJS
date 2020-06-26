@@ -173,7 +173,7 @@ class Barplot extends Component {
           borderColor: "#ff7f0e",
           borderWidth: 1,
           hoverBackgroundColor: "#9467bd",
-          hoverBorderColor: "##17becf",
+          hoverBorderColor: "#17becf",
           data: Object.values(plotData)
         }
       ]
@@ -197,7 +197,11 @@ class Barplot extends Component {
                   scaleLabel: {
                     display: true,
                     labelString: "Probability of solubility"
-                  }
+                  },
+                  ticks: {
+                    suggestedMax: 1,
+                    suggestedMin: 0,
+                  },
                 }
               ],
               xAxes: [
