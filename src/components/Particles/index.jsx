@@ -4,15 +4,6 @@ import Particles from "react-particles-js";
 class AnimatedParticles extends Component {
   render() {
     return (
-      <div
-        style={{
-          position: "fixed",
-          height: "100%",
-          top: "0",
-          left: "0",
-          width: "100%"
-        }}
-      >
         <Particles
           params={{
             particles: {
@@ -32,8 +23,14 @@ class AnimatedParticles extends Component {
               }
             }
           }}
+          style={{
+            position: "fixed",
+            height: "100%",
+            top: "0",
+            left: "0",
+            width: "100%"
+          }}
         />
-      </div>
     );
   }
 }

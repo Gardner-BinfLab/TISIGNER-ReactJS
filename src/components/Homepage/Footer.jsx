@@ -27,6 +27,12 @@ const Footer = () => {
                   <Link to="/privacy">Privacy</Link>
                 </p>
               </div>
+
+              <div className="column">
+                <p>
+                  <Link to="/faq">FAQ</Link>
+                </p>
+              </div>
             </div>
           </div>
           <div className="column is-3">
@@ -123,7 +129,7 @@ const Footer = () => {
         </div>
         <hr />
         <div className="content has-text-centered has-text-white">
-          <p>&copy; 2019-2020 Authors</p>
+          <p>&copy; 2019-{new Date().getFullYear()} Authors</p>
         </div>
       </div>
     </footer>

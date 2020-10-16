@@ -113,7 +113,7 @@ class General extends Component {
   }
 
   customPromoterInput(event) {
-    let input = event.target.value.replace(/U/gi, "T").toUpperCase();
+    let input = event.target.value.replace(/ /g, "").replace(/U/gi, "T").toUpperCase();
     let promoter = "";
     let filter = /^[ACGTU]+$/;
     let isValid = true;
@@ -122,9 +122,9 @@ class General extends Component {
       if (!filter.test(input)) {
         isValid = false;
         errors = "Unknown nucleotides in custom promoter.";
-      } else if (input.length <= 71) {
+      } else if (input.length < 70) {
         isValid = false;
-        errors = "Custom promoter should be greater than 71 nucleotides.";
+        errors = "Custom promoter should be greater than 70 nucleotides.";
       }
       promoter = input;
     } else {
@@ -312,7 +312,7 @@ class General extends Component {
                   />
                 </div>
                 <p className="help ">
-                  Length should be greater than 71 nucleotides.{" "}
+                  Length should be greater than 70 nucleotides.{" "}
                 </p>
               </div>
             )}

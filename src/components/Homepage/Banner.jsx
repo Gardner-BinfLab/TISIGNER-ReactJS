@@ -60,6 +60,20 @@ const Banner = () => {
                 </Link>
               </p>
               <p className="control" style={styles.fadeInUp}>
+                <Link to="/razor">
+                  <button className="button are-medium is-black is-inverted is-outlined is-rounded">
+                    Razor | detect signal peptide
+                  </button>
+                </Link>
+              </p>
+              <p className="control" style={styles.fadeInUp}>
+                <Link to="/faq">
+                  <button className="button are-medium is-black is-inverted is-outlined is-rounded">
+                    Help
+                  </button>
+                </Link>
+              </p>
+              <p className="control" style={styles.fadeInUp}>
                 <a
                   href="https://github.com/Gardner-BinfLab/TISIGNER-ReactJS"
                   target="_blank"

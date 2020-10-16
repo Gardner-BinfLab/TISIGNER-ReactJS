@@ -18,7 +18,7 @@ const License = props => {
 
   return (
     <Fragment>
-      <Navigation link={"/sodope"} />
+      <Navigation />
       <section
         className="hero is-fullheight"
         style={{
@@ -31,13 +31,14 @@ const License = props => {
             <div className="box">
               <div className="content">
                 <Typography variant="h2" component="h3" gutterBottom>
-                  TIsigner and SoDoPE license
+                  TISIGNER license
                 </Typography>
                 <Typography variant="subtitle2" gutterBottom>
                   Disclaimer and Copyright
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  The programs and source code of TIsigner and SoDoPE are free
+                  TISIGNER includes the tools TIsigner, SoDoPE and Razor.
+                  The programs and source code of TISIGNER are free
                   software. They are distributed in the hope that they will be
                   useful but WITHOUT ANY WARRANTY; without even the implied
                   warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
@@ -65,7 +66,7 @@ const License = props => {
 
               <div className="content">
                 <Typography variant="h2" component="h3" gutterBottom>
-                  TIsigner website license
+                  TISIGNER website license
                 </Typography>
 
                 <Typography variant="body2" gutterBottom>

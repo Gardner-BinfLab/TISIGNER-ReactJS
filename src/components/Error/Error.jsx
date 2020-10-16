@@ -40,17 +40,12 @@ class Error extends Component {
     return (
       <Fragment>
         <AnimatedParticles />
-        <section
-          className="hero is-fullheight"
-          style={{
-            backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
-          }}
-        >
+
           <div
             className="hero-body"
             style={{ color: "#FFFFFF", zIndex: "100" }}
           >
-            <div className="container is-fluid">
+            <div className="container is-fluid is-paddingless">
               <div className="media-content has-text-centered">
                 <Typography variant="h2">
                   <b>
@@ -68,8 +63,8 @@ class Error extends Component {
                   {!errorMessage ? null : (
                     <Fragment>
                       <p>
-                        There was an error processing the request. The exact
-                        message returned by the server is:
+                        There was an error processing the request. The
+                        error message is:
                         <br />
                         {!unknownError ? null : (
                           <img
@@ -101,7 +96,6 @@ class Error extends Component {
               </div>
             </div>
           </div>
-        </section>
       </Fragment>
     );
   }

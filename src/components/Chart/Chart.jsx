@@ -268,7 +268,7 @@ class Chart extends Component {
                   borderWidth: 2,
                   label: {
                     enabled: true,
-                    content: "Current",
+                    content: "This sequence",
                     position: "bottom"
                   }
                 },

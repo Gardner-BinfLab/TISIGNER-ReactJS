@@ -74,6 +74,18 @@ export default function NotFound() {
                   </Link>
                 </div>
               </div>
+              <div className="level-item has-text-centered">
+                <div>
+                  <Link to={"/razor"}>
+                    <p className="title" style={{ color: "#FFFFFF" }}>
+                      Razor
+                    </p>
+                    <p className="heading" style={{ color: "#FFFFFF" }}>
+                      Detect signal peptides
+                    </p>
+                  </Link>
+                </div>
+              </div>
             </nav>
           </div>
         </div>

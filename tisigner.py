@@ -16,9 +16,11 @@ from flask import send_from_directory
 from flask import make_response
 from flask import jsonify
 from flask_cors import CORS
+from flask import send_file
 import numpy as np
 import functions
 from functions import Optimiser
+from razor import RAZOR
 import data
 
 
@@ -57,6 +59,8 @@ def optimiser():
 
 
         pools = Pool(num_seq)
+#        results = pools.map(new_opt.simulated_anneal,\
+#                                    rand_states)
         results = []
         for result in pools.imap(new_opt.simulated_anneal,\
                                     rand_states):
@@ -84,6 +88,48 @@ def optimiser():
         return make_response(jsonify({'data':str(exp), 'status':500}), 500)
 
 
+@app.route('/razor', methods=['POST'])
+def razor_predict():
+    try:
+        seq, max_scan = functions.parse_input_razor(request.json)
+        # print(seq, max_scan)
+        newObj = RAZOR(seq=seq, max_scan=max_scan)
+        _ = newObj.predict()
+        try:
+            _ = newObj.fungi()
+            _ = newObj.toxin()
+        except TypeError:
+            pass
+        try:
+            cleav = newObj.final_cleavage.tolist()[0]
+        except Exception:
+            cleav = 0
+        response_dict = {
+#            's_score':newObj.s_scores.tolist(), 
+#            'c_score':newObj.c_scores.tolist(),
+            'y_score':np.around(newObj.y_scores, 2).tolist(),
+            'all_probs':newObj.cs_probs_all.tolist(),
+#            'cleavage_sites':newObj.cleavage_sites.tolist(),
+            'predictions':newObj.preds.tolist(),
+            'cleavage':cleav,
+            'final_score_sp':np.around(newObj.final_score_sp, 2),
+            'final_cleavage_prob':newObj.final_cleavage_prob,
+            'fungi_scores':newObj.fungi_scores.tolist(),
+            'fungi_preds':newObj.fungi_preds.tolist(),
+            'final_score_fungi':newObj.final_score_fungi,
+            'toxin_scores':newObj.toxin_scores.tolist(),
+            'toxin_preds':newObj.toxin_preds.tolist(),
+            'final_score_toxin':newObj.final_score_toxin,
+        }
+        return make_response(jsonify(response_dict), 200)
+    except Exception as exp:
+        return make_response(jsonify({'data':str(exp), }), 500)
+
+@app.route('/tisignerdata', methods=['GET'])
+def tisigner_train():
+    path = app.static_folder + '/data/TIsigner_training_seqs.7z'
+    return send_file(path, as_attachment=True, mimetype='application/x-7z-compressed')
+
 # Serve React App
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -98,4 +144,4 @@ def serve(path):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5050', threaded=True, debug=False)
+    app.run(host='0.0.0.0', port='5050', threaded=True, debug=True)

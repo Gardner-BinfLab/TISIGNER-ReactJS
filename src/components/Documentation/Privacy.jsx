@@ -16,7 +16,7 @@ const Privacy = props => {
 
   return (
     <Fragment>
-      <Navigation link={"/sodope"} />
+      <Navigation />
       <section
         className="hero is-fullheight"
         style={{
@@ -37,11 +37,33 @@ const Privacy = props => {
                 </Typography>
                 <Typography variant="body2" gutterBottom>
                   TISIGNER utilises cookie and local storage technologies to
-                  validate input form data and provide functionalities inside
+                  validate the input form data and provide functionalities inside
                   this web app. None of the user submitted data is stored on our
                   server. If you use this website, you agree that we can use
                   cookies and local storage of your browser to store data on
                   your device.
+                </Typography>
+
+                <Typography variant="subtitle2" gutterBottom>
+                  HMMER
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  For identifying known protein domains, we use the{" "}
+                  <a
+                    href="https://www.ebi.ac.uk/Tools/hmmer/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    HMMER webserver.{" "}
+                  </a>{" "}
+                  Their privacy notice can be viewed{" "}
+                  <a
+                    href="https://www.ebi.ac.uk/data-protection/privacy-notice/embl-ebi-public-website"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    here.{" "}
+                  </a>
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>

@@ -20,6 +20,7 @@ import {
 } from "../Utils/Utils";
 import Input from "../../Tisigner/Input";
 import ReactGA from "react-ga";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 const styles = {
   paper: {
@@ -80,6 +81,7 @@ class SodopeResults extends Component {
           action: "Optimisation form shown: " + this.state.isShowOptimisation
         })
     );
+    // this.convertSequence()
   }
 
   handlePopoverOpen(event, popoverId) {
@@ -257,7 +259,14 @@ class SodopeResults extends Component {
   }
 
   componentDidUpdate(prevState) {
-    // window.addEventListener('resize', this.updateDimensions)
+    window.addEventListener('resize', this.updateDimensions)
+  }
+
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = (state, callback) => {
+      return;
+    };
   }
 
   render() {
@@ -352,13 +361,17 @@ class SodopeResults extends Component {
 
           <Fragment key="domain-graphics">
             <div ref={this.domainsRef}>
-              <div
-                style={{
-                  height: 25,
-                  backgroundColor: "#e0e0e0",
-                  marginBottom: -32
-                }}
-              ></div>
+              {data === "" ? (
+                <Skeleton animation="wave" height={40} />
+              ) : (
+                <div
+                  style={{
+                    height: 25,
+                    backgroundColor: "#e0e0e0",
+                    marginBottom: -32
+                  }}
+                ></div>
+              )}
               {!data.results || !data.results.hits
                 ? null
                 : data.results.hits.map((item, index) =>
@@ -406,6 +419,7 @@ class SodopeResults extends Component {
                               vertical: "bottom",
                               horizontal: "center"
                             }}
+
                           >
                             <Typography variant="h6" gutterBottom>
                               {d.alihmmname} ({d.alihmmacc})
@@ -596,6 +610,7 @@ class SodopeResults extends Component {
                 ) : null}
               </Fragment>
             )}
+
           </div>
 
           {this.state.copyToClipboard ? (
@@ -606,11 +621,14 @@ class SodopeResults extends Component {
 
           {!this.state.sequenceTooSmall ? (
             <SodopeChart
+              protein={this.props.protein}
+              nucleotide={this.props.nucleotide}
               currentSelectedSequence={this.state.currentSelectedSequence}
               key={this.props.key}
               region={this.state.sliderValue}
               hydropathy={this.state.hydropathicities}
               flexibilities={this.state.flexibilities}
+              calledFromRazor={this.props.calledFromRazor}
             />
           ) : null}
         </Fragment>

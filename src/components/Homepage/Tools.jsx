@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from "react";
 import Typography from "@material-ui/core/Typography";
+import Zoom from "react-reveal/Fade";
 import Fade from "react-reveal/Fade";
 import { Link } from "react-router-dom";
+
 
 class Tools extends Component {
   state = {
@@ -22,7 +24,7 @@ class Tools extends Component {
             suggests minimum numbers of synonymous codon changes to the input
             sequence. This enables a standard PCR cloning for the optimised
             sequence.
-            <hr />
+            <br />
             DOI:{" "}
             <a
               href="https://doi.org/10.1101/726752"
@@ -49,7 +51,7 @@ class Tools extends Component {
             TIsigner, and therefore empowers protein biochemists to design
             sequences for tuning both protein expression and solubility for a
             gene of interest.
-            <hr />
+            <br />
             DOI:{" "}
             <a
               href="https://dx.doi.org/10.1093/bioinformatics/btaa578"
@@ -61,6 +63,31 @@ class Tools extends Component {
           </Fragment>
         ),
         link: "/sodope"
+      },
+      {
+        name: "Razor",
+        fullname: "Signal peptide detector",
+        classes: "is-light",
+        text:
+          "Highly accurate prediction of eukaryotic signal peptides and toxins.",
+        image: "/tisigner.png",
+        cardText: (
+          <Fragment>
+            Razor is built for detection of signal peptides in eukaryotes.
+            Furthermore, we also detect whether the signal peptide is
+            harboured by a toxin. Razor can also be used to check for signal
+            peptides from fungi.
+            <br />DOI:{" "}
+            <a
+              href="https://doi.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Soon
+            </a>
+          </Fragment>
+        ),
+        link: "/razor"
       }
     ]
   };
@@ -71,9 +98,11 @@ class Tools extends Component {
         <div id={item.name}>
           <section className={"hero is-medium is-bold " + item.classes}>
             <div className="hero-body">
-              <div className="container is-fluid is-paddingless">
+              <div className="container">
                 <div className="columns">
-                  <Fade left>
+
+                {key%2 === 0 ?
+                  (<Fade>
                     <div className="column has-text-right">
                       <Typography
                         variant="h4"
@@ -84,9 +113,10 @@ class Tools extends Component {
                         {item.text}
                       </Typography>
                     </div>
-                  </Fade>
+                  </Fade>)
+                  :
 
-                  <Fade bottom>
+                  (<Zoom>
                     <div className="column">
                       <div className="box">
                         <article className="media">
@@ -118,7 +148,56 @@ class Tools extends Component {
                         </article>
                       </div>
                     </div>
-                  </Fade>
+                  </Zoom>)}
+
+                  {key%2 === 0 ?
+                    (<Zoom>
+                      <div className="column">
+                        <div className="box">
+                          <article className="media">
+                            <div className="media-content">
+                              <div className="content">
+                                <Typography component={'span'} variant={'body1'}>
+                                  <strong>{item.name}</strong>{" "}
+                                  <small>{item.fullname}</small>
+                                  <br />
+                                  {item.cardText}
+                                </Typography>
+                              </div>
+                              <nav className="level is-mobile">
+                                <div className="level-left">
+                                  <div className="level-item">
+                                    <div className="field is-grouped">
+                                      <p className="control">
+                                        <Link to={item.link}>
+                                          <button className="button are-medium is-black is-outlined is-rounded">
+                                            {item.name}
+                                          </button>
+                                        </Link>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </nav>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </Zoom>)
+                    :
+
+                    (<Fade>
+                      <div className="column has-text-right">
+                        <Typography
+                          variant="h4"
+                          component="h5"
+                          fontWeight="fontWeightLight"
+                          gutterBottom
+                        >
+                          {item.text}
+                        </Typography>
+                      </div>
+                    </Fade>)}
                 </div>
               </div>
             </div>
@@ -128,5 +207,4 @@ class Tools extends Component {
     ));
   }
 }
-
 export default Tools;

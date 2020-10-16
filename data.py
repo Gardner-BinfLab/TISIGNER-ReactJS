@@ -72,7 +72,7 @@ HOST_INPUT = {'Saccharomyces cerevisiae':'yeast',
               'Other':'other'}
 
 #algorithm settings = [number of iterations, number of sequences to gen]
-ALGORITHM_SETTINGS = {'deep':[100, 10], 'quick':[50, 5]}
+ALGORITHM_SETTINGS = {'deep':[20, 8], 'quick':[10, 4]}
 
 DASHBOARD = os.path.join(os.path.dirname(__file__),'dashboard.config')
 

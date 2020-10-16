@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import SodopeResults from "./result/Result";
-import Error from "../Error/Error";
 import ReactGA from "react-ga";
 import {
   demoSodope,
@@ -196,11 +195,8 @@ class SodopeInput extends Component {
 
     let isValid = true;
     let error = "";
-    let s =
-      seq === null
-        ? event.target.value.replace(/ /g, "").replace(/U/gi, "T")
-        : seq;
-    let sequence = s.toUpperCase();
+    let s = seq === null ? event.target.value : seq;
+    let sequence = s.replace(/ /g, "").replace(/U/gi, "T").toUpperCase();
     //check valid fasta
     // if (input[0][0] == ">") {
     //     input.shift()
@@ -237,15 +233,23 @@ class SodopeInput extends Component {
               error = "Stop codon is absent.";
             } else {
               codons.shift();
-              if (stop.includes(codons[codons.length - 1])) {
-                codons.pop(); //remove stop codon
+              codons.pop();
+              let common = codons.filter(value => stop.includes(value));
+              if (common.length !== 0) {
+                isValid = false;
+                error = "Early stop codon found.";
               }
             }
-            let common = codons.filter(value => stop.includes(value));
-            if (common.length !== 0) {
-              isValid = false;
-              error = "Early stop codon found.";
-            }
+            //   codons.shift();
+            //   if (stop.includes(codons[codons.length - 1])) {
+            //     codons.pop(); //remove stop codon
+            //   }
+            // }
+            // let common = codons.filter(value => stop.includes(value));
+            // if (common.length !== 0) {
+            //   isValid = false;
+            //   error = "Early stop codon found.";
+            // }
           }
         }
       } else {
@@ -294,7 +298,7 @@ class SodopeInput extends Component {
         error =
           "Sequence length should be greater than 25 and less then 10,000 residues.";
       }
-    } else {
+    } else if (sequence.length !== 0){
       isValid = false;
       error =
         "Looks like a nucleotide sequenece. Please upload a protein sequence or change the type to Nucleotide.";
@@ -324,7 +328,7 @@ class SodopeInput extends Component {
         seq: sequence, //Protein sequence here
         hmmdb: "pfam"
       };
-      this.setState({ isSubmitting: true });
+      this.setState({ isSubmitting: true, showResult: true });
 
       axios
         .post("https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan", userObject)
@@ -369,6 +373,57 @@ class SodopeInput extends Component {
             <div className="hero-body">
               <div className="container is-fluid is-paddingless">
                 <div className="box">
+                {this.state.isSubmitting && !this.state.isServerError? (
+                  <Fragment>
+                  <br />
+                  <div className="card">
+                    <header className="card-header">
+                      <p className="card-header-title has-text-info">
+                        Loading domains...
+                      </p>
+                    </header>
+                    <div className="card-content">
+                      <div className="content">
+                        <small>
+                          We are now querying{" "}
+                          <a
+                            href="https://www.ebi.ac.uk/Tools/hmmer/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            HMMER
+                          </a>{" "}
+                          for domain annotations. You can use the slider to
+                          explore the sequence or wait till the domains load.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  </Fragment>
+                ): null}
+                {this.state.isServerError ? (
+                  <Fragment>
+                    <div className="card">
+                      <header className="card-header">
+                        <p className="card-header-title has-text-danger">
+                          Error: Network.
+                        </p>
+                      </header>
+                      <div className="card-content">
+                        <div className="content">
+                          <small>
+                            This happens when HMMER webserver is either too busy
+                            or is undergoing maintenence or you are having network
+                            issues! You can use the slider to explore the
+                            sequence.
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                  </Fragment>
+                ): null}
                   <SodopeResults
                     data={this.state.result}
                     protein={this.state.inputSequenceProtein}
@@ -381,21 +436,6 @@ class SodopeInput extends Component {
             </div>
           </section>
         </Fragment>
-      );
-    } else if (this.state.isServerError) {
-      return (
-        <section
-          className="hero is-fullheight"
-          style={{
-            backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
-          }}
-        >
-          <div className="hero-body">
-            <div className="container">
-              <Error error={this.state.serverError} />
-            </div>
-          </div>
-        </section>
       );
     } else {
       return (
@@ -414,6 +454,7 @@ class SodopeInput extends Component {
             </p>
             <div className="control is-expanded">
               <input
+                autoFocus
                 className="input is-rounded"
                 type="text"
                 placeholder="Enter a sequence to optimise solubility."
@@ -446,7 +487,7 @@ class SodopeInput extends Component {
           ) : null}
 
           {!this.state.isValidatedSequence ? (
-            <p className="help is-danger has-text-centered">
+            <p className="help is-warning has-text-centered">
               <span className="icon is-small is-right">
                 <i className="fas fa-exclamation-triangle"></i>
               </span>

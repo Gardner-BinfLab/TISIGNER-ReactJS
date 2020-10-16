@@ -10,12 +10,14 @@ class TIsigner extends Component {
     localStorage.setItem("isValidatedGeneral", true);
     localStorage.setItem("isValidatedExtra", true);
     localStorage.setItem("isValidatedAdvanced", true);
+    window.scrollTo(0, 0);
   }
 
   componentDidUpdate() {
     localStorage.setItem("isValidatedGeneral", true);
     localStorage.setItem("isValidatedExtra", true);
     localStorage.setItem("isValidatedAdvanced", true);
+    window.scrollTo(0, 0);
   }
 
   render() {

@@ -1,18 +1,17 @@
 import React, { Component, Fragment } from "react";
-// import Fab from "@material-ui/core/Fab";
 import Customise from "./Customise";
 import axios from "axios";
 import TisignerResult from "./result/TisignerResult";
 import Error from "../Error/Error";
 import { demoTisigner, defaultNucleotideTIsigner } from "../Sodope/Utils/Utils";
 import ReactGA from "react-ga";
-// import Typography from "@material-ui/core/Typography";
-// import { Link } from "react-router-dom";
+import Typography from "@material-ui/core/Typography";
 import SpeedDial from "@material-ui/lab/SpeedDial";
-// import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
-// import FileCopyIcon from '@material-ui/icons/FileCopyOutlined';
-// import SaveIcon from '@material-ui/icons/Save';
+import Skeleton from "@material-ui/lab/Skeleton";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+import {TIsignerLink} from "../EndPoints";
 
 const style = {
   margin: 0,
@@ -20,14 +19,8 @@ const style = {
   right: 40,
   bottom: 40,
   left: "auto",
-  position: "fixed"
+  position: "fixed",
 };
-
-// const actions = [
-//   {icon: <i class="far fa-file-pdf"></i>, name: 'PDF' },
-//   {icon: <i class="fas fa-file-csv"></i>, name: 'CSV' },
-//
-// ];
 
 class Input extends Component {
   constructor(props) {
@@ -63,18 +56,17 @@ class Input extends Component {
       fabOpen: false,
       actions: [
         { icon: <i className="far fa-file-pdf"></i>, name: "PDF" },
-        { icon: <i className="fas fa-file"></i>, name: "CSV" }
-      ]
+        { icon: <i className="fas fa-file"></i>, name: "CSV" },
+      ],
     };
     this.toggleCustomise = this.toggleCustomise.bind(this);
     this.sequenceInput = this.sequenceInput.bind(this);
-    // this.validateForm = this.validateForm.bind(this);
     this.submitInput = this.submitInput.bind(this);
     this.example = this.example.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  handleKeyDown = event => {
+  handleKeyDown = (event) => {
     if (event.key === "Enter") {
       this.submitInput(event);
     }
@@ -85,9 +77,9 @@ class Input extends Component {
     const pdf = new pdfConverter("p", "mm", "a4");
 
     var elementHandler = {
-      "#ignorePDF": function(element, renderer) {
+      "#ignorePDF": function (element, renderer) {
         return true;
-      }
+      },
     };
 
     let logo =
@@ -157,13 +149,13 @@ class Input extends Component {
       subject: "Optimised sequences from TIsigner",
       author: "TIsigner",
       keywords: "optimisation, gene, solubility, accessibility, protein",
-      creator: "https://tisigner.otago.ac.nz"
+      creator: "https://tisigner.otago.ac.nz",
     });
 
     pdf.addImage(logo, "PNG", 30, 4);
 
     pdf.text(pdf.internal.pageSize.width / 2, 10, msg + hr, {
-      align: "center"
+      align: "center",
       // rotationDirection: 0,
       // angle:90,
     });
@@ -171,14 +163,14 @@ class Input extends Component {
     pdf.setFont("courier");
     pdf.setFontSize(9);
     pdf.text(pdf.internal.pageSize.width / 2, 14, info, {
-      align: "center"
+      align: "center",
     });
 
     pdf.setFontSize(9);
     pdf.setTextColor(0, 0, 255);
     pdf.textWithLink(url, pdf.internal.pageSize.width / 2 - 30, 18, {
       align: "center",
-      url: url
+      url: url,
     });
 
     pdf.setTextColor(0, 0, 0);
@@ -193,7 +185,7 @@ class Input extends Component {
       Math.round(this.state.userObject.customPromoter.length / 50) * 5 + 100,
       hr,
       {
-        align: "center"
+        align: "center",
       }
     );
 
@@ -212,14 +204,14 @@ class Input extends Component {
       Math.round(this.state.userObject.customPromoter.length / 50) * 5 + 130,
       {
         width: 155,
-        elementHandlers: elementHandler
+        elementHandlers: elementHandler,
       }
     );
     pdf.save("results_TIsigner.pdf");
 
     ReactGA.event({
       category: "TIsigner PDF results",
-      action: "TIsigner PDF button clicked and results generated."
+      action: "TIsigner PDF button clicked and results generated.",
     });
   };
 
@@ -234,11 +226,11 @@ class Input extends Component {
       "Expression score",
       "Terminator Hits",
       "E-value",
-      "\n"
+      "\n",
     ];
 
     Object.entries(data).forEach(([key, value]) => {
-      value.forEach(function(item, index) {
+      value.forEach(function (item, index) {
         colnames.push(key); //Pushes type: Input, Optimised or Selected
         Object.entries(item).forEach((v, k) => {
           //For each type loop to get sequences and other info
@@ -276,17 +268,17 @@ class Input extends Component {
 
     ReactGA.event({
       category: "TIsigner Example",
-      action: "TIsigner example clicked."
+      action: "TIsigner example clicked.",
     });
   }
 
   toggleCustomise() {
     this.setState({
-      isShowCustomise: !this.state.isShowCustomise
+      isShowCustomise: !this.state.isShowCustomise,
     });
     ReactGA.event({
       category: "TIsigner Customise",
-      action: "TIsigner customisation/settings clicked."
+      action: "TIsigner customisation/settings clicked.",
     });
   }
 
@@ -354,7 +346,7 @@ class Input extends Component {
         GTG: "V",
         GCG: "A",
         GAG: "E",
-        GGG: "G"
+        GGG: "G",
       };
 
       let codons = sequence.match(/.{1,3}/g);
@@ -373,13 +365,8 @@ class Input extends Component {
 
     let isValid = true;
     let error = "";
-    let sequence =
-      seq === null
-        ? event.target.value
-            .replace(/ /g, "")
-            .replace(/U/gi, "T")
-            .toUpperCase()
-        : seq;
+    let s = seq === null ? event.target.value : seq;
+    let sequence = s.replace(/ /g, "").replace(/U/gi, "T").toUpperCase();
     //check valid fasta
     // if (input[0][0] == ">") {
     //     input.shift()
@@ -409,21 +396,22 @@ class Input extends Component {
           } else {
             let codons = sequence.match(/.{1,3}/g);
             if (codons[0] !== "ATG") {
+              //allow even if start codon is absent
               isValid = false;
-              error = "ATG/AUG start codon is absent.";
-            } else if (!stop.includes(codons[codons.length - 1])) {
+              error =
+                "ATG/AUG start codon is absent. Please make sure that this is a coding sequence that has an initiation codon.";
+            }
+            if (!stop.includes(codons[codons.length - 1])) {
               isValid = false;
               error = "Stop codon is absent.";
             } else {
               codons.shift();
               codons.pop();
-              // if (stop.includes(codons[codons.length - 1])) {
-              // codons.pop(); //remove stop codon 							}
-            }
-            let common = codons.filter(value => stop.includes(value));
-            if (common.length !== 0) {
-              isValid = false;
-              error = "Early stop codon found.";
+              let common = codons.filter((value) => stop.includes(value));
+              if (common.length !== 0) {
+                isValid = false;
+                error = "Early stop codon found.";
+              }
             }
           }
         }
@@ -440,7 +428,7 @@ class Input extends Component {
       inputSequence: sequence,
       inputSequenceProtein: this.translateSequence(sequence),
       inputSequenceError: error,
-      isValidatedSequence: isValid
+      isValidatedSequence: isValid,
     });
   }
 
@@ -520,7 +508,7 @@ class Input extends Component {
       inputSequence: !this.props.inputSequenceSodope
         ? ""
         : this.props.inputSequenceSodope,
-      isValidatedSequence: !this.props.inputSequenceSodope ? false : true
+      isValidatedSequence: !this.props.inputSequenceSodope ? false : true,
     });
   }
 
@@ -551,7 +539,7 @@ class Input extends Component {
       samplingMethod: JSON.parse(localStorage.getItem("samplingMethod")),
       terminatorCheck: JSON.parse(localStorage.getItem("terminatorCheck")),
       customRegion: JSON.parse(localStorage.getItem("customRegion")),
-      randomSeed: JSON.parse(localStorage.getItem("randomSeed"))
+      randomSeed: JSON.parse(localStorage.getItem("randomSeed")),
     };
 
     this.setState({
@@ -560,12 +548,12 @@ class Input extends Component {
       isSubmitting: false,
       inputSequence: seq,
       inputSequenceProtein: this.translateSequence(seq),
-      userObject: userObject
+      userObject: userObject,
     });
 
     ReactGA.event({
       category: "TIsigner Demo",
-      action: "TIsigner Demo clicked."
+      action: "TIsigner Demo clicked.",
     });
   };
 
@@ -604,56 +592,199 @@ class Input extends Component {
         samplingMethod: JSON.parse(localStorage.getItem("samplingMethod")),
         terminatorCheck: JSON.parse(localStorage.getItem("terminatorCheck")),
         customRegion: JSON.parse(localStorage.getItem("customRegion")),
-        randomSeed: JSON.parse(localStorage.getItem("randomSeed"))
+        randomSeed: JSON.parse(localStorage.getItem("randomSeed")),
       };
       // console.log(userObject)
       this.setState({
         isSubmitting: true,
-        userObject: userObject
+        userObject: userObject,
       });
       axios
-        .post("http://0.0.0.0:5050/optimise", userObject)
-        .then(res => {
+        .post(TIsignerLink, userObject)
+        .then((res) => {
           this.setState({
             showResult: true,
             result: res.data,
-            isSubmitting: false
+            isSubmitting: false,
           });
 
           ReactGA.event({
             category: "Submit Result Success",
-            action: "Optimisation result from TIsigner received."
+            action: "Optimisation result from TIsigner received.",
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             isServerError: true,
             serverError: error,
-            isSubmitting: false
+            isSubmitting: false,
           });
 
           ReactGA.event({
             category: "Submit Result Failed",
             action:
               "TIsigner optimisation failed with error: " +
-              JSON.stringify(error.response)
+              JSON.stringify(error.response),
           });
         });
     }
 
     ReactGA.event({
       category: "Submit",
-      action: "TIsigner Submit clicked."
+      action: "TIsigner Submit clicked.",
     });
   }
 
   render() {
-    if (this.state.showResult) {
+    if (this.state.isSubmitting) {
       return (
         <Fragment>
           <br />
           <br />
-          <div id="tisignerResultPdf">
+
+          <Snackbar open={this.state.isSubmitting} autoHideDuration={5000}>
+            <MuiAlert elevation={6} variant="filled" severity="info">
+              Your sequence was submitted successfully.{" "}
+              {JSON.parse(localStorage.getItem("substitutionMode")) ===
+              "transInit"
+                ? "Please allow upto 20 seconds for the results to be processed."
+                : "Full sequence optimisation may take at most 30 seconds."}
+            </MuiAlert>
+          </Snackbar>
+
+          <div className={this.props.inputSequenceSodope ? "" : "box"}>
+            <div className="box">
+              <article className="media">
+                <div className="media-content">
+                  <div className="content">
+                    <strong>
+                      Optimised sequence close to the selected parameters
+                    </strong>
+                    <br />
+                    <br />
+                    <pre>
+                    <Skeleton animation="wave" />
+                    </pre>
+                  </div>
+
+                  <Skeleton animation={false} />
+                  <Typography component="div" key={"h2"} variant={"h2"}>
+                    <Skeleton />
+                  </Typography>
+                  <hr />
+                  <Typography component="div" key={"h5"} variant={"h2"}>
+                    <Skeleton width="30%" />
+                  </Typography>
+                </div>
+              </article>
+            </div>
+
+            <div className="box">
+
+                <div className="media-content">
+                  <div className="content">
+                    <strong>Input sequence</strong>
+                    <div style={{ wordBreak: "break-all" }}>
+                      <br />
+                      <br />
+                      <pre
+                        style={{
+                          whiteSpace: "pre-wrap",
+                          wordBreak: "break-word",
+                          backgroundColor: "#FFFFFF",
+                          display: 'inline-block',
+                          border:'1px solid #c0cbfc',
+                          borderRadius: '10px',
+                          boxShadow: '2px 2px 5px #c0cbfc',
+                          maxHeight: '200px',
+                          overflow: 'auto',
+                        }}
+                      >
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: this.state.inputSequence,
+                        }}
+                      />
+                      </pre>
+                    </div>
+                  </div>
+
+                  <Skeleton animation={false} />
+                  <Typography component="div" key={"h2"} variant={"h2"}>
+                    <Skeleton />
+                  </Typography>
+
+                  <hr />
+                  <Typography component="div" key={"h5"} variant={"h2"}>
+                    <Skeleton width="30%" />
+                  </Typography>
+                </div>
+
+            </div>
+
+            <div className="box">
+              <article className="media">
+                <div className="media-content">
+                  <div className="content">
+                    <strong>Optimised sequence</strong>
+                    <br />
+                    <br />
+
+                    <pre>
+                    <Skeleton animation="wave" />
+                    </pre>
+                  </div>
+
+                  <Skeleton animation={false} />
+                  <Typography component="div" key={"h2"} variant={"h2"}>
+                    <Skeleton />
+                  </Typography>
+                  <hr />
+
+                  <Typography component="div" key={"h5"} variant={"h2"}>
+                    <Skeleton width="30%" />
+                  </Typography>
+                </div>
+              </article>
+            </div>
+
+            <div className="box">
+              <article className="media">
+                <div className="media-content">
+                  <div className="content">
+                    <strong>Optimised sequence</strong>
+                    <br />
+                    <br />
+
+                    <pre>
+                    <Skeleton animation="wave" />
+                    </pre>
+                  </div>
+
+                  <Skeleton animation={false} />
+                  <Typography component="div" key={"h2"} variant={"h2"}>
+                    <Skeleton />
+                  </Typography>
+                  <hr />
+
+                  <Typography component="div" key={"h5"} variant={"h2"}>
+                    <Skeleton width="30%" />
+                  </Typography>
+                </div>
+              </article>
+            </div>
+          </div>
+        </Fragment>
+      );
+    } else if (this.state.showResult) {
+      return (
+        <Fragment>
+          <br />
+          <br />
+          <div
+            id="tisignerResultPdf"
+            className={this.props.inputSequenceSodope ? "" : "box"}
+          >
             <TisignerResult
               result={this.state.result}
               inputSequenceProtein={this.state.inputSequenceProtein}
@@ -666,18 +797,18 @@ class Input extends Component {
             ariaLabel="Download button"
             style={style}
             icon={<i className="fa fa-download" aria-hidden="true"></i>}
-            onClose={e => this.setState({ fabOpen: false })}
-            onOpen={e => this.setState({ fabOpen: true })}
+            onClose={(e) => this.setState({ fabOpen: false })}
+            onOpen={(e) => this.setState({ fabOpen: true })}
             open={this.state.fabOpen}
             direction={"up"}
           >
-            {this.state.actions.map(action => (
+            {this.state.actions.map((action) => (
               <SpeedDialAction
                 key={action.name}
                 icon={action.icon}
                 tooltipTitle={action.name}
                 tooltipOpen
-                onClick={e => {
+                onClick={(e) => {
                   action.name === "PDF" ? this.saveAsPdf() : this.saveasCSV();
                 }}
               />
@@ -695,9 +826,10 @@ class Input extends Component {
               <div className="field has-addons">
                 <div className="control is-expanded">
                   <input
+                    autoFocus
                     className="input is-rounded"
                     type="text"
-                    placeholder="Enter a nucleotide sequence to optimise protein expression."
+                    placeholder="Enter a coding nucleotide sequence to optimise protein expression."
                     onChange={this.sequenceInput}
                     value={this.state.inputSequence}
                     onKeyDown={this.handleKeyDown}
@@ -718,7 +850,7 @@ class Input extends Component {
               </div>
 
               {!this.state.inputSequenceError ? null : (
-                <p className="help is-danger has-text-centered">
+                <p className="help is-warning has-text-centered">
                   <span className="icon is-small is-right">
                     <i className="fas fa-exclamation-triangle"></i>
                   </span>
@@ -730,7 +862,7 @@ class Input extends Component {
                 null ||
               JSON.parse(localStorage.getItem("customPromoterError")) ===
                 "" ? null : (
-                <p className="help is-danger has-text-centered">
+                <p className="help is-warning has-text-centered">
                   <span className="icon is-small is-right">
                     <i className="fas fa-exclamation-triangle"></i>
                   </span>
@@ -742,7 +874,7 @@ class Input extends Component {
                 null ||
               JSON.parse(localStorage.getItem("customRestrictionError")) ===
                 "" ? null : (
-                <p className="help is-danger has-text-centered">
+                <p className="help is-warning has-text-centered">
                   <span className="icon is-small is-right">
                     <i className="fas fa-exclamation-triangle"></i>;
                   </span>
@@ -753,7 +885,7 @@ class Input extends Component {
               {JSON.parse(localStorage.getItem("customRegionError")) === null ||
               JSON.parse(localStorage.getItem("customRegionError")) ===
                 "" ? null : (
-                <p className="help is-danger has-text-centered">
+                <p className="help is-warning has-text-centered">
                   <span className="icon is-small is-right">
                     <i className="fas fa-exclamation-triangle"></i>
                   </span>
@@ -764,7 +896,7 @@ class Input extends Component {
               {JSON.parse(localStorage.getItem("randomSeedError")) === null ||
               JSON.parse(localStorage.getItem("randomSeedError")) ===
                 "" ? null : (
-                <p className="help is-danger has-text-centered">
+                <p className="help is-warning has-text-centered">
                   <span className="icon is-small is-right">
                     <i className="fas fa-exclamation-triangle"></i>
                   </span>

@@ -1,0 +1,92 @@
+@keyframes rotate {
+  from {
+    transform: scale3d(0, 1, 1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 12px #c0cbfc;
+  }
+  40% {
+    box-shadow: 0 0 12px #ff4da6;
+  }
+  60% {
+    box-shadow: 0 0 12px #62ff4d;
+  }
+  100% {
+    box-shadow: 0 0 12px #c4a300;
+  }
+}
+
+.loading {
+  flex-flow: row nowrap;
+  width: 100px;
+  display: inline-block;
+  position: relative;
+}
+
+.make {
+  display: flex;
+  flex-flow: column;
+}
+
+.dash {
+  display: block;
+  height: 5px;
+  width: 75px;
+  border-radius: 100px;
+  margin-bottom: 12px;
+  background-color: white;
+  animation: rotate, glowing 5000ms infinite;
+  animation-duration: 750ms;
+  animation-direction: alternate;
+}
+
+.dash {
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.dash:nth-of-type(1) {
+  animation-delay: -150ms;
+}
+
+.dash:nth-of-type(2) {
+  animation-delay: -300ms;
+}
+
+.dash:nth-of-type(3) {
+  animation-delay: -450ms;
+}
+
+.dash:nth-of-type(4) {
+  animation-delay: -600ms;
+}
+
+.dash:nth-of-type(5) {
+  animation-delay: -750ms;
+}
+
+.dash:nth-of-type(6) {
+  animation-delay: -900ms;
+}
+
+.dash:nth-of-type(7) {
+  animation-delay: -1050ms;
+}
+
+.dash:nth-of-type(8) {
+  animation-delay: -1200ms;
+}
+
+.dash:nth-of-type(9) {
+  animation-delay: -1350ms;
+}
+
+.dash:nth-of-type(10) {
+  animation-delay: -1500ms;
+}

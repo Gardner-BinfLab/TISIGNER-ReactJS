@@ -2,6 +2,11 @@ import React, { Component, Fragment } from "react";
 import Barplot from "../../Chart/Bar";
 import Profile from "../../Chart/Profile";
 import ReactGA from "react-ga";
+import axios from "axios";
+import RazorResults from "../../Razor/result/Result";
+import Skeleton from "@material-ui/lab/Skeleton";
+import Typography from "@material-ui/core/Typography";
+import { RazorLink } from "../../EndPoints";
 
 class SodopeChart extends Component {
   constructor(props) {
@@ -12,7 +17,9 @@ class SodopeChart extends Component {
       showProfilePlot: false,
       inputSequenceProtein: "",
       isValidatedSequence: true,
-      currentInputTag: ""
+      currentInputTag: "",
+      showRazorResults: false,
+      isServerError: false
     };
     this.showTag = this.showTag.bind(this);
     this.showPlot = this.showPlot.bind(this);
@@ -20,6 +27,7 @@ class SodopeChart extends Component {
     this.handleChangeSequenceType = this.handleChangeSequenceType.bind(this);
     this.sequenceInput = this.sequenceInput.bind(this);
     this.checkValidProtein = this.checkValidProtein.bind(this);
+    this.submitInputRazor = this.submitInputRazor.bind(this);
   }
 
   showTag() {
@@ -227,6 +235,60 @@ class SodopeChart extends Component {
     });
   }
 
+  submitInputRazor(event) {
+    let sequence = this.props.protein;
+    let isValid = true;
+
+    ReactGA.event({
+      category: "RAZOR Input Page From SoDoPE",
+      action: "Submit button clicked."
+    });
+
+    event.preventDefault();
+    if (!this.state.result) {
+      if (sequence && isValid) {
+        const userObject = {
+          inputSequenceRazor: sequence, //Protein sequence here
+          maxScan: 80
+        };
+        this.setState({ isSubmitting: true });
+
+        axios
+          .post(RazorLink, userObject)
+          .then(res => {
+            // console.log(res)
+            this.setState({
+              showRazorResults: true,
+              result: res.data,
+              isSubmitting: false
+            });
+            ReactGA.event({
+              category: "RAZOR Input Page From SoDoPE",
+              action: "Submit button clicked.",
+              label: "RAZOR results received."
+            });
+          })
+          .catch(error => {
+            this.setState({
+              isServerError: true,
+              showRazorResults: !this.state.showRazorResults,
+              serverError: error,
+              isSubmitting: false
+            });
+            ReactGA.event({
+              category: "RAZOR Input Page From SoDoPE",
+              action: "Submit button clicked.",
+              label: "RAZOR query failed."
+            });
+          });
+      }
+    } else {
+      this.setState({
+        showRazorResults: !this.state.showRazorResults
+      });
+    }
+  }
+
   render() {
     return (
       <Fragment>
@@ -255,6 +317,22 @@ class SodopeChart extends Component {
                     : "Show profile plot"}
                 </button>
               </p>
+
+              {!this.props.calledFromRazor ? (
+                <p className="control">
+                  <button
+                    className={
+                      "button are-medium  is-rounded " +
+                      (this.state.isSubmitting ? " is-loading " : null)
+                    }
+                    onClick={this.submitInputRazor}
+                  >
+                    {!this.state.showRazorResults
+                      ? "Detect signal peptide"
+                      : "Hide signal peptide"}
+                  </button>
+                </p>
+              ) : null}
             </div>
             <br />
           </Fragment>
@@ -276,6 +354,7 @@ class SodopeChart extends Component {
               </p>
               <div className="control is-expanded">
                 <input
+                  autoFocus
                   className="input is-rounded"
                   type="text"
                   placeholder="Custom Tag"
@@ -304,7 +383,7 @@ class SodopeChart extends Component {
               </p>
             ) : null}
 
-            <hr />
+
             <div className="columns">
               {this.state.showProfilePlot ? (
                 <Fragment>
@@ -317,7 +396,7 @@ class SodopeChart extends Component {
                       currentSelectedSequence={
                         this.props.currentSelectedSequence
                       }
-                      key={"bar_plot_" + ""}
+                      key={`bar_plot_`}
                     />
                   </div>
 
@@ -329,7 +408,7 @@ class SodopeChart extends Component {
                       hydropathy={this.props.hydropathy}
                       flexibilities={this.props.flexibilities}
                       region={this.props.region}
-                      key={"profile_plot_" + ""}
+                      key={`profile_plot_`}
                       inputProt={this.state.inputSequenceProtein}
                     />
                   </div>
@@ -342,7 +421,7 @@ class SodopeChart extends Component {
                   <Barplot
                     customTag={this.state.inputSequenceProtein}
                     currentSelectedSequence={this.props.currentSelectedSequence}
-                    key={"bar_plot_1" + ""}
+                    key={`bar_plot_1`}
                   />
                 </div>
               )}
@@ -359,10 +438,76 @@ class SodopeChart extends Component {
               hydropathy={this.props.hydropathy}
               flexibilities={this.props.flexibilities}
               region={this.props.region}
-              key={"profile_plot_1" + this.state.inputSequenceProtein}
+              key={
+                `profile_plot_1  ${this.state.inputSequenceProtein.slice(1, 30)}`
+              }
             />
           </div>
         ) : null}
+
+        {this.state.isSubmitting ? (
+          <Fragment>
+            <br />
+            <div className="box">
+              <Typography variant="h5" gutterBottom>
+                Results
+              </Typography>
+              <article className="media">
+                <div className="media-content">
+                  <div className="content">
+                    <Skeleton variant="rect" height={220} />
+                    <hr />
+                  </div>
+
+                  <Skeleton animation={false} />
+                  <Typography component="div" key={"h2"} variant={"h2"}>
+                    <Skeleton />
+                  </Typography>
+                  <hr />
+                  <Typography component="div" key={"h5"} variant={"h2"}>
+                    <Skeleton width="30%" />
+                  </Typography>
+                </div>
+              </article>
+            </div>
+          </Fragment>
+        ) : !this.state.showRazorResults ? null : (
+          <Fragment>
+          <hr />
+            {this.state.isServerError ? (
+              <Fragment>
+                <div className="card">
+                  <header className="card-header">
+                    <p className="card-header-title">
+                      Error: We were unable to scan this sequence.
+                    </p>
+                  </header>
+                  <div className="card-content has-text-danger">
+                    <div className="content">
+                      <small>
+                        This might happen if your input sequence has some
+                        problems for example: non standard residues. This might
+                        also happen if our server is too busy or is undergoing
+                        maintenence or you are having network issues! You can
+                        refresh the page and try again. If the error persists,
+                        please report it on our GitHub!
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+              </Fragment>
+            ) : (
+              <RazorResults
+                data={this.state.result}
+                protein={this.props.protein}
+                nucleotide={this.props.nucleotide}
+                calledFromRazor={this.props.calledFromRazor}
+                key={"new-razor-from-sodope"}
+              />
+            )}
+          </Fragment>
+        )}
       </Fragment>
     );
   }
