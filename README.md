@@ -2,7 +2,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Gardner-BinfLab/TISIGNER-ReactJS)
 [![GitHub contributors](https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg)](https://github.com/Gardner-BinfLab/TISIGNER-ReactJS/graphs/contributors/)
 
-TISIGNER (tie-SIGN-er) runs at [https://tisigner.com](https://tisigner.com), which includes **TIsigner** and **SoDoPE**, the protein expression and solubility optimisation tools, respectively.
+TISIGNER (tie-SIGN-er) runs at [https://tisigner.com](https://tisigner.com), which includes **TIsigner**, **SoDoPE** and **Razor**, the protein expression optimisation, solubility optimisation and signal peptides prediction tools, respectively.
 
 This is a reimplementation of TISIGNER in ReactJS, with more features and smoother integration between the biological sequence optimisation tools. The source code for the older website can be found [here](https://github.com/Gardner-BinfLab/TIsigner/tree/master/TIsigner_web).
 
@@ -37,7 +37,7 @@ $ python3 tisigner.py
 ```
 
 The local website will now run at [http://localhost:5050](http://localhost:5050).
-**TIsigner** will run at [http://localhost:5050/tisigner](http://localhost:5050/tisigner) and **SoDoPE** at [http://localhost:5050/sodope](http://localhost:5050/sodope).
+**TIsigner** will run at [http://localhost:5050/tisigner](http://localhost:5050/tisigner), **SoDoPE** at [http://localhost:5050/sodope](http://localhost:5050/sodope) and **Razor** at [http://localhost:5050/razor](http://localhost:5050/razor).
 
 ### Bugs/Errors
 If you found any bugs or errors, please report it to us by opening an issue!
@@ -45,3 +45,4 @@ If you found any bugs or errors, please report it to us by opening an issue!
 ### Cite
 - Bhandari BK, Lim CS, Gardner PP. (2019). Highly accessible translation initiation sites are predictive of successful heterologous protein expression. bioRxiv. DOI:[10.1101/726752](https://www.biorxiv.org/content/10.1101/726752v1)
 - Bikash K Bhandari, Paul P Gardner, Chun Shen Lim. (2020). Solubility-Weighted Index: fast and accurate prediction of protein solubility. Bioinformatics. DOI:[10.1093/bioinformatics/btaa578](https://dx.doi.org/10.1093/bioinformatics/btaa578)
+- 
