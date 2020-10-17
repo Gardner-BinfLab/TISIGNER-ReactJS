@@ -762,11 +762,11 @@ import pandas as pd
 from scipy.signal import savgol_filter
 
 # Constants
-S_MODELS = pd.read_pickle("S.pkl.gz")
-C_MODELS = pd.read_pickle("C.pkl.gz")
-FUNGI = pd.read_pickle("Fungi_Classifier.pkl.gz")
-TOXIN = pd.read_pickle("Toxin_Classifier.pkl.gz")
-weights_df = pd.read_pickle("Cleavage_weights.pkl.gz")
+S_MODELS = pd.read_pickle(os.path.join(os.path.dirname(__file__), "S.pkl.gz"))
+C_MODELS = pd.read_pickle(os.path.join(os.path.dirname(__file__), "C.pkl.gz"))
+FUNGI = pd.read_pickle(os.path.join(os.path.dirname(__file__), "Fungi_Classifier.pkl.gz"))
+TOXIN = pd.read_pickle(os.path.join(os.path.dirname(__file__), "Toxin_Classifier.pkl.gz"))
+weights_df = pd.read_pickle(os.path.join(os.path.dirname(__file__), "Cleavage_weights.pkl.gz"))
 WEIGHTS = [w.to_dict() for w in weights_df.Weight]
 # Weights dataframe is of order weight['Position']['AA]
 # where position is 0 based.

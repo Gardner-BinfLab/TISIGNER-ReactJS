@@ -125,10 +125,6 @@ def razor_predict():
     except Exception as exp:
         return make_response(jsonify({'data':str(exp), }), 500)
 
-@app.route('/tisignerdata', methods=['GET'])
-def tisigner_train():
-    path = app.static_folder + '/data/TIsigner_training_seqs.7z'
-    return send_file(path, as_attachment=True, mimetype='application/x-7z-compressed')
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
