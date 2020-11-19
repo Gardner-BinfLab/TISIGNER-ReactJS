@@ -1,7 +1,8 @@
-# TIsigner and SoDoPE license
+# TISIGNER license
+
 Disclaimer and Copyright
 
-The programs and source code of TIsigner and SoDoPE are free software. They are distributed in the hope that they will be useful but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. Permission is granted for research, educational, and commercial use and modification so long as:
+TISIGNER includes the tools TIsigner, SoDoPE and Razor. The programs and source code of TISIGNER are free software. They are distributed in the hope that they will be useful but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. Permission is granted for research, educational, and commercial use and modification so long as:
  - The package and any derived works are not redistributed for any fee, other than media costs.
  - Proper credit is given to the authors.
 

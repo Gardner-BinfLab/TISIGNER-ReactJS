@@ -24,3 +24,7 @@ yarn-error.log*
 
 __pycache__
 env/
+
+# test
+term.fa
+

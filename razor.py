@@ -11,11 +11,11 @@ import functions
 
 # Threshold for Max MCC
 # For detecting signal peptides
-SP_THRESHOLD = 0.56
+SP_THRESHOLD = 0.62
 # For signal peptides from fungi
 FUNGI_THRESHOLD = 0.23
 # For signal peptides with toxic protein
-TOXIN_THRESHOLD = 0.34
+TOXIN_THRESHOLD = 0.33
 
 class RAZOR:
     def __init__(self, seq, max_scan=45):

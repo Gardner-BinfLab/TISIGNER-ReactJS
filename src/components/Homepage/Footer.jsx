@@ -73,14 +73,14 @@ const Footer = () => {
             <p>
               {" "}
               <a
-                href="https://bkb3.github.io/homepage"
+                href="mailto:paul.gardner@otago.ac.nz"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Web admin{" "}
+                <span className="icon">
+                  <i className="far fa-envelope"></i>
+                </span>
               </a>
-            </p>
-            <p>
               <a
                 href="https://github.com/Gardner-BinfLab/TISIGNER-ReactJS"
                 target="_blank"
@@ -89,7 +89,18 @@ const Footer = () => {
                 <span className="icon">
                   <i className="fab fa-github"></i>
                 </span>
-                <span>Github</span>
+                {/*<span>Github</span>*/}
+              </a>
+            </p>
+
+            <p>
+              {" "}
+              <a
+                href="https://bkb3.github.io/homepage"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Maintainer
               </a>
             </p>
           </div>

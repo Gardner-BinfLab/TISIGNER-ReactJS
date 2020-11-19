@@ -22,7 +22,7 @@ class AnalyseTerminators:
         self.seq_df = seq_df
         self.cm = cm
         self.tempdir = os.path.join(tempfile.gettempdir(), 'cmsearch')
-        self.tempfname = pd.util.testing.rands_array(15, 1)[0]
+        self.tempfname = pd._testing.rands_array(15, 1)[0]
         self.cm_output = None
         self.results = None
         self.tblout_fname = None
@@ -31,7 +31,7 @@ class AnalyseTerminators:
     def make_rand_accs(self):
         '''Generate some random accession for sequences.
         '''
-        self.seq_df['Accession'] = pd.util.testing.rands_array(10, len(self.seq_df))
+        self.seq_df['Accession'] = pd._testing.rands_array(10, len(self.seq_df))
 
 
     def make_tmp_dir(self):
@@ -59,7 +59,7 @@ class AnalyseTerminators:
         '''Run cmsearch
         '''
         self.dataframe_to_fasta()
-        output_table = pd.util.testing.rands_array(12, 1)[0] + '.csv'
+        output_table = pd._testing.rands_array(12, 1)[0] + '.csv'
         inp_f = self.tempdir + '/' + self.tempfname +'.fa'
         self.tblout_fname = self.tempdir + '/' + output_table
         proc = run(['cmsearch', '--tblout',  self.tblout_fname, \
@@ -105,10 +105,10 @@ class AnalyseTerminators:
                                  how='outer')
 
         #no hits are replaced by 0
-        final_results['Hits'].fillna(0, inplace=True)
+        final_results['Hits'] = final_results['Hits'].fillna(0)
 
         #no hits are replaced by very high E-value
-        final_results['Min_E_val'].fillna(10000, inplace=True)
+        final_results['Min_E_val'] = final_results['Min_E_val'].fillna(10000)
 
         self.results = final_results.sort_values(['Hits', 'Min_E_val'],\
                                          ascending=[True, False]).\

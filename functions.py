@@ -320,7 +320,9 @@ def min_dist_from_start(refseq, tstseq, max_len=50):
     max_len is used to generate scores which again are useful for primer only.
     returns hamming distance and distance from start nt
     '''
-    assert len(refseq) == len(tstseq)
+    if len(refseq) != len(tstseq):
+        raise ValueError('Sequence length mismatch for Hamming '
+                         'distance computation.')
     hamming_dist = sum(nt1 != nt2 for nt1, nt2 in zip(refseq, tstseq))
     elem1 = [refseq[i:i+1] for i in range(0, len(refseq))]
     elem2 = [tstseq[i:i+1] for i in range(0, len(tstseq))]
@@ -328,7 +330,6 @@ def min_dist_from_start(refseq, tstseq, max_len=50):
     high_seq = '' #sequence with highlighted difference
     for i, v in enumerate(elem1):
         if elem2[i] == v:
-
             high_seq+=elem2[i]
         else:
             high_seq+="<mark>"+elem2[i]+"</mark>"
@@ -379,6 +380,8 @@ def sa_results_parse(results, threshold=None, termcheck=False):
 
 def sort_results(df, direction='decrease', termcheck=False):
     '''sorting results
+    Sequenceh has sequences with difference highlighted by using
+    <mark></mark tag.
     '''
     org_seq = df['org_sq'][0]
     cols = ['Sequence', 'Accessibility']
@@ -416,8 +419,6 @@ def sort_results(df, direction='decrease', termcheck=False):
 
     sequences_df = df[cols].copy()
     sequences_df['Type'] = 'Optimised'
-#    sequences_df.to_csv('seq_df.csv', index=None)
-#    sequences_df.drop_duplicates(inplace=True)
     sequences_df[cols_for_mismatches] = pd.DataFrame(sequences_df['Sequence']\
                 .apply(lambda x:min_dist_from_start(org_seq, x)).values.\
                 tolist(), index=sequences_df.index)
@@ -444,8 +445,8 @@ def sort_results(df, direction='decrease', termcheck=False):
 
     if termcheck is True:
         o_hit, o_eval = check_term_org(org_seq)
-        res_df['Hits'].loc[res_df.index[res_df['Type'] == 'Input']] = o_hit
-        res_df['E_val'].loc[res_df.index[res_df['Type'] == 'Input']] = o_eval
+        res_df.loc[res_df.index[res_df['Type'] == 'Input']]['Hits'] = o_hit
+        res_df.loc[res_df.index[res_df['Type'] == 'Input']]['E_val'] = o_eval
     return res_df
 
 
@@ -454,23 +455,23 @@ def send_data(x, utr=data.pET21_UTR, host='ecoli'):
     '''
     if utr == data.pET21_UTR and host=='ecoli':
         if 'Hits' in x.columns and 'E_val' in x.columns:
-            return (dict({'Sequenceh':x.Sequenceh.iloc[0]},\
+            return (dict({'Sequence':x.Sequenceh.iloc[0]},\
               **{'Accessibility':x.Accessibility.iloc[0]},\
               **{'pExpressed':x.pExpressed.iloc[0]},\
               **{'Hits':x.Hits.iloc[0]},\
               **{'E_val':x['E_val'].iloc[0]}))
         else:
 
-            return (dict({'Sequenceh':x.Sequenceh.iloc[0]},\
+            return (dict({'Sequence':x.Sequenceh.iloc[0]},\
                           **{'Accessibility':x.Accessibility.iloc[0]},\
                           **{'pExpressed':x.pExpressed.iloc[0]}))
     else:
         if 'Hits' in x.columns and 'E_val' in x.columns:
-                return (dict({'Sequenceh':x.Sequenceh.iloc[0]},\
+                return (dict({'Sequence':x.Sequenceh.iloc[0]},\
                   **{'Accessibility':x.Accessibility.iloc[0]},\
                   **{'Hits':x.Hits.iloc[0]},\
                   **{'E_val':x['E_val'].iloc[0]}))
-        return (dict({'Sequenceh':x.Sequenceh.iloc[0]},\
+        return (dict({'Sequence':x.Sequenceh.iloc[0]},\
                       **{'Accessibility':x.Accessibility.iloc[0]}))
 
 
@@ -840,16 +841,15 @@ def features(seq):
             "Input sequence must be 30 residues long!"
             "\nExpected length 30: Got {}".format(len(seq))
         )
-
+    aa_list = 'RKNDCEVIYFWL' + 'STG'
     converted = np.array([hydrop_flex_swi[i] for i in seq])
     hydro = converted[:, 0]
     flex = converted[:, 1]
     swi = converted[:, 2]
-    helix = np.array([seq.count(i) for i in "VIYFWL"])
-    other_aa = np.array([seq.count(i) for i in "RKNDCE"])
+    aa_counts = [seq.count(i) for i in aa_list]
 
     return np.concatenate(
-        [savgol_filter(hydro, 15, 2), savgol_filter(swi, 15, 2), helix, flex, other_aa]
+        [savgol_filter(hydro, 15, 2), savgol_filter(swi, 15, 2), flex, aa_counts]
     )
 
 def s_score(feat):
@@ -857,10 +857,10 @@ def s_score(feat):
     S score of sequence.
     Input is an array of features (102)
     """
-    if len(feat) != 102:
+    if len(feat) != 105:
         raise ValueError(
             "Input features length is incorrect!"
-            "Expected length 102: Got {}".format(len(feat))
+            "Expected length 105: Got {}".format(len(feat))
         )
 
     if feat.dtype != np.float64:
@@ -944,15 +944,18 @@ def check_fungi(seq):
     return scores
 
 
+
 def check_toxin(seq):
     '''
     Check if a sequence has toxic peptide.
-    Features is hydrophobicity and SWI upto position 19
+    Features is hydrophobicity and SWI upto position 23
     '''
-    seq = validate(seq)[:19]
-    hydrop = np.array([hydrop_flex_swi[i] for i in seq])[:, 0]
-    swi = np.array([hydrop_flex_swi[i] for i in seq])[:, 2]
-    feat = np.concatenate([hydrop, swi])
+    seq = validate(seq)[:23]
+    hydrop = np.array([hydrop_flex_swi[i] for i in seq])[:,0]
+    swi = np.array([hydrop_flex_swi[i] for i in seq])[:,2]
+    flex = np.array([hydrop_flex_swi[i] for i in seq])[:,1]
+    turn = np.array([seq.count(i) for i in 'NPGS'])
+    feat = np.concatenate([hydrop, swi, flex, turn])
 
     classifiers = TOXIN.Classifier
     scores = np.array([clf.predict_proba([feat]) for clf in classifiers])[:, :, 1].flatten()

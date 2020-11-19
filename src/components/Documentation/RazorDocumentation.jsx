@@ -144,7 +144,7 @@ const RazorDocumentation = (props) => {
                             <p className="title">
                               <Rating
                                 name="signal-peptide-rating"
-                                value={1}
+                                value={4}
                                 readOnly
                               />
                             </p>
@@ -178,7 +178,7 @@ const RazorDocumentation = (props) => {
                           >
                             <p className="heading">Signal peptide score</p>
                           </Tooltip>
-                          <p className="title">0.93</p>
+                          <p className="title">0.99</p>
                         </div>
                       </div>
 
@@ -194,7 +194,7 @@ const RazorDocumentation = (props) => {
                             >
                               <p className="heading">Region</p>
                             </Tooltip>
-                            <p className="title">1-19</p>
+                            <p className="title">1-16</p>
                           </div>
                         </div>
 
@@ -209,7 +209,7 @@ const RazorDocumentation = (props) => {
                             >
                               <p className="heading">Cleavage site score</p>
                             </Tooltip>
-                            <p className="title">0.87</p>
+                            <p className="title">0.99</p>
                           </div>
                         </div>
                       </Fragment>
@@ -238,11 +238,12 @@ const RazorDocumentation = (props) => {
                           color="textPrimary"
                         >
                           The number of models with prediction probability
-                          greater than a threshold of 0.56. In this example, a
+                          greater than a threshold of 0.62. In this example, a
                           total of 5 stars indicates that all 5 models predict
-                          the input sequence harbours a signal peptide. This threshold was chosen based on
-                          maximisation of the Matthews correlation coefficient in the
-                          benchmarking set.
+                          the input sequence harbours a signal peptide. This
+                          threshold was chosen based on maximisation of the
+                          Matthew's correlation coefficient in the benchmarking
+                          set.
                         </Typography>
                       }
                     />
@@ -269,12 +270,13 @@ const RazorDocumentation = (props) => {
                           Similar to above, there are 5 distinct models for
                           prediction of each of these classes of signal
                           peptides. The threshold for fungi and toxin are 0.23
-                          and 0.34 respectively. In this example, only 1 model
+                          and 0.33 respectively. In this example, only 1 model
                           predicts that the signal peptide may be harboured by a
                           toxin, whereas 3 models predict that the signal
                           peptide is harboured by a fungal protein. If none of
                           these models make a positive prediction, these fields
-                          are not visible. These thresholds were obtained similar as above.
+                          are not visible. These thresholds were obtained
+                          similar as above.
                         </Typography>
                       }
                     />
@@ -323,9 +325,11 @@ const RazorDocumentation = (props) => {
                           color="textPrimary"
                         >
                           This is the region of predicted signal peptide. In
-                          this example, it is 1-19, in which 19 is the position
+                          this example, it is 1-16, in which 16 is the position
                           that has the maximum C-score of the model with the
-                          median Y-score, i.e. the signal peptide score. The black dotted line indicates the predicted cleavage site.
+                          median Y-score, i.e. the signal peptide score. The
+                          black dotted line indicates the predicted cleavage
+                          site.
                         </Typography>
                       }
                     />
@@ -371,13 +375,13 @@ const RazorDocumentation = (props) => {
                   <Divider variant="middle" />
                 </List>
 
-
                 <Typography variant="h2" component="h3" gutterBottom>
                   Data used
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  The training and benchmarking datasets used for the signal peptide prediction were obtained from
-                  SignalP 5.0 and can be downloaded{" "}
+                  The training and benchmarking datasets used for the signal
+                  peptide prediction were obtained from SignalP 5.0 and can be
+                  downloaded{" "}
                   <a href={SignalData} download>
                     here
                   </a>
@@ -385,7 +389,8 @@ const RazorDocumentation = (props) => {
                 </Typography>
 
                 <Typography variant="body2" gutterBottom>
-                  The dataset used for the toxin signal peptide prediction can be downloaded{" "}
+                  The dataset used for the toxin signal peptide prediction can
+                  be downloaded{" "}
                   <a href={FungiData} download>
                     here
                   </a>
@@ -393,7 +398,8 @@ const RazorDocumentation = (props) => {
                 </Typography>
 
                 <Typography variant="body2" gutterBottom>
-                  The dataset used for the fungal signal peptide prediction can be downloaded{" "}
+                  The dataset used for the fungal signal peptide prediction can
+                  be downloaded{" "}
                   <a href={ToxinData} download>
                     here
                   </a>
@@ -409,18 +415,18 @@ const RazorDocumentation = (props) => {
                 </Typography>
                 <Typography variant="body2" gutterBottom>
                   Razor is a tool for predicting eukaryotic signal peptides
-                  (SP). We also predict whether the signal peptide predicted is a region of
-                  a toxin or fungal protein.
+                  (SP). We also predict whether the signal peptide predicted is
+                  a region of a toxin or fungal protein.
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
                   What do the stars mean?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  We use five random forest models for prediction of SP, toxin SP or
-                  fungal SP. The number of stars refers to the
-                  number of models that predict the input sequence as true for
-                  each category.
+                  We use five random forest models for prediction of SP, toxin
+                  SP or fungal SP. The number of stars refers to the number of
+                  models that predict the input sequence as true for each
+                  category.
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
@@ -428,16 +434,16 @@ const RazorDocumentation = (props) => {
                 </Typography>
                 <Typography variant="body2" gutterBottom>
                   If the input sequence is shorter than 30 residues, we pad
-                  Serine (S) residues such that length becomes 30 residues. Additional S
-                  residues will be shown as 'S'.
+                  Serine (S) residues such that length becomes 30 residues.
+                  Additional S residues will be shown as 'S'.
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
                   Why is my toxin sequence of interest not identified?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  We detect toxin SP. It is possible that
-                  your input sequence is a toxin without a signal peptide.
+                  We detect toxin SP. It is possible that your input sequence is
+                  a toxin without a signal peptide.
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>

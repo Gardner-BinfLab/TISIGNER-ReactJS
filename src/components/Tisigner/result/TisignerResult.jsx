@@ -246,7 +246,7 @@ class TisignerResult extends Component {
     ];
     var types = ["Selected", "Input", "Optimised"]; //Object.keys(data)
     var allData = types.map((v, k) => data[v]);
-    // console.log(allData.map((k,v)=> k.map((item, index) => item['Sequenceh'])))
+    // console.log(allData.map((k,v)=> k.map((item, index) => item['Sequence'])))
 
     return (
       <Fragment>
@@ -272,7 +272,7 @@ class TisignerResult extends Component {
                         overflow: "auto",
                       }}
                     >
-                      <p dangerouslySetInnerHTML={{ __html: item.Sequenceh }} />
+                      <p dangerouslySetInnerHTML={{ __html: item.Sequence }} />
                     </pre>
 
 
@@ -502,7 +502,7 @@ class TisignerResult extends Component {
                         <SodopeResults
                           data={this.state.result}
                           protein={this.props.inputSequenceProtein}
-                          nucleotide={item.Sequenceh.replace(
+                          nucleotide={item.Sequence.replace(
                             /<\/?(mark|...)\b[^<>]*>/g,
                             ""
                           )}
@@ -554,7 +554,7 @@ class TisignerResult extends Component {
                             <RazorResults
                               data={this.state.resultRazor}
                               protein={this.props.inputSequenceProtein}
-                              nucleotide={item.Sequenceh.replace(
+                              nucleotide={item.Sequence.replace(
                                 /<\/?(mark|...)\b[^<>]*>/g,
                                 ""
                               )}

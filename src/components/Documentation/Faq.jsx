@@ -101,20 +101,6 @@ const Faq = () => {
                   Browser compatibility
                 </Typography>
 
-                <Typography variant="body2" gutterBottom>
-                  All the tools under TISIGNER should work on the latest version
-                  of all major browsers. Visit{" "}
-                  <a
-                    href="https://updatemybrowser.org/browser"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    this link
-                  </a>{" "}
-                  to check if your browser is up to date. We tested TISIGNER
-                  under the following browsers and operating systems.
-                </Typography>
-
                 <TableContainer component={Paper}>
                   <Table>
                     <TableHead>
@@ -132,7 +118,9 @@ const Faq = () => {
                         <TableCell component="th" scope="row">
                           Linux
                         </TableCell>
-                        <TableCell align="right">Ubuntu (20.04.1), Debian GNU/Linux 10</TableCell>
+                        <TableCell align="right">
+                          Ubuntu (20.04.1), Debian GNU/Linux 10
+                        </TableCell>
                         <TableCell align="right">83.0</TableCell>
                         <TableCell align="right">81.0</TableCell>
                         <TableCell align="right">n/a</TableCell>
@@ -161,6 +149,8 @@ const Faq = () => {
                     </TableBody>
                   </Table>
                 </TableContainer>
+
+
               </div>
             </div>
           </div>

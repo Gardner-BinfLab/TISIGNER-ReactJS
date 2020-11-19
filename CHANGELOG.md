@@ -1,3 +1,10 @@
+# 2.0.1 (19-11-2020)
+### Bug Fixes
+* **TIsigner:** Backend fixes for warnings from pandas: ```SettingWithCopyWarning``` and ```pandas.util.testing```.
+
+### Features
+* **Razor:** Model updates.
+
 # 2.0.0 (17-10-2020)
 
 ### Bug Fixes
@@ -17,7 +24,5 @@
 
 ### Performance Improvements
 * **TIsigner:** Backend optimisation for faster sequence optimisation.
-* **SoDoPE:** Domain querying no longer blocks solubility analysis. 
+* **SoDoPE:** Domain querying no longer blocks solubility analysis.
 * **TISIGNER:** Lazy loading for a faster page load time.
-
-
