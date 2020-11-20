@@ -188,13 +188,13 @@ const RazorDocumentation = (props) => {
                             <Tooltip
                               TransitionComponent={Fade}
                               TransitionProps={{ timeout: 600 }}
-                              title="The median of max C scores of 5 models."
+                              title="The median of max C-scores of 5 models."
                               placement="top"
                               arrow
                             >
                               <p className="heading">Region</p>
                             </Tooltip>
-                            <p className="title">1-16</p>
+                            <p className="title">1-19</p>
                           </div>
                         </div>
 
@@ -203,7 +203,7 @@ const RazorDocumentation = (props) => {
                             <Tooltip
                               TransitionComponent={Fade}
                               TransitionProps={{ timeout: 600 }}
-                              title="The median of max C scores of 5 models."
+                              title="The median of max C-scores of 5 models."
                               placement="top"
                               arrow
                             >
@@ -337,7 +337,7 @@ const RazorDocumentation = (props) => {
                   <div className="card">
                     <div className="card-content">
                       <div className="column has-text-centered is-full">
-                        <p className="heading">C scores along the sequence</p>
+                        <p className="heading">C-scores along the sequence</p>
                         <RazorLine
                           data={data}
                           inputProt={prot}

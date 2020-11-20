@@ -59,8 +59,6 @@ def optimiser():
 
 
         pools = Pool(num_seq)
-#        results = pools.map(new_opt.simulated_anneal,\
-#                                    rand_states)
         results = []
         for result in pools.imap(new_opt.simulated_anneal,\
                                     rand_states):
@@ -73,7 +71,7 @@ def optimiser():
                                             termcheck=termcheck),\
                                direction=direction, termcheck=termcheck)
 
-        json_data = result_df.groupby(['Type', 'Sequenceh'], sort=False).apply(lambda x:\
+        json_data = result_df.groupby(['Type', 'Sequence'], sort=False).apply(lambda x:\
                                      functions.send_data(x, utr=utr,
                                     host=host)).groupby(level=0).\
                                      apply(lambda x: x.tolist()).to_json(\
@@ -105,11 +103,8 @@ def razor_predict():
         except Exception:
             cleav = 0
         response_dict = {
-#            's_score':newObj.s_scores.tolist(), 
-#            'c_score':newObj.c_scores.tolist(),
             'y_score':np.around(newObj.y_scores, 2).tolist(),
             'all_probs':newObj.cs_probs_all.tolist(),
-#            'cleavage_sites':newObj.cleavage_sites.tolist(),
             'predictions':newObj.preds.tolist(),
             'cleavage':cleav,
             'final_score_sp':np.around(newObj.final_score_sp, 2),
@@ -140,4 +135,4 @@ def serve(path):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5050', threaded=True, debug=True)
+    app.run(host='0.0.0.0', port='5050', threaded=True, debug=False)

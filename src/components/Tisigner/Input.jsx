@@ -647,8 +647,8 @@ class Input extends Component {
               Your sequence was submitted successfully.{" "}
               {JSON.parse(localStorage.getItem("substitutionMode")) ===
               "transInit"
-                ? "Please allow upto 20 seconds for the results to be processed."
-                : "Full sequence optimisation may take at most 30 seconds."}
+                ? "It may take upto 20 seconds to optimise the sequence."
+                : "Full sequence optimisation may take upto 30 seconds."}
             </MuiAlert>
           </Snackbar>
 

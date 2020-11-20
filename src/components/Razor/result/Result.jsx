@@ -343,7 +343,7 @@ class RazorResults extends Component {
 
           <Fragment>
             <div className="column has-text-centered is-full">
-              <p className="heading">C scores along the sequence</p>
+              <p className="heading">C-scores along the sequence</p>
               <RazorLine
                 data={data}
                 inputProt={this.props.protein}

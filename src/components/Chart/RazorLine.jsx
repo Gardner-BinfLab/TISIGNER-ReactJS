@@ -96,7 +96,7 @@ class RazorLine extends Component {
           pointRadius: 1,
           pointHitRadius: 10,
           data: this.state.probs[0],
-          yAxisID: "C score",
+          yAxisID: "C-score",
           steppedLine: "after"
           // hidden: best_model_[0],
         },
@@ -120,7 +120,7 @@ class RazorLine extends Component {
           pointRadius: 1,
           pointHitRadius: 10,
           data: this.state.probs[1],
-          yAxisID: "C score",
+          yAxisID: "C-score",
           steppedLine: "after"
           // hidden: best_model_[1],
         },
@@ -144,7 +144,7 @@ class RazorLine extends Component {
           pointRadius: 1,
           pointHitRadius: 10,
           data: this.state.probs[2],
-          yAxisID: "C score",
+          yAxisID: "C-score",
           steppedLine: "after"
           // hidden: best_model_[2],
         },
@@ -168,7 +168,7 @@ class RazorLine extends Component {
           pointRadius: 1,
           pointHitRadius: 10,
           data: this.state.probs[3],
-          yAxisID: "C score",
+          yAxisID: "C-score",
           steppedLine: "after"
           // hidden: best_model_[3],
         },
@@ -192,7 +192,7 @@ class RazorLine extends Component {
           pointRadius: 1,
           pointHitRadius: 10,
           data: this.state.probs[4],
-          yAxisID: "C score",
+          yAxisID: "C-score",
           steppedLine: "after"
           // hidden: best_model_[4],
         }
@@ -212,12 +212,12 @@ class RazorLine extends Component {
               scales: {
                 yAxes: [
                   {
-                    id: "C score",
+                    id: "C-score",
                     type: "linear",
                     position: "left",
                     scaleLabel: {
                       display: true,
-                      labelString: "C score"
+                      labelString: "C-score"
                     },
                     ticks: {
                       max: 1,

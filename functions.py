@@ -380,12 +380,12 @@ def sa_results_parse(results, threshold=None, termcheck=False):
 
 def sort_results(df, direction='decrease', termcheck=False):
     '''sorting results
-    Sequenceh has sequences with difference highlighted by using
+    Sequence has sequences with difference highlighted by using
     <mark></mark tag.
     '''
     org_seq = df['org_sq'][0]
     cols = ['Sequence', 'Accessibility']
-    cols_for_mismatches = ['Mismatches', 'Sequenceh']
+    cols_for_mismatches = ['Mismatches', 'Sequence']
     cols_for_sort = ['Mismatches', 'Accessibility']
     bool_for_sort = [True]
     if direction == 'decrease':
@@ -430,13 +430,13 @@ def sort_results(df, direction='decrease', termcheck=False):
         sequences_df.drop(['closetothreshold'], inplace=True, axis=1)
 
     if ecoli is True:
-        res_df = sequences_df.append({"Sequenceh":org_seq, \
+        res_df = sequences_df.append({"Sequence":org_seq, \
                               "Accessibility":df['org_accs'][0], \
                               "pExpressed":df['org_pexpr'][0], \
                               "Type":"Input"}, ignore_index=True)
         res_df['pExpressed'] = res_df['pExpressed'].apply(scaled_prob).round(2)
     else:
-        res_df = sequences_df.append({"Sequenceh":org_seq, \
+        res_df = sequences_df.append({"Sequence":org_seq, \
                               "Accessibility":df['org_accs'][0], \
                               "Type":"Input"}, ignore_index=True)
 
@@ -455,23 +455,23 @@ def send_data(x, utr=data.pET21_UTR, host='ecoli'):
     '''
     if utr == data.pET21_UTR and host=='ecoli':
         if 'Hits' in x.columns and 'E_val' in x.columns:
-            return (dict({'Sequence':x.Sequenceh.iloc[0]},\
+            return (dict({'Sequence':x.Sequence.iloc[0]},\
               **{'Accessibility':x.Accessibility.iloc[0]},\
               **{'pExpressed':x.pExpressed.iloc[0]},\
               **{'Hits':x.Hits.iloc[0]},\
               **{'E_val':x['E_val'].iloc[0]}))
         else:
 
-            return (dict({'Sequence':x.Sequenceh.iloc[0]},\
+            return (dict({'Sequence':x.Sequence.iloc[0]},\
                           **{'Accessibility':x.Accessibility.iloc[0]},\
                           **{'pExpressed':x.pExpressed.iloc[0]}))
     else:
         if 'Hits' in x.columns and 'E_val' in x.columns:
-                return (dict({'Sequence':x.Sequenceh.iloc[0]},\
+                return (dict({'Sequence':x.Sequence.iloc[0]},\
                   **{'Accessibility':x.Accessibility.iloc[0]},\
                   **{'Hits':x.Hits.iloc[0]},\
                   **{'E_val':x['E_val'].iloc[0]}))
-        return (dict({'Sequence':x.Sequenceh.iloc[0]},\
+        return (dict({'Sequence':x.Sequence.iloc[0]},\
                       **{'Accessibility':x.Accessibility.iloc[0]}))
 
 
