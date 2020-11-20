@@ -325,7 +325,7 @@ const RazorDocumentation = (props) => {
                           color="textPrimary"
                         >
                           This is the region of predicted signal peptide. In
-                          this example, it is 1-16, in which 16 is the position
+                          this example, it is 1-19, in which 19 is the position
                           that has the maximum C-score of the model with the
                           median Y-score, i.e. the signal peptide score. The
                           black dotted line indicates the predicted cleavage
