@@ -1,3 +1,3 @@
 
-export const TIsignerLink = "https://tisigner.otago.ac.nz/optimise";
-export const RazorLink = "https://tisigner.otago.ac.nz/razor";
+export const TIsignerLink = "http://localhost:5050/optimise";
+export const RazorLink = "http://localhost:5050/razor";
