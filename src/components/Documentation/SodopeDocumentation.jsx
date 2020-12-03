@@ -730,8 +730,24 @@ const SodopeDocumentation = (props) => {
                     10.1101/726752
                   </a>
                   .<br />
-                  If you find signal peptide prediction useful, please also
-                  cite:
+                  If you find signal peptide prediction useful, please also cite
+                  the following preprint:
+                  <br />
+                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020) Annotating
+                  eukaryotic and toxin-specific signal peptides using Razor.
+                  <cite title="Annotating eukaryotic and toxin-specific signal peptides using Razor.">
+                    {" "}
+                    bioRxiv.
+                  </cite>{" "}
+                  DOI:
+                  <a
+                    href="https://doi.org/10.1101/2020.11.30.405613"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    10.1101/2020.11.30.405613
+                  </a>
+                  .
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>

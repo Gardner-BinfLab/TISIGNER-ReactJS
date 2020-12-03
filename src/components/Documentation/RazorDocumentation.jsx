@@ -241,9 +241,8 @@ const RazorDocumentation = (props) => {
                           greater than a threshold of 0.62. In this example, a
                           total of 5 stars indicates that all 5 models predict
                           the input sequence harbours a signal peptide. This
-                          threshold shows the highest
-                          Matthew's correlation coefficient on the benchmarking
-                          set.
+                          threshold shows the highest Matthew's correlation
+                          coefficient on the benchmarking set.
                         </Typography>
                       }
                     />
@@ -467,7 +466,21 @@ const RazorDocumentation = (props) => {
                   How to cite Razor?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020) <br />
+                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020) Annotating
+                  eukaryotic and toxin-specific signal peptides using Razor.
+                  <cite title="Annotating eukaryotic and toxin-specific signal peptides using Razor.">
+                    {" "}bioRxiv.
+                  </cite>{" "}
+                  DOI:
+                  <a
+                    href="https://doi.org/10.1101/2020.11.30.405613"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    10.1101/2020.11.30.405613
+                  </a>
+                  .
+                  <br />
                   If you find optimising protein solubility useful, please also
                   cite:
                   <br />
@@ -475,7 +488,7 @@ const RazorDocumentation = (props) => {
                   Solubility-Weighted Index: fast and accurate prediction of
                   protein solubility.
                   <cite title="Solubility-Weighted Index:  fast and accurate prediction of protein solubility. ">
-                    Bioinformatics.
+                    {" "}Bioinformatics.
                   </cite>{" "}
                   DOI:
                   <a

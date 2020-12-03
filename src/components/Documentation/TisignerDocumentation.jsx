@@ -628,7 +628,9 @@ const TisignerDocumentation = (props) => {
                   </a>
                   .<br />
                   If you find protein solubility prediction and optimisation
-                  useful, please cite : Bhandari, B.K., Gardner, P.P., Lim, C.S.
+                  useful, please cite :
+                  <br />
+                  Bhandari, B.K., Gardner, P.P., Lim, C.S.
                   (2020) Solubility-Weighted Index: Fast and Accurate Prediction
                   of Protein Solubility.
                   <cite title="Solubility-Weighted Index: Fast and Accurate Prediction of Protein Solubility ">
@@ -644,7 +646,24 @@ const TisignerDocumentation = (props) => {
                     10.1093/bioinformatics/btaa578
                   </a>
                   .<br />
-                  If you find signal peptide prediction useful, please cite:
+                  If you find signal peptide prediction useful, please cite the
+                  following preprint:
+                  <br />
+                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020) Annotating
+                  eukaryotic and toxin-specific signal peptides using Razor.
+                  <cite title="Annotating eukaryotic and toxin-specific signal peptides using Razor.">
+                    {" "}
+                    bioRxiv.
+                  </cite>{" "}
+                  DOI:
+                  <a
+                    href="https://doi.org/10.1101/2020.11.30.405613"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    10.1101/2020.11.30.405613
+                  </a>
+                  .
                 </Typography>
               </div>
             </div>
