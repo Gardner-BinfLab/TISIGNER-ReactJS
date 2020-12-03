@@ -241,8 +241,8 @@ const RazorDocumentation = (props) => {
                           greater than a threshold of 0.62. In this example, a
                           total of 5 stars indicates that all 5 models predict
                           the input sequence harbours a signal peptide. This
-                          threshold was chosen based on maximisation of the
-                          Matthew's correlation coefficient in the benchmarking
+                          threshold shows the highest
+                          Matthew's correlation coefficient on the benchmarking
                           set.
                         </Typography>
                       }

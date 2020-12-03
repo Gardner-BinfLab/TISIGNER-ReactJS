@@ -82,11 +82,11 @@ class Tools extends Component {
             <br />
             DOI:{" "}
             <a
-              href="https://doi.org/"
+              href="https://doi.org/10.1101/2020.11.30.405613"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Soon
+              10.1101/2020.11.30.405613
             </a>
           </Fragment>
         ),
