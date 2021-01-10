@@ -1,6 +1,8 @@
 # TISIGNER web app
+[![Build Status](https://travis-ci.com/Gardner-BinfLab/TISIGNER-ReactJS.svg?branch=master)](https://travis-ci.com/Gardner-BinfLab/TISIGNER-ReactJS)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Gardner-BinfLab/TISIGNER-ReactJS)
 [![GitHub contributors](https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg)](https://github.com/Gardner-BinfLab/TISIGNER-ReactJS/graphs/contributors/)
+
 
 TISIGNER (tie-SIGN-er) runs at [https://tisigner.com](https://tisigner.com), which includes **TIsigner**, **SoDoPE** and **Razor**, the protein expression optimisation, solubility optimisation and signal peptides prediction tools, respectively.
 
