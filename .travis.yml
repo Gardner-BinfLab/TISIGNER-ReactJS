@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "v10.13.0"
+cache:
+  directories:
+    - node_modules
+env:
+  CI: false
+before_script:
+  - export NODE_OPTIONS="--max-old-space-size=8192"
+script:
+  - npm run build
+
