@@ -364,9 +364,17 @@ class SodopeResults extends Component {
           <Fragment key="domain-graphics">
             <div ref={this.domainsRef}>
               {!this.props.isServerError ? (
-                 data === ""? (
+                data === "" ? (
                   <Skeleton animation="wave" height={40} />
-                ) : null
+                ) : (
+                  <div
+                    style={{
+                      height: 25,
+                      backgroundColor: "#e0e0e0",
+                      marginBottom: -32,
+                    }}
+                  ></div>
+                )
               ) : (
                 <div
                   style={{
