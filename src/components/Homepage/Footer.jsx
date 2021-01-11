@@ -143,10 +143,16 @@ const Footer = () => {
 
         <div className="has-text-centered is-family-code">
           <p>
-            <img
-              src="https://travis-ci.com/Gardner-BinfLab/TISIGNER-ReactJS.svg?branch=master"
-              alt="Travis CI build status"
-            />
+            <a
+              href="https://travis-ci.com/Gardner-BinfLab/TISIGNER-ReactJS"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://travis-ci.com/Gardner-BinfLab/TISIGNER-ReactJS.svg?branch=master"
+                alt="Travis CI build status"
+              />
+            </a>
           </p>
           <p>
             Build from commit:
