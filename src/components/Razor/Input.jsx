@@ -7,11 +7,10 @@ import ReactGA from "react-ga";
 import {
   demoRazor,
   defaultProteinRazor,
-  defaultNucleotideRazor
+  defaultNucleotideRazor,
 } from "./Utils/Utils";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { RazorLink } from "../EndPoints";
-
 
 class RazorInput extends Component {
   constructor(props) {
@@ -26,7 +25,7 @@ class RazorInput extends Component {
       isSubmitting: false,
       showResult: false,
       isServerError: false,
-      result: ""
+      result: "",
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleChangeSequenceType = this.handleChangeSequenceType.bind(this);
@@ -37,7 +36,7 @@ class RazorInput extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  handleKeyDown = event => {
+  handleKeyDown = (event) => {
     if (event.key === "Enter") {
       this.submitInput(event);
     }
@@ -49,11 +48,11 @@ class RazorInput extends Component {
         sequenceType: event.target.value,
         currentInputSequence: "",
         inputSequenceProtein: "",
-        inputSequenceNucleotide: ""
+        inputSequenceNucleotide: "",
       });
       ReactGA.event({
         category: "Razor sequence type selection",
-        action: "Type: " + event.target.value
+        action: "Type: " + event.target.value,
       });
     }
   }
@@ -80,7 +79,7 @@ class RazorInput extends Component {
           exampleNucleotide
         ).toUpperCase(),
         inputSequenceError: "",
-        isValidatedSequence: true
+        isValidatedSequence: true,
       });
     } else {
       this.setState({
@@ -89,13 +88,13 @@ class RazorInput extends Component {
         inputSequenceNucleotide: "",
         inputSequenceProtein: exampleProtein,
         inputSequenceError: "",
-        isValidatedSequence: true
+        isValidatedSequence: true,
       });
     }
 
     ReactGA.event({
       category: "RAZOR example",
-      action: "RAZOR example button clicked."
+      action: "RAZOR example button clicked.",
     });
   }
 
@@ -109,11 +108,11 @@ class RazorInput extends Component {
       currentInputSequence: seq,
       inputSequenceNucleotide: seq,
       inputSequenceProtein: this.translateSequence(seq).toUpperCase(),
-      sequenceType: "Nucleotide"
+      sequenceType: "Nucleotide",
     });
     ReactGA.event({
       category: "RAZOR demo",
-      action: "RAZOR demo button clicked."
+      action: "RAZOR demo button clicked.",
     });
   };
 
@@ -181,7 +180,7 @@ class RazorInput extends Component {
         GTG: "V",
         GCG: "A",
         GAG: "E",
-        GGG: "G"
+        GGG: "G",
       };
 
       let codons = sequence.match(/.{1,3}/g);
@@ -239,16 +238,16 @@ class RazorInput extends Component {
             } else {
               codons.shift();
               codons.pop();
-              let common = codons.filter(value => stop.includes(value));
+              let common = codons.filter((value) => stop.includes(value));
               if (common.length !== 0) {
                 isValid = false;
                 error = "Early stop codon found.";
               }
             }
-              // codons.shift();
-              // if (stop.includes(codons[codons.length - 1])) {
-              //   codons.pop(); //remove stop codon
-              // }
+            // codons.shift();
+            // if (stop.includes(codons[codons.length - 1])) {
+            //   codons.pop(); //remove stop codon
+            // }
             // }
             // let common = codons.filter(value => stop.includes(value));
             // if (common.length !== 0) {
@@ -271,7 +270,7 @@ class RazorInput extends Component {
       inputSequenceNucleotide: sequence,
       inputSequenceProtein: this.translateSequence(sequence).toUpperCase(),
       inputSequenceError: error,
-      isValidatedSequence: isValid
+      isValidatedSequence: isValid,
     });
   }
 
@@ -303,7 +302,7 @@ class RazorInput extends Component {
         error =
           "Sequence length should be greater than 10 and less then 10,000 residues.";
       }
-    } else if (sequence.length !== 0){
+    } else if (sequence.length !== 0) {
       isValid = false;
       error =
         "Looks like a nucleotide sequenece. Please upload a protein sequence or change the type to Nucleotide.";
@@ -314,7 +313,7 @@ class RazorInput extends Component {
       inputSequenceNucleotide: "",
       inputSequenceProtein: sequence.split("*")[0],
       inputSequenceError: error,
-      isValidatedSequence: isValid
+      isValidatedSequence: isValid,
     });
   }
 
@@ -324,37 +323,37 @@ class RazorInput extends Component {
 
     ReactGA.event({
       category: "RAZOR Input Page",
-      action: "Submit button clicked."
+      action: "Submit button clicked.",
     });
 
     event.preventDefault();
     if (sequence && isValid) {
       const userObject = {
         inputSequenceRazor: sequence, //Protein sequence here
-        maxScan: 80
+        maxScan: 80,
       };
       this.setState({ isSubmitting: true });
 
       axios
         .post(RazorLink, userObject)
-        .then(res => {
+        .then((res) => {
           // console.log(res)
           this.setState({
             showResult: true,
             result: res.data,
-            isSubmitting: false
+            isSubmitting: false,
           });
           ReactGA.event({
             category: "RAZOR Input Page",
             action: "Submit button clicked.",
-            label: "RAZOR results received."
+            label: "RAZOR results received.",
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             isServerError: true,
             serverError: error,
-            isSubmitting: false
+            isSubmitting: false,
           });
           ReactGA.event({
             category: "RAZOR Input Page",
@@ -372,7 +371,7 @@ class RazorInput extends Component {
           <section
             className="hero is-fullheight"
             style={{
-              backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
+              backgroundImage: "linear-gradient(to right, #1a2b32, #355664)",
             }}
           >
             <div className="hero-body">
@@ -411,7 +410,7 @@ class RazorInput extends Component {
           <section
             className="hero is-fullheight"
             style={{
-              backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
+              backgroundImage: "linear-gradient(to right, #1a2b32, #355664)",
             }}
           >
             <div className="hero-body">
@@ -434,20 +433,7 @@ class RazorInput extends Component {
         </Fragment>
       );
     } else if (this.state.isServerError) {
-      return (
-        <section
-          className="hero is-fullheight"
-          style={{
-            backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
-          }}
-        >
-          <div className="hero-body">
-            <div className="container">
-              <Error error={this.state.serverError} />
-            </div>
-          </div>
-        </section>
-      );
+      return <Error error={this.state.serverError} />;
     } else {
       return (
         <Fragment>

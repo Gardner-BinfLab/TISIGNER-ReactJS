@@ -16,7 +16,7 @@ import {
   averageArr,
   logistic,
   solubilityWeightedIndex,
-  repeatSimAnneal
+  repeatSimAnneal,
 } from "../Utils/Utils";
 import Input from "../../Tisigner/Input";
 import ReactGA from "react-ga";
@@ -24,22 +24,22 @@ import Skeleton from "@material-ui/lab/Skeleton";
 
 const styles = {
   paper: {
-    padding: "20px"
+    padding: "20px",
   },
   popover: {
-    pointerEvents: "none"
-  }
+    pointerEvents: "none",
+  },
 };
 
 const anim = {
   zoomIn: {
     animation: "x 1s",
-    animationName: Radium.keyframes(zoomIn, "zoomIn")
+    animationName: Radium.keyframes(zoomIn, "zoomIn"),
   },
   rubberBand: {
     animation: "x 1s",
-    animationName: Radium.keyframes(rubberBand, "rubberBand")
-  }
+    animationName: Radium.keyframes(rubberBand, "rubberBand"),
+  },
 };
 
 class SodopeResults extends Component {
@@ -57,7 +57,7 @@ class SodopeResults extends Component {
       convertClicked: true,
       avatarLetter: "P",
       isShowOptimisation: false,
-      sequenceToShow: ""
+      sequenceToShow: "",
     };
     this.domainsRef = React.createRef();
     this.handlePopoverOpen = this.handlePopoverOpen.bind(this);
@@ -73,12 +73,12 @@ class SodopeResults extends Component {
   toggleOptimisation(event) {
     this.setState(
       {
-        isShowOptimisation: !this.state.isShowOptimisation
+        isShowOptimisation: !this.state.isShowOptimisation,
       },
       () =>
         ReactGA.event({
           category: "SoDoPE results",
-          action: "Optimisation form shown: " + this.state.isShowOptimisation
+          action: "Optimisation form shown: " + this.state.isShowOptimisation,
         })
     );
     // this.convertSequence()
@@ -87,19 +87,19 @@ class SodopeResults extends Component {
   handlePopoverOpen(event, popoverId) {
     this.setState({
       openedPopoverId: popoverId,
-      anchorEl: event.target
+      anchorEl: event.target,
     });
   }
 
   handlePopoverClose() {
     this.setState({
       openedPopoverId: null,
-      anchorEl: null
+      anchorEl: null,
     });
   }
 
   updateEvents(event) {
-    let newValue = event.target.value.split(",").map(e => Number(e));
+    let newValue = event.target.value.split(",").map((e) => Number(e));
     let key = event.target.getAttribute("idx");
     let suggReg = !key
       ? null
@@ -111,7 +111,7 @@ class SodopeResults extends Component {
       {
         sliderValue: newValue,
         sequenceTooSmall:
-          Math.abs(newValue[0] - newValue[1]) < 11 ? true : false
+          Math.abs(newValue[0] - newValue[1]) < 11 ? true : false,
       },
       () => this.convertSequence()
     );
@@ -120,7 +120,7 @@ class SodopeResults extends Component {
     ReactGA.event({
       category: "SoDoPE results",
       action: "SoDoPE results shown.",
-      label: suggReg
+      label: suggReg,
     });
   }
 
@@ -129,7 +129,7 @@ class SodopeResults extends Component {
       {
         sliderValue: newValue,
         sequenceTooSmall:
-          Math.abs(newValue[0] - newValue[1]) < 11 ? true : false
+          Math.abs(newValue[0] - newValue[1]) < 11 ? true : false,
       },
       () => this.convertSequence()
     );
@@ -142,13 +142,13 @@ class SodopeResults extends Component {
       {
         sliderValue: newValue,
         sequenceTooSmall:
-          Math.abs(newValue[0] - newValue[1]) < 11 ? true : false
+          Math.abs(newValue[0] - newValue[1]) < 11 ? true : false,
       },
       () => this.convertSequence()
     );
     ReactGA.event({
       category: "SoDoPE results",
-      action: "SoDoPE Slider clicked."
+      action: "SoDoPE Slider clicked.",
     });
   };
 
@@ -162,7 +162,7 @@ class SodopeResults extends Component {
     let new_results =
       separation < 11 ? null : repeatSimAnneal(sequence, position, region);
     this.setState({
-      suggestedRegions: new_results
+      suggestedRegions: new_results,
     });
   }
 
@@ -202,7 +202,9 @@ class SodopeResults extends Component {
       flexibilities: flexibilities,
       gravy: currentSelectedSequence.length < 11 ? 0 : roundTo(gravyAvr, 4),
       averageFlexibility:
-        currentSelectedSequence.length < 11 ? 0 : roundTo(averageFlexibility, 4)
+        currentSelectedSequence.length < 11
+          ? 0
+          : roundTo(averageFlexibility, 4),
     });
   }
 
@@ -222,26 +224,26 @@ class SodopeResults extends Component {
         : currentNucleotide,
       hasNucleotide: !nucleotide ? false : true,
       avatarLetter: !nucleotide ? "P" : this.state.convertClicked ? "P" : "N",
-      currentNucleotide: currentNucleotide
+      currentNucleotide: currentNucleotide,
     });
   }
 
   convertSequenceButton(event) {
     this.setState(
       {
-        convertClicked: !this.state.convertClicked
+        convertClicked: !this.state.convertClicked,
       },
       () => this.convertSequence()
     );
     ReactGA.event({
       category: "SoDoPE results",
-      action: "View Nucleotide/Protein button clicked."
+      action: "View Nucleotide/Protein button clicked.",
     });
   }
 
   updateDimensions = () => {
     this.setState({
-      width: this.domainsRef.current ? this.domainsRef.current.offsetWidth : 0
+      width: this.domainsRef.current ? this.domainsRef.current.offsetWidth : 0,
     });
   };
 
@@ -249,17 +251,17 @@ class SodopeResults extends Component {
     window.addEventListener("resize", this.updateDimensions);
     this.setState({
       width: this.domainsRef.current ? this.domainsRef.current.offsetWidth : 0,
-      sequenceToShow: this.props.protein
+      sequenceToShow: this.props.protein,
     });
     this.computeProperties(this.state.sliderValue);
     ReactGA.event({
       category: "SoDoPE results",
-      action: "SoDoPE results shown."
+      action: "SoDoPE results shown.",
     });
   }
 
   componentDidUpdate(prevState) {
-    window.addEventListener('resize', this.updateDimensions)
+    window.addEventListener("resize", this.updateDimensions);
   }
 
   componentWillUnmount() {
@@ -361,14 +363,16 @@ class SodopeResults extends Component {
 
           <Fragment key="domain-graphics">
             <div ref={this.domainsRef}>
-              {data === "" ? (
-                <Skeleton animation="wave" height={40} />
+              {!this.props.isServerError ? (
+                 data === ""? (
+                  <Skeleton animation="wave" height={40} />
+                ) : null
               ) : (
                 <div
                   style={{
                     height: 25,
                     backgroundColor: "#e0e0e0",
-                    marginBottom: -32
+                    marginBottom: -32,
                   }}
                 ></div>
               )}
@@ -388,9 +392,9 @@ class SodopeResults extends Component {
                                 12,
                               left:
                                 (d.ienv * this.state.width) / prot.length + 12,
-                              position: "absolute"
+                              position: "absolute",
                             }}
-                            onMouseEnter={e =>
+                            onMouseEnter={(e) =>
                               this.handlePopoverOpen(
                                 e,
                                 index + "domainButton" + idx
@@ -405,7 +409,7 @@ class SodopeResults extends Component {
                           <Popover
                             className={classes.popover}
                             classes={{
-                              paper: classes.paper
+                              paper: classes.paper,
                             }}
                             open={
                               openedPopoverId === index + "domainButton" + idx
@@ -413,13 +417,12 @@ class SodopeResults extends Component {
                             anchorEl={anchorEl}
                             anchorOrigin={{
                               vertical: "top",
-                              horizontal: "center"
+                              horizontal: "center",
                             }}
                             transformOrigin={{
                               vertical: "bottom",
-                              horizontal: "center"
+                              horizontal: "center",
                             }}
-
                           >
                             <Typography variant="h6" gutterBottom>
                               {d.alihmmname} ({d.alihmmacc})
@@ -558,19 +561,19 @@ class SodopeResults extends Component {
                     this.setState({
                       copyToClipboard: true,
                       clipboardCopiedMessage:
-                        "Upgrade your browser to use the clipboard feature."
+                        "Upgrade your browser to use the clipboard feature.",
                     });
                   } else {
                     navigator.clipboard.writeText(this.state.sequenceToShow);
                     this.setState({
                       copyToClipboard: true,
-                      clipboardCopiedMessage: "Copied to clipboard!"
+                      clipboardCopiedMessage: "Copied to clipboard!",
                     });
                   }
                   setTimeout(() => {
                     this.setState({
                       copyToClipboard: false,
-                      clipboardCopiedMessage: ""
+                      clipboardCopiedMessage: "",
                     });
                   }, 1000);
                   // this.setState({ : true });
@@ -610,7 +613,6 @@ class SodopeResults extends Component {
                 ) : null}
               </Fragment>
             )}
-
           </div>
 
           {this.state.copyToClipboard ? (

@@ -7,7 +7,6 @@ cache:
 env:
   CI: false
 before_script:
-  - export NODE_OPTIONS="--max-old-space-size=8192"
+  - REACT_APP_GIT_SHA_SHORT=`git rev-parse --short HEAD` REACT_APP_GIT_SHA_LONG=`git rev-parse HEAD` npm run build
 script:
   - npm run build
-

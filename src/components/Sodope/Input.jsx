@@ -5,7 +5,7 @@ import ReactGA from "react-ga";
 import {
   demoSodope,
   defaultProteinSodope,
-  defaultNucleotideSodope
+  defaultNucleotideSodope,
 } from "./Utils/Utils";
 
 class SodopeInput extends Component {
@@ -21,7 +21,7 @@ class SodopeInput extends Component {
       isSubmitting: false,
       showResult: false,
       isServerError: false,
-      result: ""
+      result: "",
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleChangeSequenceType = this.handleChangeSequenceType.bind(this);
@@ -32,7 +32,7 @@ class SodopeInput extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  handleKeyDown = event => {
+  handleKeyDown = (event) => {
     if (event.key === "Enter") {
       this.submitInput(event);
     }
@@ -44,11 +44,11 @@ class SodopeInput extends Component {
         sequenceType: event.target.value,
         currentInputSequence: "",
         inputSequenceProtein: "",
-        inputSequenceNucleotide: ""
+        inputSequenceNucleotide: "",
       });
       ReactGA.event({
         category: "SoDoPE sequence type selection",
-        action: "Type: " + event.target.value
+        action: "Type: " + event.target.value,
       });
     }
   }
@@ -75,7 +75,7 @@ class SodopeInput extends Component {
           exampleNucleotide
         ).toUpperCase(),
         inputSequenceError: "",
-        isValidatedSequence: true
+        isValidatedSequence: true,
       });
     } else {
       this.setState({
@@ -84,13 +84,13 @@ class SodopeInput extends Component {
         inputSequenceNucleotide: "",
         inputSequenceProtein: exampleProtein,
         inputSequenceError: "",
-        isValidatedSequence: true
+        isValidatedSequence: true,
       });
     }
 
     ReactGA.event({
       category: "SoDoPE example",
-      action: "SoDoPE example button clicked."
+      action: "SoDoPE example button clicked.",
     });
   }
 
@@ -104,11 +104,11 @@ class SodopeInput extends Component {
       currentInputSequence: seq,
       inputSequenceNucleotide: seq,
       inputSequenceProtein: this.translateSequence(seq).toUpperCase(),
-      sequenceType: "Nucleotide"
+      sequenceType: "Nucleotide",
     });
     ReactGA.event({
       category: "SoDoPE demo",
-      action: "SoDoPE demo button clicked."
+      action: "SoDoPE demo button clicked.",
     });
   };
 
@@ -176,7 +176,7 @@ class SodopeInput extends Component {
         GTG: "V",
         GCG: "A",
         GAG: "E",
-        GGG: "G"
+        GGG: "G",
       };
 
       let codons = sequence.match(/.{1,3}/g);
@@ -234,7 +234,7 @@ class SodopeInput extends Component {
             } else {
               codons.shift();
               codons.pop();
-              let common = codons.filter(value => stop.includes(value));
+              let common = codons.filter((value) => stop.includes(value));
               if (common.length !== 0) {
                 isValid = false;
                 error = "Early stop codon found.";
@@ -266,7 +266,7 @@ class SodopeInput extends Component {
       inputSequenceNucleotide: sequence,
       inputSequenceProtein: this.translateSequence(sequence).toUpperCase(),
       inputSequenceError: error,
-      isValidatedSequence: isValid
+      isValidatedSequence: isValid,
     });
   }
 
@@ -298,7 +298,7 @@ class SodopeInput extends Component {
         error =
           "Sequence length should be greater than 25 and less then 10,000 residues.";
       }
-    } else if (sequence.length !== 0){
+    } else if (sequence.length !== 0) {
       isValid = false;
       error =
         "Looks like a nucleotide sequenece. Please upload a protein sequence or change the type to Nucleotide.";
@@ -309,7 +309,7 @@ class SodopeInput extends Component {
       inputSequenceNucleotide: "",
       inputSequenceProtein: sequence.split("*")[0],
       inputSequenceError: error,
-      isValidatedSequence: isValid
+      isValidatedSequence: isValid,
     });
   }
 
@@ -319,42 +319,42 @@ class SodopeInput extends Component {
 
     ReactGA.event({
       category: "SoDoPE Input Page",
-      action: "Submit button clicked."
+      action: "Submit button clicked.",
     });
 
     event.preventDefault();
     if (sequence && isValid) {
       const userObject = {
         seq: sequence, //Protein sequence here
-        hmmdb: "pfam"
+        hmmdb: "pfam",
       };
       this.setState({ isSubmitting: true, showResult: true });
 
       axios
         .post("https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan", userObject)
-        .then(res => {
+        .then((res) => {
           // console.log(res)
           this.setState({
             showResult: true,
             result: res.data,
-            isSubmitting: false
+            isSubmitting: false,
           });
           ReactGA.event({
             category: "SoDoPE Input Page",
             action: "Submit button clicked.",
-            label: "HMMER results received."
+            label: "HMMER results received.",
           });
         })
-        .catch(error => {
+        .catch((error) => {
           this.setState({
             isServerError: true,
             serverError: error,
-            isSubmitting: false
+            isSubmitting: false,
           });
           ReactGA.event({
             category: "SoDoPE Input Page",
             action: "Submit button clicked.",
-            label: "HMMER query failed."
+            label: "HMMER query failed.",
           });
         });
     }
@@ -367,68 +367,80 @@ class SodopeInput extends Component {
           <section
             className="hero is-fullheight"
             style={{
-              backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
+              backgroundImage: "linear-gradient(to right, #1a2b32, #355664)",
             }}
           >
             <div className="hero-body">
               <div className="container is-fluid is-paddingless">
                 <div className="box">
-                {this.state.isSubmitting && !this.state.isServerError? (
-                  <Fragment>
-                  <br />
-                  <div className="card">
-                    <header className="card-header">
-                      <p className="card-header-title has-text-info">
-                        Loading domains...
-                      </p>
-                    </header>
-                    <div className="card-content">
-                      <div className="content">
-                        <small>
-                          We are now querying{" "}
-                          <a
-                            href="https://www.ebi.ac.uk/Tools/hmmer/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            HMMER
-                          </a>{" "}
-                          for domain annotations. You can use the slider to
-                          explore the sequence or wait till the domains load.
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                  <br />
-                  </Fragment>
-                ): null}
-                {this.state.isServerError ? (
-                  <Fragment>
-                    <div className="card">
-                      <header className="card-header">
-                        <p className="card-header-title has-text-danger">
-                          Error: Network.
-                        </p>
-                      </header>
-                      <div className="card-content">
-                        <div className="content">
-                          <small>
-                            This happens when HMMER webserver is either too busy
-                            or is undergoing maintenence or you are having network
-                            issues! You can use the slider to explore the
-                            sequence.
-                          </small>
+                  {this.state.isSubmitting ? (
+                    this.state.isServerError ? null : (
+                      <Fragment>
+                        <br />
+                        <div className="card">
+                          <header className="card-header">
+                            <p className="card-header-title has-text-info">
+                              Loading domains...
+                            </p>
+                          </header>
+                          <div className="card-content">
+                            <div className="content">
+                              <small>
+                                We are now querying{" "}
+                                <a
+                                  href="https://www.ebi.ac.uk/Tools/hmmer/"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  HMMER
+                                </a>{" "}
+                                for domain annotations. You can use the slider
+                                to explore the sequence or wait till the domains
+                                load.
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                        <br />
+                      </Fragment>
+                    )
+                  ) : null}
+                  {this.state.isServerError ? (
+                    <Fragment>
+                      <div className="card">
+                        <header className="card-header">
+                          <p className="card-header-title has-text-danger">
+                            Error:{" "}
+                            {this.state.serverError.response.status
+                              ? this.state.serverError.response.status
+                              : "Network"}{" "}
+                            {this.state.serverError.response.statusText
+                              ? "| " +
+                                this.state.serverError.response.statusText
+                              : ""}
+                          </p>
+                          <p className="card-header-title has-text-danger"></p>
+                        </header>
+                        <div className="card-content">
+                          <div className="content">
+                            <small>
+                              {this.state.serverError.response.data.seq[0]
+                                ? this.state.serverError.response.data.seq[0]
+                                : "This happens when HMMER webserver is either too busy or is undergoing maintenence or you are having network issues! You can use the slider to explore the sequence."}
+                            </small>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <br />
-                  </Fragment>
-                ): null}
+                      <br />
+                    </Fragment>
+                  ) : null}
                   <SodopeResults
                     data={this.state.result}
                     protein={this.state.inputSequenceProtein}
                     nucleotide={this.state.inputSequenceNucleotide}
                     calledFromSodope={true}
+                    isServerError={this.state.isServerError}
+                    serverError={this.state.serverError}
                     key={"new-sodope"}
                   />
                 </div>
