@@ -69,32 +69,33 @@ const Footer = () => {
           </div>
           <div className="column is-3">
             <p className="title has-text-white">Contact</p>
-
+            <div className="field is-grouped is-grouped-left">
+              <p className="control">
+                {" "}
+                <a
+                  href="mailto:paul.gardner@otago.ac.nz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="icon">
+                    <i className="far fa-envelope fa-lg"></i>
+                  </span>
+                </a>
+              </p>
+              <p className="control">
+                <a
+                  href="https://github.com/Gardner-BinfLab/TISIGNER-ReactJS"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="icon">
+                    <i className="fab fa-github fa-lg"></i>
+                  </span>
+                  {/*<span>Github</span>*/}
+                </a>
+              </p>
+            </div>
             <p>
-              {" "}
-              <a
-                href="mailto:paul.gardner@otago.ac.nz"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <i className="far fa-envelope"></i>
-                </span>
-              </a>
-              <a
-                href="https://github.com/Gardner-BinfLab/TISIGNER-ReactJS"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <i className="fab fa-github"></i>
-                </span>
-                {/*<span>Github</span>*/}
-              </a>
-            </p>
-
-            <p>
-              {" "}
               <a
                 href="https://bkb3.github.io/homepage"
                 target="_blank"
@@ -139,6 +140,31 @@ const Footer = () => {
           </div>
         </div>
         <hr />
+
+        <div className="has-text-centered is-family-code">
+          <p>
+            <a
+              href="https://travis-ci.com/Gardner-BinfLab/TISIGNER-ReactJS"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://travis-ci.com/Gardner-BinfLab/TISIGNER-ReactJS.svg?branch=master"
+                alt="Travis CI build status"
+              />
+            </a>
+          </p>
+          <p>
+            Build from commit:
+            <a
+              href={`https://github.com/Gardner-BinfLab/TISIGNER-ReactJS/commit/${process.env.REACT_APP_GIT_SHA_LONG}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {`${process.env.REACT_APP_GIT_SHA_SHORT}`}
+            </a>
+          </p>
+        </div>
         <div className="content has-text-centered has-text-white">
           <p>&copy; 2019-{new Date().getFullYear()} Authors</p>
         </div>

@@ -683,6 +683,23 @@ const SodopeDocumentation = (props) => {
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
+                  Is there an option for batch input mode?
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  Not yet. You can download the command line program from our
+                  GitHub{" "}
+                  <a
+                    href="https://github.com/Gardner-BinfLab/SoDoPE_paper_2020/tree/master/SWI"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    https://github.com/Gardner-BinfLab/SoDoPE_paper_2020/tree/master/SWI
+                  </a>{" "}
+                  and run it locally. The command line program is optimised to
+                  scan a large number of sequences.
+                </Typography>
+
+                <Typography variant="subtitle2" gutterBottom>
                   What is ‘optimise expression’ about?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
