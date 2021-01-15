@@ -20,15 +20,15 @@ const promoters = [
 const marks = [
   {
     value: 5,
-    label: "Low",
+    label: "5",
   },
   {
     value: 15,
-    label: "15 (Max)",
+    label: "15",
   },
   {
     value: 30,
-    label: "Min",
+    label: "30",
   },
 ];
 
@@ -356,25 +356,28 @@ class General extends Component {
         ) : (
           <div className="control">
             <label className="label">Target expression score</label>
-                <p className="help is-info">
-                  {/* <span className="icon is-small is-right">
+            <p className="help is-info">
+              {/* <span className="icon is-small is-right">
                     <i className="fas fa-exclamation-triangle"></i>
                   </span> */}
-                  Use the opening energy slider below and the plot to select the target expression score. By default, the target opening energy (x-axis) is 15, which corresponds to the maximum target expression score (y-axis). Opening energy less than 5 or greater than 30 won't lead to any further improvements. 
-                </p>
-                <br />
+              Use the opening energy slider to select the target expression
+              score. The corresponding expression score is annotated on the
+              plot as 'Target'. By default, the target opening energy (x-axis) is 15 and it
+              corresponds to the maximum expression score, which is
+              around 0.95 (y-axis). Opening energy less than 5 or greater than 30
+              won't lead to any further improvements.
+            </p>
+            <br />
 
-            <Chart target={this.state.targetExpression}/>
-            <p className="help is-info">
-                 Opening energy slider.
-                </p>
-                <br />
+            <Chart target={this.state.targetExpression} />
+            <p className="help is-info">Opening energy slider</p>
             <Slider
               value={this.state.targetExpression}
               valueLabelDisplay="auto"
               marks={marks}
               min={5}
               max={30}
+              step={0.1}
               onChange={this.sliderChange}
               onChangeCommitted={() => {
                 ReactGA.event({

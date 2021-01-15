@@ -1,3 +1,8 @@
+# 2.1.1 (16-01-2021)
+### Bug Fixes
+* **TIsigner:** New improved model for TIsigner using step response.
+
+
 # 2.0.1 (19-11-2020)
 ### Bug Fixes
 * **TIsigner:** Backend fixes for warnings from pandas: ```SettingWithCopyWarning``` and ```pandas.util.testing```.

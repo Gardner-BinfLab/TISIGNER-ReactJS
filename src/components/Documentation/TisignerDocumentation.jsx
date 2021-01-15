@@ -39,15 +39,15 @@ const TisignerDocumentation = (props) => {
   const marks = [
     {
       value: 5,
-      label: "Low",
+      label: "5",
     },
     {
       value: 15,
-      label: "15 (Max)",
+      label: "15",
     },
     {
       value: 30,
-      label: "Min",
+      label: "30",
     },
   ];
 
@@ -109,13 +109,13 @@ const TisignerDocumentation = (props) => {
                       <div className="level-item has-text-centered">
                         <div>
                           <p className="heading">Opening energy (KCal/mol)</p>
-                          <p className="title">4.56</p>
+                          <p className="title">15.17</p>
                         </div>
                       </div>
                       <div className="level-item has-text-centered">
                         <div>
                           <p className="heading">Expression score</p>
-                          <p className="title">98.06</p>
+                          <p className="title">0.94</p>
                         </div>
                       </div>
                       <div className="level-item has-text-centered">
@@ -361,11 +361,14 @@ const TisignerDocumentation = (props) => {
                           </a>{" "}
                           (8,780 'success' and 2,650 'failure' experiments using
                           an <i>Escherichia coli</i> T7 lac promoter system) by
-                          using step response (See FAQ below). We call these rescaled
-                          values as the expression scores. Users can set a score between 5 and 100 (low
-                          and high protein levels, respectively) using the
-                          expression tuner available at{" "}
-                          <em>Settings > General</em>, which appears as follows:
+                          using step response (See FAQ below). We call these
+                          rescaled values as the expression scores. Expression
+                          score indicate the expected expression of the sequence
+                          and lies between 0 to 1. Users can set an opening
+                          energy from 5 to 30 and also view the corresponding
+                          expression score using the slider and plot
+                          available at <em>Settings > General</em>, which
+                          appears as follows:
                         </Typography>
                       }
                     />
@@ -373,7 +376,7 @@ const TisignerDocumentation = (props) => {
 
                   <div className="card">
                     <div className="card-content">
-                      <Chart target={value}/>
+                      <Chart target={value} />
                       <Slider
                         defaultValue={15}
                         value={value}
@@ -381,6 +384,7 @@ const TisignerDocumentation = (props) => {
                         marks={marks}
                         min={5}
                         max={30}
+                        step={0.1}
                         onChange={handleChange}
                       />
                     </div>
@@ -626,9 +630,12 @@ const TisignerDocumentation = (props) => {
                   What is step response?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Step response is the response of a system when input is changed from low to high. Stable systems try to make their output constant due to limited resources and feedback loops. This means that after a certain limit, the output of a system cannot increase any further. 
+                  Step response is the response of a system when input is
+                  changed from low to high. Stable systems try to make their
+                  output constant due to limited resources and feedback loops.
+                  This means that after a certain limit, the output of a system
+                  cannot increase any further.
                 </Typography>
-
 
                 <Typography variant="subtitle2" gutterBottom>
                   Could I copy and distribute TIsigner for commercial purposes?
