@@ -24,6 +24,19 @@ class Tools extends Component {
             sequence. This enables a standard PCR cloning for the optimised
             sequence.
             <br />
+            We validated TIsigner by designing constructs with different opening
+            energies. Our predictions (experession scores) matched closely with
+            the experimental results (Spearman's ρ = 0.72, P-value = 1.3 x 10
+            <sup>-5</sup>). The experimental details and results can be viewed at{" "}
+            <a
+              href="https://bkb3.github.io/TIsignerExperiment/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              TIsigner experiment page
+            </a>
+            .
+            <hr />
             DOI:{" "}
             <a
               href="https://doi.org/10.1101/726752"

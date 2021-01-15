@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Navigation from "../Common/Navigation";
 import Footer from "../Homepage/Footer";
 import Typography from "@material-ui/core/Typography";
@@ -24,6 +24,11 @@ const TisignerDocumentation = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const [value, setValue] = useState(15);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   ReactGA.event({
     category: "Documentation",
@@ -34,19 +39,15 @@ const TisignerDocumentation = (props) => {
   const marks = [
     {
       value: 5,
-      label: "5",
+      label: "Low",
+    },
+    {
+      value: 15,
+      label: "15 (Max)",
     },
     {
       value: 30,
-      label: "30 (Low)",
-    },
-    {
-      value: 70,
-      label: "70 (High)",
-    },
-    {
-      value: 100,
-      label: "100",
+      label: "Min",
     },
   ];
 
@@ -360,9 +361,8 @@ const TisignerDocumentation = (props) => {
                           </a>{" "}
                           (8,780 'success' and 2,650 'failure' experiments using
                           an <i>Escherichia coli</i> T7 lac promoter system) by
-                          using logistic regression. We call these rescaled
-                          values as the expression scores, and the default score
-                          is 100. Users can set a score between 5 and 100 (low
+                          using step response (See FAQ below). We call these rescaled
+                          values as the expression scores. Users can set a score between 5 and 100 (low
                           and high protein levels, respectively) using the
                           expression tuner available at{" "}
                           <em>Settings > General</em>, which appears as follows:
@@ -373,12 +373,15 @@ const TisignerDocumentation = (props) => {
 
                   <div className="card">
                     <div className="card-content">
+                      <Chart target={value}/>
                       <Slider
-                        defaultValue={100}
+                        defaultValue={15}
+                        value={value}
                         valueLabelDisplay="auto"
                         marks={marks}
                         min={5}
-                        max={100}
+                        max={30}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -449,8 +452,8 @@ const TisignerDocumentation = (props) => {
                   Plot
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  On the distribution of opening energy of 'failure' and
-                  'success' experiments form PSI:Biology , we annotate the
+                  On the step response of opening energy of 'failure' and
+                  'success' experiments form PSI:Biology, we annotate the
                   opening energy of each sequence in the results. For
                   comparision, the opening energy of the input sequence and the
                   optimised sequence closest to the input parameters (Top
@@ -459,7 +462,7 @@ const TisignerDocumentation = (props) => {
                 </Typography>
                 <div className="card">
                   <div className="card-content">
-                    <Chart selected={4.56} input={14.34} current={11} />
+                    <Chart selected={14.34} input={20} current={11} />
                   </div>
                 </div>
                 <br />
@@ -601,6 +604,33 @@ const TisignerDocumentation = (props) => {
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
+                  Do you have any experimental results based on this tool?
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  Yes! We designed different constructs within possible range of
+                  opening energy. Our predictions (expression scores) matched
+                  closely with the experimental results (Spearman's ρ = 0.72,
+                  P-value = 1.3 x 10<sup>-5</sup>). All these results and the
+                  details on the experiment can be viewed on our{" "}
+                  <a
+                    href="https://bkb3.github.io/TIsignerExperiment/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    TIsigner experiment page
+                  </a>
+                  .
+                </Typography>
+
+                <Typography variant="subtitle2" gutterBottom>
+                  What is step response?
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  Step response is the response of a system when input is changed from low to high. Stable systems try to make their output constant due to limited resources and feedback loops. This means that after a certain limit, the output of a system cannot increase any further. 
+                </Typography>
+
+
+                <Typography variant="subtitle2" gutterBottom>
                   Could I copy and distribute TIsigner for commercial purposes?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
@@ -630,9 +660,9 @@ const TisignerDocumentation = (props) => {
                   If you find protein solubility prediction and optimisation
                   useful, please cite :
                   <br />
-                  Bhandari, B.K., Gardner, P.P., Lim, C.S.
-                  (2020) Solubility-Weighted Index: Fast and Accurate Prediction
-                  of Protein Solubility.
+                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020)
+                  Solubility-Weighted Index: Fast and Accurate Prediction of
+                  Protein Solubility.
                   <cite title="Solubility-Weighted Index: Fast and Accurate Prediction of Protein Solubility ">
                     {" "}
                     Bioinformatics.

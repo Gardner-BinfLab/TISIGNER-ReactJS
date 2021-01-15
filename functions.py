@@ -4,6 +4,9 @@
 Created on Tue May  7 20:56:34 2019
 
 @author: bikash
+
+Part of TIsigner
+
 """
 
 import os
@@ -19,16 +22,32 @@ import numpy as np
 import pandas as pd
 import data
 from terminators import AnalyseTerminators
+# from lmfit.model import load_modelresult
+# model = load_modelresult(os.path.join(os.path.dirname(__file__), \
+#     'tisigner.model'))
 
 
-REFDF = pd.read_csv(os.path.join(os.path.dirname(__file__), \
-                                 'lookup_table.csv')) #table for likelihood/thresh
-PRIOR_PROB = 0.49 #success/(success+failure)
-PRIOR_ODDS = PRIOR_PROB/(1-PRIOR_PROB)
+# REFDF = pd.read_csv(os.path.join(os.path.dirname(__file__), \
+#                                  'lookup_table.csv')) #table for likelihood/thresh
+# PRIOR_PROB = 0.49 #success/(success+failure)
+# PRIOR_ODDS = PRIOR_PROB/(1-PRIOR_PROB)
 CM = os.path.join(os.path.dirname(__file__), 'term.cm')
 
 
-
+def response(x, inflection1=17.9896340, inflection2=17., slope1=-0.8, slope2=-0.5, max_sel=1.61155914, minsel_upper=0.5,):
+    '''
+    https://github.com/duplisea/dublogistic
+    x = x
+    omega = maximum/minimum selectivity
+    alpha = slope
+    beta = point of inflection
+    Default params are based on logistic fitting of PSI:Biology data https://doi.org/10.1101/726752
+    '''
+    minsel_upper= 1-minsel_upper
+    logistic1= max_sel/(1+np.exp(-slope1*(x-inflection1)))
+    logistic2= 1-minsel_upper/(1+np.exp(-slope2*(x-inflection2)))
+    sel= logistic1*logistic2
+    return sel
 
 
 
@@ -63,7 +82,7 @@ class Optimiser:
         self.rms_sites = rms_sites
         self.cnst = data.CNST #to prevent overflows
         self.direction = direction
-        if self.threshold is not None and \
+        if self.threshold != None and \
         Optimiser.accessibility(self) <= self.threshold:
             self.direction = 'decrease-accessibility'
         if self.direction == 'decrease-accessibility':
@@ -254,8 +273,8 @@ class Optimiser:
 
         if self.utr == data.pET21_UTR and self.host=='ecoli':
             #also return posterior probs for ecoli and pET_21_UTR
-            results.insert(2, get_prob_pos(final_cost))
-            results.append(get_prob_pos(initial_cost))
+            results.insert(2, response(x=final_cost))
+            results.append(response(x=initial_cost))
         return results
 
 
@@ -306,12 +325,12 @@ def get_accs(prob):
     return accs
 
 
-def scaled_prob(post_prob):
-    '''Scales post probability from min value (prior) to 100 (equal to post
-    prob of 0.70 (max in our case).
-    '''
-    scaled_p = 100*(post_prob - PRIOR_PROB )/(0.70 - PRIOR_PROB)
-    return scaled_p
+# def scaled_prob(post_prob):
+#     '''Scales post probability from min value (prior) to 100 (equal to post
+#     prob of 0.70 (max in our case).
+#     '''
+#     scaled_p = 100*(post_prob - PRIOR_PROB )/(0.70 - PRIOR_PROB)
+#     return scaled_p
 
 
 
@@ -434,7 +453,7 @@ def sort_results(df, direction='decrease', termcheck=False):
                               "Accessibility":df['org_accs'][0], \
                               "pExpressed":df['org_pexpr'][0], \
                               "Type":"Input"}, ignore_index=True)
-        res_df['pExpressed'] = res_df['pExpressed'].apply(scaled_prob).round(2)
+        res_df['pExpressed'] = res_df['pExpressed'].round(2)
     else:
         res_df = sequences_df.append({"Sequence":org_seq, \
                               "Accessibility":df['org_accs'][0], \
@@ -697,9 +716,14 @@ def parse_fine_tune(request_json):
     '''
     if request_json['targetExpression']:
 #        print(int(request_json['targetExpression']))
-        post_prob = (int(request_json['targetExpression']) * \
-                               (0.70 - PRIOR_PROB)/100) + PRIOR_PROB
-        threshold = get_accs(post_prob) #accs threshold
+        # post_prob = (int(request_json['targetExpression']) * \
+        #                        (0.70 - PRIOR_PROB)/100) + PRIOR_PROB
+        # threshold = get_accs(post_prob) #accs threshold
+        threshold = float(request_json['targetExpression'])
+        if threshold < 1:
+            threshold = 1
+        if threshold > 30:
+            threshold = 30
     else:
         threshold = None
     return threshold

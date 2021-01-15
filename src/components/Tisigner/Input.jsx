@@ -32,7 +32,7 @@ class Input extends Component {
       inputSequenceProtein: "",
       host: "Escherichia coli",
       promoter: "T7",
-      targetExpression: 100,
+      targetExpression: 15,
       substitutionMode: "transInit",
       numberOfCodons: 9,
       optimisationDirection: "increase-accessibility",
@@ -257,13 +257,7 @@ class Input extends Component {
   };
 
   example(event) {
-    let exSeq =
-      "ATGAAGAAGAGTTTGAGTGTGTCGGGGCCAGGGATGAAAGGGATGGTCGGCATGGCGGCGCGCGTCTTTG" +
-      "CAGCGATGTCACGCGCCCGTATTTCCGTGGTGCTGATTACGCAATCATCTTCCGAATACAGCATCAGTTT" +
-      "CTGCGTTCCACAAAGCGACTGTGTGCGAGCTGAACGGGCAATGCAGGAAGAGTTCTACCTGGAAACCTCT" +
-      "GAGGATCATAAACACAAGGAGGAAGATCATGACGGAGCTCGCCTCGAGGGAGGACTATCTATCTATCTAT" +
-      "CTATCTTCGGCGGACGGACTACCATCGCATTACGGGGCTACGACGGACTCGATCTACTATCTATCTACTT" +
-      "CTAG";
+    let exSeq = defaultNucleotideTIsigner();
     this.sequenceInput(event, exSeq);
 
     ReactGA.event({

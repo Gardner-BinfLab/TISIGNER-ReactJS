@@ -3,36 +3,33 @@ import Slider from "@material-ui/core/Slider";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import ReactGA from "react-ga";
+import Chart from "../../Chart/Chart";
 
 const hosts = [
   { value: "Escherichia coli", label: "Escherichia coli" },
   { value: "Saccharomyces cerevisiae", label: "Saccharomyces cerevisiae" },
   { value: "Mus musculus", label: "Mus musculus" },
-  { value: "Other", label: "Other" }
+  { value: "Other", label: "Other" },
 ];
 
 const promoters = [
   { value: "T7", label: "T7lac promoter (e.g., pET21)" },
-  { value: "Custom", label: "Custom" }
+  { value: "Custom", label: "Custom" },
 ];
 
 const marks = [
   {
     value: 5,
-    label: "5"
+    label: "Low",
+  },
+  {
+    value: 15,
+    label: "15 (Max)",
   },
   {
     value: 30,
-    label: "30 (Low)"
+    label: "Min",
   },
-  {
-    value: 70,
-    label: "70 (High)"
-  },
-  {
-    value: 100,
-    label: "100"
-  }
 ];
 
 class General extends Component {
@@ -42,7 +39,7 @@ class General extends Component {
     this.state = {
       host: "Escherichia coli",
       promoter: "T7",
-      targetExpression: 100,
+      targetExpression: 15,
       substitutionMode: "transInit",
       numberOfCodons: 9,
       customPromoter: "",
@@ -51,7 +48,7 @@ class General extends Component {
       isValidated:
         JSON.parse(localStorage.getItem("isValidatedGeneral")) !== null
           ? JSON.parse(localStorage.getItem("isValidatedGeneral"))
-          : true
+          : true,
     };
     // this.selectUtr = this.selectUtr.bind(this);
     this._selectHost = this._selectHost.bind(this);
@@ -61,7 +58,7 @@ class General extends Component {
     this.customPromoterInput = this.customPromoterInput.bind(this);
   }
 
-  _selectHost = option => {
+  _selectHost = (option) => {
     // console.log(`You selected ${option.label}, with value ${option.value}`)
     this.setState({
       host: option.value,
@@ -70,50 +67,53 @@ class General extends Component {
         option.value === "Escherichia coli" ? this.state.promoter : "Custom",
       isValidated: false,
       customPromoterError:
-        option.value !== "Escherichia coli" ? "Empty custom promoter." : ""
+        option.value !== "Escherichia coli" ? "Empty custom promoter." : "",
     });
     ReactGA.event({
       category: "TIsigner Customisation",
       action: "Host selected: " + option.value,
-      label: "General"
+      label: "General",
     });
   };
 
-  _selectPromoter = option => {
-    // console.log(`You selected ${option.label}, with value ${option.value}`)
+  _selectPromoter = (option) => {
     this.setState({
       promoter: option.value,
       customPromoter: "",
       isValidated: false,
-      customPromoterError: option.value === "T7" ? "" : "Empty custom promoter."
+      customPromoterError:
+        option.value === "T7" ? "" : "Empty custom promoter.",
     });
     ReactGA.event({
       category: "TIsigner Customisation",
       action: "Promoter selected: " + option.value,
-      label: "General"
+      label: "General",
     });
   };
 
   sliderChange = (event, value) => {
     this.setState({
-      targetExpression: value
+      targetExpression: value,
     });
   };
 
   radioChange(event) {
     this.setState({
-      optimisationDirection: event.target.value
+      optimisationDirection: event.target.value,
     });
 
     ReactGA.event({
       category: "TIsigner Customisation",
       action: "Optimisation Direction: " + event.target.value,
-      label: "General"
+      label: "General",
     });
   }
 
   customPromoterInput(event) {
-    let input = event.target.value.replace(/ /g, "").replace(/U/gi, "T").toUpperCase();
+    let input = event.target.value
+      .replace(/ /g, "")
+      .replace(/U/gi, "T")
+      .toUpperCase();
     let promoter = "";
     let filter = /^[ACGTU]+$/;
     let isValid = true;
@@ -135,13 +135,13 @@ class General extends Component {
     this.setState({
       customPromoter: promoter,
       isValidated: this.state.promoter === "T7" ? true : isValid,
-      customPromoterError: errors
+      customPromoterError: errors,
     });
 
     ReactGA.event({
       category: "TIsigner Customisation",
       action: "Custom promoter was entered.",
-      label: "General"
+      label: "General",
     });
   }
 
@@ -152,14 +152,14 @@ class General extends Component {
     !host
       ? localStorage.setItem("host", JSON.stringify(this.state.host))
       : this.setState({
-          host: host
+          host: host,
         });
 
     const promoter = JSON.parse(localStorage.getItem("promoter"));
     !promoter
       ? localStorage.setItem("promoter", JSON.stringify(this.state.promoter))
       : this.setState({
-          promoter: promoter
+          promoter: promoter,
         });
 
     const substitutionMode = JSON.parse(
@@ -171,7 +171,7 @@ class General extends Component {
           JSON.stringify(this.state.substitutionMode)
         )
       : this.setState({
-          substitutionMode: substitutionMode
+          substitutionMode: substitutionMode,
         });
 
     const customPromoter = JSON.parse(localStorage.getItem("customPromoter"));
@@ -181,7 +181,7 @@ class General extends Component {
           JSON.stringify(this.state.customPromoter)
         )
       : this.setState({
-          customPromoter: customPromoter
+          customPromoter: customPromoter,
         });
 
     const targetExpression = JSON.parse(
@@ -193,7 +193,7 @@ class General extends Component {
           JSON.stringify(this.state.targetExpression)
         )
       : this.setState({
-          targetExpression: targetExpression
+          targetExpression: targetExpression,
         });
 
     const optimisationDirection = JSON.parse(
@@ -205,7 +205,7 @@ class General extends Component {
           JSON.stringify(this.state.optimisationDirection)
         )
       : this.setState({
-          optimisationDirection: optimisationDirection
+          optimisationDirection: optimisationDirection,
         });
 
     const isValidated = JSON.parse(localStorage.getItem("isValidatedGeneral"));
@@ -215,7 +215,7 @@ class General extends Component {
           JSON.stringify(this.state.isValidated)
         )
       : this.setState({
-          isValidated: this.state.promoter === "T7" ? true : isValidated
+          isValidated: this.state.promoter === "T7" ? true : isValidated,
         });
 
     const customPromoterError = JSON.parse(
@@ -227,13 +227,13 @@ class General extends Component {
           JSON.stringify(this.state.customPromoterError)
         )
       : this.setState({
-          customPromoterError: !(promoter === "T7") ? customPromoterError : ""
+          customPromoterError: !(promoter === "T7") ? customPromoterError : "",
         });
 
     ReactGA.event({
       category: "TIsigner Customisation",
       action: "General Tab was clicked.",
-      label: "General"
+      label: "General",
     });
   }
 
@@ -356,18 +356,31 @@ class General extends Component {
         ) : (
           <div className="control">
             <label className="label">Target expression score</label>
+                <p className="help is-info">
+                  {/* <span className="icon is-small is-right">
+                    <i className="fas fa-exclamation-triangle"></i>
+                  </span> */}
+                  Use the opening energy slider below and the plot to select the target expression score. By default, the target opening energy (x-axis) is 15, which corresponds to the maximum target expression score (y-axis). Opening energy less than 5 or greater than 30 won't lead to any further improvements. 
+                </p>
+                <br />
+
+            <Chart target={this.state.targetExpression}/>
+            <p className="help is-info">
+                 Opening energy slider.
+                </p>
+                <br />
             <Slider
               value={this.state.targetExpression}
               valueLabelDisplay="auto"
               marks={marks}
               min={5}
-              max={100}
+              max={30}
               onChange={this.sliderChange}
               onChangeCommitted={() => {
                 ReactGA.event({
                   category: "TIsigner Customisation",
                   action: "Target Expression: " + this.state.targetExpression,
-                  label: "General"
+                  label: "General",
                 });
               }}
             />

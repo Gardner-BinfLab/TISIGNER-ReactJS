@@ -4,6 +4,8 @@
 Created on Mon May 20 10:36:23 2019
 
 @author: bikash
+
+https://doi.org/10.1101/726752
 """
 
 
@@ -41,7 +43,7 @@ def optimiser():
             threshold = functions.parse_fine_tune(request.json)
         else:
             threshold = None
-
+        print('Threshold = {}'.format(threshold))
 
         termcheck = functions.parse_term_check(request.json)
 
