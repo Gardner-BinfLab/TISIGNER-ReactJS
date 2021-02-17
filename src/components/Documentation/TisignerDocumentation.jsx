@@ -437,7 +437,7 @@ const TisignerDocumentation = (props) => {
                           </a>
                           . If there are any hits, we report the number of those
                           hits and their corresponding E values. If there are no
-                          hits, then these two fields are not displayed.
+                          hits, then this field is not displayed.
                         </Typography>
                       }
                     />
@@ -546,7 +546,9 @@ const TisignerDocumentation = (props) => {
                 </Typography>
                 <Typography variant="body2" gutterBottom>
                   If unsure input the 71 nt vector-encoded sequence preceding
-                  the start codon.
+                  the start codon. For 5&prime; UTRs shorter than 71
+                  nucleotides, upstream sequences can be used to extend the
+                  UTRs.
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
@@ -630,9 +632,9 @@ const TisignerDocumentation = (props) => {
                   If you find protein solubility prediction and optimisation
                   useful, please cite :
                   <br />
-                  Bhandari, B.K., Gardner, P.P., Lim, C.S.
-                  (2020) Solubility-Weighted Index: Fast and Accurate Prediction
-                  of Protein Solubility.
+                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020)
+                  Solubility-Weighted Index: Fast and Accurate Prediction of
+                  Protein Solubility.
                   <cite title="Solubility-Weighted Index: Fast and Accurate Prediction of Protein Solubility ">
                     {" "}
                     Bioinformatics.

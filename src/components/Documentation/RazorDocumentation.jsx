@@ -17,6 +17,9 @@ import RazorLine from "../Chart/RazorLine";
 import SignalData from "./SignalPeptide_Data.csv.gz";
 import ToxinData from "./Toxin_Data.csv.gz";
 import FungiData from "./Fungi_Data.csv.gz";
+import SignalBenchmark from "./benchmark_sp_new.csv.gz";
+import ToxinBenchmark from "./benchmark_toxins.csv.gz";
+import FungiBenchmark from "./benchmark_fungi.csv.gz";
 
 const data = demoRazor();
 const prot = defaultProteinRazor();
@@ -238,11 +241,11 @@ const RazorDocumentation = (props) => {
                           color="textPrimary"
                         >
                           The number of models with prediction probability
-                          greater than a threshold of 0.62. In this example, a
+                          greater than a threshold of 0.56. In this example, a
                           total of 5 stars indicates that all 5 models predict
                           the input sequence harbours a signal peptide. This
                           threshold shows the highest Matthew's correlation
-                          coefficient on the benchmarking set.
+                          coefficient on the training set.
                         </Typography>
                       }
                     />
@@ -269,8 +272,8 @@ const RazorDocumentation = (props) => {
                           Similar to above, there are 5 distinct models for
                           prediction of each of these classes of signal
                           peptides. The threshold for fungi and toxin are 0.23
-                          and 0.33 respectively. In this example, only 1 model
-                          predicts that the signal peptide may be harboured by a
+                          and 0.33 respectively. In this example, 4 models
+                          predict that the signal peptide may be harboured by a
                           toxin, whereas 3 models predict that the signal
                           peptide is harboured by a fungal protein. If none of
                           these models make a positive prediction, these fields
@@ -384,25 +387,38 @@ const RazorDocumentation = (props) => {
                   <a href={SignalData} download>
                     here
                   </a>
-                  .
-                </Typography>
-
-                <Typography variant="body2" gutterBottom>
-                  The dataset used for the toxin signal peptide prediction can
-                  be downloaded{" "}
-                  <a href={FungiData} download>
+                  . We also curated a new benchmark set for SP prediction. This
+                  can be downloaded{" "}
+                  <a href={SignalBenchmark} download>
                     here
                   </a>
                   .
                 </Typography>
 
                 <Typography variant="body2" gutterBottom>
-                  The dataset used for the fungal signal peptide prediction can
-                  be downloaded{" "}
+                  The dataset used for the toxin signal peptide training and
+                  benchmarking can be downloaded{" "}
                   <a href={ToxinData} download>
                     here
-                  </a>
-                  .
+                  </a>{" "}
+                  and{" "}
+                  <a href={ToxinBenchmark} download>
+                    here
+                  </a>{" "}
+                  respectively.
+                </Typography>
+
+                <Typography variant="body2" gutterBottom>
+                  The dataset used for the fungal signal peptide training and
+                  benchmarking can be downloaded{" "}
+                  <a href={FungiData} download>
+                    here
+                  </a>{" "}
+                  and{" "}
+                  <a href={FungiBenchmark} download>
+                    here
+                  </a>{" "}
+                  respectively.
                 </Typography>
 
                 <Typography variant="h2" component="h3" gutterBottom>
@@ -469,7 +485,8 @@ const RazorDocumentation = (props) => {
                   Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020) Annotating
                   eukaryotic and toxin-specific signal peptides using Razor.
                   <cite title="Annotating eukaryotic and toxin-specific signal peptides using Razor.">
-                    {" "}bioRxiv.
+                    {" "}
+                    bioRxiv.
                   </cite>{" "}
                   DOI:
                   <a
@@ -488,7 +505,8 @@ const RazorDocumentation = (props) => {
                   Solubility-Weighted Index: fast and accurate prediction of
                   protein solubility.
                   <cite title="Solubility-Weighted Index:  fast and accurate prediction of protein solubility. ">
-                    {" "}Bioinformatics.
+                    {" "}
+                    Bioinformatics.
                   </cite>{" "}
                   DOI:
                   <a

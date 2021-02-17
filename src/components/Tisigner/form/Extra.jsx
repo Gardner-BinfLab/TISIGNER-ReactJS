@@ -205,7 +205,7 @@ class Extra extends Component {
 
         {this.state.substitutionMode === "transInit" ? (
           <div className="control">
-            <label className="label">Maximum number of replacable codons</label>
+            <label className="label">Maximum number of replaceable codons</label>
             <Slider
               value={this.state.numberOfCodons}
               valueLabelDisplay="auto"

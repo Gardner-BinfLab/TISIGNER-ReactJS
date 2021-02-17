@@ -11,7 +11,7 @@ import functions
 
 # Threshold for Max MCC
 # For detecting signal peptides
-SP_THRESHOLD = 0.62
+SP_THRESHOLD = 0.56
 # For signal peptides from fungi
 FUNGI_THRESHOLD = 0.23
 # For signal peptides with toxic protein
