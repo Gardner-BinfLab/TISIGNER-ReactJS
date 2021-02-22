@@ -22,10 +22,10 @@ from terminators import AnalyseTerminators
 
 
 REFDF = pd.read_csv(os.path.join(os.path.dirname(__file__), \
-                                 'lookup_table.csv')) #table for likelihood/thresh
+                                 'models/TIsigner/lookup_table.csv')) #table for likelihood/thresh
 PRIOR_PROB = 0.49 #success/(success+failure)
 PRIOR_ODDS = PRIOR_PROB/(1-PRIOR_PROB)
-CM = os.path.join(os.path.dirname(__file__), 'term.cm')
+CM = os.path.join(os.path.dirname(__file__), 'models/TIsigner/term.cm')
 
 
 
@@ -763,11 +763,11 @@ import pandas as pd
 from scipy.signal import savgol_filter
 
 # Constants
-S_MODELS = pd.read_pickle(os.path.join(os.path.dirname(__file__), "S.pkl.gz"))
-C_MODELS = pd.read_pickle(os.path.join(os.path.dirname(__file__), "C.pkl.gz"))
-FUNGI = pd.read_pickle(os.path.join(os.path.dirname(__file__), "Fungi_Classifier.pkl.gz"))
-TOXIN = pd.read_pickle(os.path.join(os.path.dirname(__file__), "Toxin_Classifier.pkl.gz"))
-weights_df = pd.read_pickle(os.path.join(os.path.dirname(__file__), "Cleavage_weights.pkl.gz"))
+S_MODELS = pd.read_pickle(os.path.join(os.path.dirname(__file__), "models/Razor/S.pkl.gz"))
+C_MODELS = pd.read_pickle(os.path.join(os.path.dirname(__file__), "models/Razor/C.pkl.gz"))
+FUNGI = pd.read_pickle(os.path.join(os.path.dirname(__file__), "models/Razor/Fungi_Classifier.pkl.gz"))
+TOXIN = pd.read_pickle(os.path.join(os.path.dirname(__file__), "models/Razor/Toxin_Classifier.pkl.gz"))
+weights_df = pd.read_pickle(os.path.join(os.path.dirname(__file__), "models/Razor/Cleavage_weights.pkl.gz"))
 WEIGHTS = [w.to_dict() for w in weights_df.Weight]
 # Weights dataframe is of order weight['Position']['AA]
 # where position is 0 based.
@@ -857,10 +857,10 @@ def s_score(feat):
     S score of sequence.
     Input is an array of features (102)
     """
-    if len(feat) != 105:
+    if len(feat) != 104:
         raise ValueError(
             "Input features length is incorrect!"
-            "Expected length 105: Got {}".format(len(feat))
+            "Expected length 104: Got {}".format(len(feat))
         )
 
     if feat.dtype != np.float64:

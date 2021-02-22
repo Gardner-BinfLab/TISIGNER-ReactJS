@@ -34,7 +34,7 @@ source env/bin/activate
 ```
 Then you can run the following commands to activate the backend:
 ```sh
-$ pip3 install -r requirements.txt
+$ pip install -r requirements.txt
 $ python3 tisigner.py
 ```
 
