@@ -841,7 +841,7 @@ def features(seq):
             "Input sequence must be 30 residues long!"
             "\nExpected length 30: Got {}".format(len(seq))
         )
-    aa_list = 'RKNDCEVIYFWL' + 'STG'
+    aa_list = 'RKNDCEVIYFWL' + 'QP'
     converted = np.array([hydrop_flex_swi[i] for i in seq])
     hydro = converted[:, 0]
     flex = converted[:, 1]
