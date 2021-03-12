@@ -12,7 +12,7 @@
     "bulma": "^0.8.2",
     "chart.js": "^2.9.3",
     "chartjs-plugin-annotation": "^0.5.7",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "jss": "10.0.0",
     "radium": "^0.26.0",
     "react": "^16.13.1",
