@@ -39,7 +39,6 @@ const Faq = () => {
                 <Typography variant="h2" component="h3" gutterBottom>
                   Help
                 </Typography>
-
                 {/* <Typography variant="subtitle2" gutterBottom>
                   General
                 </Typography> */}
@@ -47,7 +46,6 @@ const Faq = () => {
                   TISIGNER is a set of tools to improve the outcomes of
                   recombinant protein expression experiment.
                 </Typography>
-
                 <TableContainer component={Paper}>
                   <Table>
                     <TableHead>
@@ -96,11 +94,9 @@ const Faq = () => {
                     </TableBody>
                   </Table>
                 </TableContainer>
-
                 <Typography variant="h2" component="h3" gutterBottom>
                   Browser compatibility
                 </Typography>
-
                 <TableContainer component={Paper}>
                   <Table>
                     <TableHead>
@@ -149,8 +145,32 @@ const Faq = () => {
                     </TableBody>
                   </Table>
                 </TableContainer>
-
-
+                <Typography variant="h2" component="h3" gutterBottom>
+                  Citation
+                </Typography>
+                Citation for specific tools are available in their FAQ page. If
+                you use this webserver, please also cite the following paper in
+                addition to citation for the specific tool.
+                <br />
+                <span className="icon">
+                  <i className="fas fa-graduation-cap"></i>
+                </span>{" "}
+                Bhandari, B.K., Lim, C.S., Gardner, P.P., (2021) TISIGNER.com:
+                web services for improving recombinant protein production.
+                <cite title="TISIGNER.com: web services for improving recombinant protein production.">
+                  {" "}
+                  Nucleic Acids Research.
+                </cite>{" "}
+                DOI:
+                <a
+                  href="https://doi.org/10.1093/nar/gkab175"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  10.1093/nar/gkab175
+                </a>
+                .
+                <br />
               </div>
             </div>
           </div>

@@ -8,16 +8,16 @@ import { Link } from "react-router-dom";
 const styles = {
   fadeInUp: {
     animation: "x 1s",
-    animationName: Radium.keyframes(fadeInUp, "fadeInUp")
+    animationName: Radium.keyframes(fadeInUp, "fadeInUp"),
   },
   fadeInLeft: {
     animation: "x 1s",
-    animationName: Radium.keyframes(fadeInLeft, "fadeInLeft")
+    animationName: Radium.keyframes(fadeInLeft, "fadeInLeft"),
   },
   fadeInRight: {
     animation: "x 1s",
-    animationName: Radium.keyframes(fadeInRight, "fadeInRight")
-  }
+    animationName: Radium.keyframes(fadeInRight, "fadeInRight"),
+  },
 };
 
 const Banner = () => {
@@ -94,6 +94,30 @@ const Banner = () => {
                 </p>
               </ScrollIntoView>
             </div>
+            <Typography
+              variant="subtitle1"
+              style={{ color: "#FFFFFF" }}
+              gutterBottom
+            >
+            <span className="icon">
+              <i className="fas fa-graduation-cap"></i>
+            </span>{" "}
+            Bhandari, B.K., Lim, C.S., Gardner, P.P., (2021) TISIGNER.com:
+            web services for improving recombinant protein production.
+            <cite title="TISIGNER.com: web services for improving recombinant protein production.">
+              {" "}
+              Nucleic Acids Research.
+            </cite>{" "}
+            DOI:
+            <a
+              href="https://doi.org/10.1093/nar/gkab175"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              10.1093/nar/gkab175
+            </a>
+            .
+            </Typography>
           </StyleRoot>
         </div>
       </div>

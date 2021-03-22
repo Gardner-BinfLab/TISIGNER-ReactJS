@@ -482,9 +482,12 @@ const RazorDocumentation = (props) => {
                   How to cite Razor?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
                   Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020) Annotating
                   eukaryotic and toxin-specific signal peptides using Razor.
-                  <cite title="Annotating eukaryotic and toxin-specific signal peptides using Razor.">
+                  <cite title="Razor: annotation of signal peptides from toxins.">
                     {" "}
                     bioRxiv.
                   </cite>{" "}
@@ -497,10 +500,33 @@ const RazorDocumentation = (props) => {
                     10.1101/2020.11.30.405613
                   </a>
                   .
+                  <br />{" "}
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
+                  Bhandari, B.K., Lim, C.S., Gardner, P.P., (2021) TISIGNER.com:
+                  web services for improving recombinant protein production.
+                  <cite title="TISIGNER.com: web services for improving recombinant protein production.">
+                    {" "}
+                    Nucleic Acids Research.
+                  </cite>{" "}
+                  DOI:
+                  <a
+                    href="https://doi.org/10.1093/nar/gkab175"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    10.1093/nar/gkab175
+                  </a>
+                  .
+                  <br />
                   <br />
                   If you find optimising protein solubility useful, please also
                   cite:
-                  <br />
+                  <br />{" "}
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
                   Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020){" "}
                   Solubility-Weighted Index: fast and accurate prediction of
                   protein solubility.
@@ -520,11 +546,14 @@ const RazorDocumentation = (props) => {
                   <br />
                   If you find optimising protein expression useful, please also
                   cite the following preprint:
-                  <br />
+                  <br />{" "}
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
                   Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019) Highly
                   accessible translation initiation sites are predictive of
                   successful heterologous protein expression.
-                  <cite title="Highly accessible translation initiation sites are predictive of successful heterologous protein expression.">
+                  <cite title="Protein yield is tunable by synonymous codon changes of translation initiation sites.">
                     {" "}
                     bioRxiv
                   </cite>

@@ -613,6 +613,9 @@ const TisignerDocumentation = (props) => {
                   How to cite TIsigner?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
                   Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019) Highly
                   accessible translation initiation sites are predictive of
                   successful heterologous protein expression.
@@ -628,10 +631,34 @@ const TisignerDocumentation = (props) => {
                   >
                     10.1101/726752
                   </a>
-                  .<br />
+                  .
+                  <br />{" "}
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
+                  Bhandari, B.K., Lim, C.S., Gardner, P.P., (2021) TISIGNER.com:
+                  web services for improving recombinant protein production.
+                  <cite title="TISIGNER.com: web services for improving recombinant protein production.">
+                    {" "}
+                    Nucleic Acids Research.
+                  </cite>{" "}
+                  DOI:
+                  <a
+                    href="https://doi.org/10.1093/nar/gkab175"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    10.1093/nar/gkab175
+                  </a>
+                  .
+                  <br />
+                  <br />
                   If you find protein solubility prediction and optimisation
                   useful, please cite :
-                  <br />
+                  <br />{" "}
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
                   Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020)
                   Solubility-Weighted Index: Fast and Accurate Prediction of
                   Protein Solubility.
@@ -650,7 +677,10 @@ const TisignerDocumentation = (props) => {
                   .<br />
                   If you find signal peptide prediction useful, please cite the
                   following preprint:
-                  <br />
+                  <br />{" "}
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
                   Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020) Annotating
                   eukaryotic and toxin-specific signal peptides using Razor.
                   <cite title="Annotating eukaryotic and toxin-specific signal peptides using Razor.">

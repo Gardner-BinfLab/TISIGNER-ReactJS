@@ -711,6 +711,9 @@ const SodopeDocumentation = (props) => {
                   How to cite SoDoPE?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
                   Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020){" "}
                   Solubility-Weighted Index: Fast and Accurate Prediction of
                   Protein Solubility.
@@ -727,10 +730,33 @@ const SodopeDocumentation = (props) => {
                     10.1093/bioinformatics/btaa578
                   </a>
                   .
+                  <br />{" "}
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
+                  Bhandari, B.K., Lim, C.S., Gardner, P.P., (2021) TISIGNER.com:
+                  web services for improving recombinant protein production.
+                  <cite title="TISIGNER.com: web services for improving recombinant protein production.">
+                    {" "}
+                    Nucleic Acids Research.
+                  </cite>{" "}
+                  DOI:
+                  <a
+                    href="https://doi.org/10.1093/nar/gkab175"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    10.1093/nar/gkab175
+                  </a>
+                  .
+                  <br />
                   <br />
                   If you find optimising protein expression useful, please also
                   cite the following preprint:
-                  <br />
+                  <br />{" "}
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
                   Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019) Highly
                   accessible translation initiation sites are predictive of
                   successful heterologous protein expression.
@@ -749,7 +775,10 @@ const SodopeDocumentation = (props) => {
                   .<br />
                   If you find signal peptide prediction useful, please also cite
                   the following preprint:
-                  <br />
+                  <br />{" "}
+                  <span className="icon">
+                    <i className="fas fa-graduation-cap"></i>
+                  </span>{" "}
                   Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020) Annotating
                   eukaryotic and toxin-specific signal peptides using Razor.
                   <cite title="Annotating eukaryotic and toxin-specific signal peptides using Razor.">
