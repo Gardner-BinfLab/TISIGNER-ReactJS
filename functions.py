@@ -269,7 +269,7 @@ def progress(iteration, total, message=None):
                                      iteration,total,message),end='\r',flush=True)
 
     if iteration == total:
-        print('\nCompleted!') 
+        print('\nCompleted!')
 
 
 def mismatches(seq1, seq2):
@@ -986,4 +986,3 @@ def parse_input_razor(request_json):
             "are allowed."
         )
     return seq, max_scan
-
