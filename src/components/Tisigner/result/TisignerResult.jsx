@@ -176,7 +176,7 @@ class TisignerResult extends Component {
       };
 
       !this.state.reOptimiseResult
-        ? 
+        ?
           axios
             .post(TIsignerLink, userObject)
             .then((res) => {
@@ -270,6 +270,7 @@ class TisignerResult extends Component {
                         boxShadow: "2px 2px 5px #c0cbfc",
                         maxHeight: "200px",
                         overflow: "auto",
+                        width : "100%",
                       }}
                     >
                       <p dangerouslySetInnerHTML={{ __html: item.Sequence }} />

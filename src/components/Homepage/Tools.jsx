@@ -70,11 +70,11 @@ class Tools extends Component {
         fullname: "Signal peptide detector",
         classes: "is-light",
         text:
-          "Highly accurate prediction of eukaryotic signal peptides, toxins and fungi specific signal peptides.",
+          "Highly accurate prediction of signal peptides from eukaryotic toxins and fungi.",
         image: "/tisigner.png",
         cardText: (
           <Fragment>
-            Razor is built for detection of signal peptides in eukaryotes.
+            Razor is built for detecting signal peptides in eukaryotes.
             Furthermore, we also detect whether the signal peptide is harboured
             by a toxin. Razor can also be used to check for signal peptides from
             fungi. Both toxin and fungi prediction is done using a novel

@@ -757,10 +757,10 @@ const SodopeDocumentation = (props) => {
                   <span className="icon">
                     <i className="fas fa-graduation-cap"></i>
                   </span>{" "}
-                  Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019) Highly
-                  accessible translation initiation sites are predictive of
-                  successful heterologous protein expression.
-                  <cite title="Highly accessible translation initiation sites are predictive of successful heterologous protein expression.">
+                  Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019) Protein yield
+                  is tunable by synonymous codon changes of translation
+                  initiation sites.
+                  <cite title="Protein yield is tunable by synonymous codon changes of translation initiation sites.">
                     {" "}
                     bioRxiv
                   </cite>
@@ -779,9 +779,9 @@ const SodopeDocumentation = (props) => {
                   <span className="icon">
                     <i className="fas fa-graduation-cap"></i>
                   </span>{" "}
-                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020) Annotating
-                  eukaryotic and toxin-specific signal peptides using Razor.
-                  <cite title="Annotating eukaryotic and toxin-specific signal peptides using Razor.">
+                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2021) Razor:
+                  annotation of signal peptides from toxins.
+                  <cite title="Razor: annotation of signal peptides from toxins">
                     {" "}
                     bioRxiv.
                   </cite>{" "}
