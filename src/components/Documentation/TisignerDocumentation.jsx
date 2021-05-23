@@ -552,6 +552,23 @@ const TisignerDocumentation = (props) => {
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
+                  What should I do if I got this error?
+                </Typography>
+                <pre>
+                  <code>
+                    The given custom range was out of the length of sequence and
+                    5′ UTR.
+                  </code>
+                </pre>
+                <Typography variant="body2" gutterBottom>
+                  This may happen if the coding sequence length is shorter than
+                  90 nt and the chosen expression host is <i>S. cerevisiae</i>.
+                  To get around with this, click settings, choose ADVANCED, and
+                  use -7 to the sequence length for the "Custom region to
+                  optimise accessibility".
+                </Typography>
+
+                <Typography variant="subtitle2" gutterBottom>
                   Could I optimise multiple sequences per job?
                 </Typography>
                 <Typography variant="body2" gutterBottom>
@@ -616,10 +633,10 @@ const TisignerDocumentation = (props) => {
                   <span className="icon">
                     <i className="fas fa-graduation-cap"></i>
                   </span>{" "}
-                  Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019) Highly
-                  accessible translation initiation sites are predictive of
-                  successful heterologous protein expression.
-                  <cite title="Highly accessible translation initiation sites are predictive of successful heterologous protein expression.">
+                  Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019) Protein yield
+                  is tunable by synonymous codon changes of translation
+                  initiation sites.
+                  <cite title="Protein yield is tunable by synonymous codon changes of translation initiation sites.">
                     {" "}
                     bioRxiv
                   </cite>
@@ -681,9 +698,9 @@ const TisignerDocumentation = (props) => {
                   <span className="icon">
                     <i className="fas fa-graduation-cap"></i>
                   </span>{" "}
-                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2020) Annotating
-                  eukaryotic and toxin-specific signal peptides using Razor.
-                  <cite title="Annotating eukaryotic and toxin-specific signal peptides using Razor.">
+                  Bhandari, B.K., Gardner, P.P., Lim, C.S. (2021) Razor:
+                  annotation of signal peptides from toxins.
+                  <cite title="Razor: annotation of signal peptides from toxins">
                     {" "}
                     bioRxiv.
                   </cite>{" "}
