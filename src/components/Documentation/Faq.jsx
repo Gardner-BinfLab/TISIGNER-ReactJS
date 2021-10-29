@@ -1,3 +1,13 @@
+/**
+ * @Author: Bikash Kumar Bhandari <bikash>
+ * @Date:   2021-04-06T21:07:49+12:00
+ * @Filename: Faq.jsx
+ * @Last modified by:   bikash
+ * @Last modified time: 2021-10-30T08:43:26+13:00
+ */
+
+
+
 import React, { Fragment, useEffect } from "react";
 import Navigation from "../Common/Navigation";
 import Footer from "../Homepage/Footer";

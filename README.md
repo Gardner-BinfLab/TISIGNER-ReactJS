@@ -45,6 +45,7 @@ The local website will now run at [http://localhost:5050](http://localhost:5050)
 If you found any bugs or errors, please report it to us by opening an issue!
 
 ### Cite
-- Bhandari BK, Lim CS, Gardner PP. (2019). Highly accessible translation initiation sites are predictive of successful heterologous protein expression. bioRxiv. DOI:[10.1101/726752](https://www.biorxiv.org/content/10.1101/726752v1)
-- Bikash K Bhandari, Paul P Gardner, Chun Shen Lim. (2020). Solubility-Weighted Index: fast and accurate prediction of protein solubility. Bioinformatics. DOI:[10.1093/bioinformatics/btaa578](https://dx.doi.org/10.1093/bioinformatics/btaa578)
-- Bikash K Bhandari, Paul P Gardner, Chun Shen Lim. (2020). Annotating eukaryotic and toxin-specific signal peptides using Razor. bioRxiv. DOI:[10.1101/2020.11.30.405613](https://doi.org/10.1101/2020.11.30.405613)
+- Bhandari, B.K., Lim, C.S., Remus D.M., Chen A., Dolleweerd C.,Gardner, P.P. (2021) Analysis of 11,430 recombinant protein production experiments reveals that protein yield is tunable by synonymous codon changes of translation initiation sites. *PLOS Comp. Bio*. DOI:[10.1371/journal.pcbi.1009461](https://doi.org/10.1371/journal.pcbi.1009461)
+- Bhandari, B.K., Lim, C.S., Gardner, P.P., (2021) TISIGNER.com:web services for improving recombinant protein production. *Nucleic Acids Research*. DOI:[10.1093/nar/gkab175](https://doi.org/10.1093/nar/gkab175)
+- Bikash K Bhandari, Paul P Gardner, Chun Shen Lim. (2020). Solubility-Weighted Index: fast and accurate prediction of protein solubility. *Bioinformatics*. DOI:[10.1093/bioinformatics/btaa578](https://dx.doi.org/10.1093/bioinformatics/btaa578)
+- Bikash K Bhandari, Paul P Gardner, Chun Shen Lim. (2020). Annotating eukaryotic and toxin-specific signal peptides using Razor. *bioRxiv*. DOI:[10.1101/2020.11.30.405613](https://doi.org/10.1101/2020.11.30.405613)

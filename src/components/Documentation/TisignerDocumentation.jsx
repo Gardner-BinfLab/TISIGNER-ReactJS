@@ -1,3 +1,11 @@
+/**
+ * @Author: Bikash Kumar Bhandari <bikash>
+ * @Date:   2021-05-23T19:37:51+12:00
+ * @Filename: TisignerDocumentation.jsx
+ * @Last modified by:   bikash
+ * @Last modified time: 2021-10-30T09:20:37+13:00
+ */
+
 import React, { Fragment, useEffect } from "react";
 import Navigation from "../Common/Navigation";
 import Footer from "../Homepage/Footer";
@@ -633,20 +641,21 @@ const TisignerDocumentation = (props) => {
                   <span className="icon">
                     <i className="fas fa-graduation-cap"></i>
                   </span>{" "}
-                  Bhandari, B.K., Lim, C.S., Gardner, P.P. (2019) Protein yield
-                  is tunable by synonymous codon changes of translation
-                  initiation sites.
-                  <cite title="Protein yield is tunable by synonymous codon changes of translation initiation sites.">
+                  Bhandari, B.K., Lim, C.S., Remus D.M., Chen A., Dolleweerd C.,
+                  Gardner, P.P. (2021) Analysis of 11,430 recombinant protein
+                  production experiments reveals that protein yield is tunable
+                  by synonymous codon changes of translation initiation sites.
+                  <cite title="Analysis of 11,430 recombinant protein production experiments reveals that protein yield is tunable by synonymous codon changes of translation initiation sites.">
                     {" "}
-                    bioRxiv
+                    PLOS Comp. Bio.
                   </cite>
                   . DOI:
                   <a
-                    href="https://doi.org/10.1101/726752"
+                    href="https://doi.org/10.1371/journal.pcbi.1009461"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    10.1101/726752
+                    10.1371/journal.pcbi.1009461
                   </a>
                   .
                   <br />{" "}

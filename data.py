@@ -51,7 +51,7 @@ CODON_TO_AA = {'TTT' : 'F', 'TCT' : 'S', 'TAT' : 'Y', 'TGT' : 'C',
                'GGG' : 'G'}
 
 
-CNST = 100000 #prevent overflows 
+CNST = 100000 #prevent overflows
 pET21_UTR = 'GGGGAATTGTGAGCGGATAACAATTCCCCTCTAGAAATAATTTTGTTTAACTTTAAGAAGGAGATATACAT'
 UTR5_AOX1_promoter = 'ACCTTTTTTTTTATCATCATTATTAGCTTACTTTCATAATTGCGACTGGTTCCAATTGACAAGCTTTTGATTTTAACGACTTTTAACGACAACTTGAGAAGATCAAAAAACAACTAATTATTCGAAACC'
 #RNAPLFOLD_ECOLI = '-W 210 -u 50 -O'
@@ -105,5 +105,3 @@ AUTHORS = 'Bikash<bikash.bhandari@postgrad.otago.ac.nz> '+\
 ' Lim<chunshen.lim@otago.ac.nz> '+\
 ' Gardner-Binflab (2019)'
 MANUAL = 'Translation Initiation coding region deSIGNER.'
-
-

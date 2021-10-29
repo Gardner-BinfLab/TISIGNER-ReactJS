@@ -1,3 +1,13 @@
+/**
+ * @Author: Bikash Kumar Bhandari <bikash>
+ * @Date:   2021-04-06T21:07:49+12:00
+ * @Filename: Utils.jsx
+ * @Last modified by:   bikash
+ * @Last modified time: 2021-10-30T08:40:49+13:00
+ */
+
+
+
 export function substr(seq, pos) {
   let a = Number(pos[0]) - 1;
   let b = Number(pos[1]);

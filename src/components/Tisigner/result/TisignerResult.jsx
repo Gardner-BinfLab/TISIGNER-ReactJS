@@ -1,3 +1,13 @@
+/**
+ * @Author: Bikash Kumar Bhandari <bikash>
+ * @Date:   2021-05-23T19:37:51+12:00
+ * @Filename: TisignerResult.jsx
+ * @Last modified by:   bikash
+ * @Last modified time: 2021-10-30T08:41:05+13:00
+ */
+
+
+
 import React, { Component, Fragment } from "react";
 import Chart from "../../Chart/Chart";
 import axios from "axios";

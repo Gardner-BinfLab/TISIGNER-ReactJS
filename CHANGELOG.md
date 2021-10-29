@@ -1,3 +1,8 @@
+# 2.0.2 (30-10-2021)
+* Updated DOI for TIsigner
+* Updated privacy policy
+
+
 # 2.0.1 (19-11-2020)
 ### Bug Fixes
 * **TIsigner:** Backend fixes for warnings from pandas: ```SettingWithCopyWarning``` and ```pandas.util.testing```.

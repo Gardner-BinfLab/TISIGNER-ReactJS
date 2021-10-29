@@ -1,3 +1,13 @@
+/**
+ * @Author: Bikash Kumar Bhandari <bikash>
+ * @Date:   2021-04-06T21:07:49+12:00
+ * @Filename: Result.jsx
+ * @Last modified by:   bikash
+ * @Last modified time: 2021-10-30T08:40:54+13:00
+ */
+
+
+
 import React, { Component, Fragment } from "react";
 import Slider from "@material-ui/core/Slider";
 import roundTo from "round-to";

@@ -1,17 +1,25 @@
+/**
+ * @Author: Bikash Kumar Bhandari <bikash>
+ * @Date:   2021-04-06T21:07:49+12:00
+ * @Filename: Privacy.jsx
+ * @Last modified by:   bikash
+ * @Last modified time: 2021-10-30T08:59:57+13:00
+ */
+
 import React, { Fragment, useEffect } from "react";
 import Navigation from "../Common/Navigation";
 import Footer from "../Homepage/Footer";
 import Typography from "@material-ui/core/Typography";
 import ReactGA from "react-ga";
 
-const Privacy = props => {
+const Privacy = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   ReactGA.event({
     category: "Privacy",
-    action: "Privacy clicked."
+    action: "Privacy clicked.",
   });
 
   return (
@@ -20,7 +28,7 @@ const Privacy = props => {
       <section
         className="hero is-fullheight"
         style={{
-          backgroundImage: "linear-gradient(to right, #1a2b32, #355664)"
+          backgroundImage: "linear-gradient(to right, #1a2b32, #355664)",
         }}
       >
         <div className="hero-head"></div>
@@ -37,11 +45,12 @@ const Privacy = props => {
                 </Typography>
                 <Typography variant="body2" gutterBottom>
                   TISIGNER utilises cookie and local storage technologies to
-                  validate the input form data and provide functionalities inside
-                  this web app. None of the user submitted data is stored on our
-                  server. If you use this website, you agree that we can use
-                  cookies and local storage of your browser to store data on
-                  your device.
+                  validate the input form data and provide functionalities
+                  inside this web app. None of the user submitted data is stored
+                  on our server except when we encounter some problems in the
+                  app (see below). If you use this website, you agree to our
+                  privacy policy and we can use cookies and local storage of
+                  your browser to store data on your device.
                 </Typography>
 
                 <Typography variant="subtitle2" gutterBottom>
@@ -80,6 +89,22 @@ const Privacy = props => {
                     here
                   </a>
                   .
+                </Typography>
+
+                <Typography variant="subtitle2" gutterBottom>
+                  Data collection and usage
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  If the webapp encounters some error, the stack traceback is
+                  stored which might include the data you entered. This is
+                  necessary to identify, debug and fix the problems.
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  Anonymised data collected from Google Analytics may be used in
+                  scientific publications, conferences and presentations.
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                  We reserve the right to modify this Privacy Policy anytime.
                 </Typography>
               </div>
             </div>

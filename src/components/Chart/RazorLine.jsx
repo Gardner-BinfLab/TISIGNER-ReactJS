@@ -1,3 +1,13 @@
+/**
+ * @Author: Bikash Kumar Bhandari <bikash>
+ * @Date:   2021-04-06T21:07:49+12:00
+ * @Filename: RazorLine.jsx
+ * @Last modified by:   bikash
+ * @Last modified time: 2021-10-30T08:46:21+13:00
+ */
+
+
+
 import React, { Component, Fragment } from "react";
 import { Line } from "react-chartjs-2";
 import ChartAnnotationsPlugin from "chartjs-plugin-annotation";
@@ -342,7 +352,7 @@ class RazorLine extends Component {
                   //   value: this.state.data.cleavage_sites[4] - 16 + 0.5,
                   //   // borderColor: "rgb(75, 192, 192, 0.8)",
                   //   borderColor:'black',
-                  //   borderWidth: 2,
+                     // borderWidth: 2,
                   //   borderDash: [2, 1],
                   //   label: {
                   //     // enabled: true,

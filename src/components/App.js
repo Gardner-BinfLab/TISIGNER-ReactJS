@@ -1,3 +1,13 @@
+/**
+ * @Author: Bikash Kumar Bhandari <bikash>
+ * @Date:   2021-04-06T21:07:49+12:00
+ * @Filename: App.js
+ * @Last modified by:   bikash
+ * @Last modified time: 2021-10-30T08:41:13+13:00
+ */
+
+
+
 import React, { Suspense, lazy } from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import ReactGA from "react-ga";

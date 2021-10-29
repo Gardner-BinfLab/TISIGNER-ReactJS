@@ -1,3 +1,13 @@
+/**
+ * @Author: Bikash Kumar Bhandari <bikash>
+ * @Date:   2021-05-23T19:37:51+12:00
+ * @Filename: Tools.jsx
+ * @Last modified by:   bikash
+ * @Last modified time: 2021-10-30T09:09:02+13:00
+ */
+
+
+
 import React, { Component, Fragment } from "react";
 import Typography from "@material-ui/core/Typography";
 import Zoom from "react-reveal/Fade";
@@ -26,11 +36,11 @@ class Tools extends Component {
             <br />
             DOI:{" "}
             <a
-              href="https://doi.org/10.1101/726752"
+              href="https://doi.org/10.1371/journal.pcbi.1009461"
               target="_blank"
               rel="noopener noreferrer"
             >
-              10.1101/726752
+              10.1371/journal.pcbi.1009461
             </a>
           </Fragment>
         ),
