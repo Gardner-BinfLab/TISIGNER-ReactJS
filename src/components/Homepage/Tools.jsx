@@ -103,6 +103,24 @@ class Tools extends Component {
         link: "/razor",
         help: "/razor/faq",
       },
+      {
+        name: "LazyPair",
+        fullname: "",
+        classes: "is-light",
+        text:
+          "Protein-Protein Interaction (PPI) prediction",
+        image: "/tisigner.png",
+        cardText: (
+          <Fragment>
+            LazyPair is developed to predict PPI, with a high speed and accuracy.
+            <br />
+            DOI:{" "}
+
+          </Fragment>
+        ),
+        link: "/lazypair",
+        help: "/lazypair/faq",
+      },
     ],
   };
 

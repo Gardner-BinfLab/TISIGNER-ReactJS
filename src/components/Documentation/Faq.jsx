@@ -101,6 +101,17 @@ const Faq = () => {
                           <Link to="/razor/faq">Razor FAQ</Link>
                         </TableCell>
                       </TableRow>
+                      <TableRow>
+                        <TableCell component="th" scope="row">
+                          <Link to="/lazypair">LazyPair</Link>
+                        </TableCell>
+                        <TableCell align="right">
+                          Predicting Protein-Protein Interactions
+                        </TableCell>
+                        <TableCell align="right">
+                          <Link to="/lazypair/faq">LazyPair FAQ</Link>
+                        </TableCell>
+                      </TableRow>
                     </TableBody>
                   </Table>
                 </TableContainer>

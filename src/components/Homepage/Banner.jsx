@@ -77,6 +77,13 @@ const Banner = () => {
                 </Link>
               </p>
               <p className="control" style={styles.fadeInUp}>
+                <Link to="/lazypair">
+                  <button className="button are-medium is-black is-inverted is-outlined is-rounded">
+                    LazyPair | PPI prediction
+                  </button>
+                </Link>
+              </p>
+              <p className="control" style={styles.fadeInUp}>
                 <Link to="/faq">
                   <button className="button are-medium is-black is-inverted is-outlined is-rounded">
                     Help
