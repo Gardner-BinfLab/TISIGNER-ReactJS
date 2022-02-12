@@ -1010,7 +1010,7 @@ def aaindex1(X, *, standardize='none', start=1, end=None):
     from protlearn
     '''
 
-        
+
 
 
     # Number of indices
@@ -1093,6 +1093,8 @@ def scallion(df):
         result_df['Median'] = result_df['Results'].apply(np.median)
         result_df[columns[2:]] = pd.DataFrame(result_df.Results.tolist(), index=result_df.index)
         result_df.drop('Results', axis=1, inplace=True)
+        result_df.drop_duplicates(inplace=True)
+        result_df = result_df.reset_index(drop=True)
         return result_df
     except Exception as exp:
         raise ValueError(str(exp))

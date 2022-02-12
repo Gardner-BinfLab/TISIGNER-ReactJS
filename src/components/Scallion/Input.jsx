@@ -10,10 +10,10 @@
 
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import Typography from "@material-ui/core/Typography";
 import Error from "../Error/Error";
 import ReactGA from "react-ga";
 import Skeleton from "@material-ui/lab/Skeleton";
+import Typography from "@material-ui/core/Typography";
 import { ScallionLink } from "../EndPoints";
 import Button from "@material-ui/core/Button";
 // import GetAppIcon from "@material-ui/icons/GetApp";
@@ -40,9 +40,9 @@ class ScallionInput extends Component {
   }
 
   handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      this.submitInput(event);
-    }
+    // if (event.key === "Enter") {
+    //   this.submitInput(event);
+    // }
   };
 
   handleInput(event) {
@@ -60,6 +60,11 @@ class ScallionInput extends Component {
     let error = "";
     let s = seq === null ? event.target.value : seq;
     let sequence = s
+
+    if ((sequence.match(/>/g) || []).length > 100){
+      isValid = false;
+      error = "Please input FASTA with less than 100 sequences."
+    }
 
     if (!sequence) {
       isValid = false;
@@ -141,7 +146,9 @@ class ScallionInput extends Component {
                   <article className="media">
                     <div className="media-content">
                       <div className="content">
-                        <Skeleton variant="rect" height={150} />
+                      <Typography component="div" key={"h5"} variant={"h2"}>
+                        <Skeleton width="30%" />
+                      </Typography>
                         <hr />
                       </div>
                     </div>
@@ -172,10 +179,10 @@ class ScallionInput extends Component {
 
                   <Button
                     color="default"
-                    href={`data:text/json;charset=utf-8,${encodeURIComponent(
+                    href={`data:text/csv;charset=utf-8,${encodeURIComponent(
                       results
                     )}`}
-                    download="Scallion_interaction_predictions.csv"
+                    download="LazyPair_interaction_predictions.csv"
                     key="Download results"
 
                   >
@@ -210,7 +217,7 @@ class ScallionInput extends Component {
                 autoFocus
                 className="textarea"
                 type="text"
-                placeholder="Paste your fasta sequence for predicting interactions."
+                placeholder="Paste your fasta sequences for predicting interactions."
                 onChange={this.handleInput}
                 value={this.state.currentSequence}
                 disabled={!this.state.sequenceType ? true : false}
@@ -233,6 +240,15 @@ class ScallionInput extends Component {
             This server limits 100 sequences. For large number of sequences, please use the command line tool
             from our GitHub.
           </p>
+
+          {!this.state.isValidatedSequence ? (
+            <p className="help is-warning has-text-centered">
+              <span className="icon is-small is-right">
+                <i className="fas fa-exclamation-triangle"></i>
+              </span>
+              {this.state.inputSequenceError}
+            </p>
+          ) : null}
 
           <br />
           <div className="buttons has-addons is-grouped is-multiline is-centered">

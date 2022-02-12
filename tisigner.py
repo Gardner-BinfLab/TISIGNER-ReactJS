@@ -129,7 +129,7 @@ def scallion_web():
         file = request.json.get('inputSequenceScallion').\
                                        upper()
         df = functions.fasta_reader(io.StringIO(file))
-        res = functions.scallion(df).to_csv()
+        res = functions.scallion(df).to_csv(index=False)
         return make_response(jsonify(res), 200)
     except Exception as exp:
         return make_response(jsonify({'data':str(exp), }), 500)
