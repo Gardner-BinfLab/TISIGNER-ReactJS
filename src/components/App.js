@@ -29,9 +29,12 @@ const TisignerDocumentation = lazy(() =>
 const RazorDocumentation = lazy(() =>
   import("./Documentation/RazorDocumentation")
 );
+const ScallionDocumentation = lazy(() =>
+  import("./Documentation/ScallionDocumentation")
+);
 const License = lazy(() => import("./Documentation/License"));
 const Privacy = lazy(() => import("./Documentation/Privacy"));
-
+const Scallion = lazy (() => import("./Scallion"))
 
 ReactGA.initialize("UA-153760535-1");
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -74,8 +77,11 @@ function App() {
               component={TisignerDocumentation}
             />
             <Route exact path="/razor/faq" component={RazorDocumentation} />
+            <Route exact path="/lazypair/faq" component={ScallionDocumentation} />
+
             <Route exact path="/license" component={License} />
             <Route exact path="/privacy" component={Privacy} />
+            <Route exact path="/lazypair" component={Scallion} />
             <Route component={NotFound} />
           </Switch>
         </Suspense>

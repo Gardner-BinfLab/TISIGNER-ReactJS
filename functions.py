@@ -27,7 +27,22 @@ PRIOR_PROB = 0.49 #success/(success+failure)
 PRIOR_ODDS = PRIOR_PROB/(1-PRIOR_PROB)
 CM = os.path.join(os.path.dirname(__file__), 'models/TIsigner/term.cm')
 
+### Scallion
+SCALLION = pd.read_pickle(os.path.join(os.path.dirname(__file__), 'models/scallion/models.pkl'))
+columns = ['Protein1', 'Protein2', \
+           'STRING:full', 'STRING:binding', 'STRING:ptmod', \
+           'STRING:activation', 'STRING:reaction', 'STRING:inhibition', \
+           'STRING:catalysis', 'STRING:expression', \
+           'signor:phosphorylation', 'signor:binding', \
+           'signor:transcriptional_regulation', \
+           'signor:dephosphorylation', 'signor:cleavage', \
+           'signor:ubiquitination', 'signor:relocalization', \
+           'signor:guanine_nucleotide_exchange_factor', \
+           'signor:gtpase-activating_protein', \
+           'signor:post_transcriptional_regulation']
 
+# from protlearn.preprocessing import remove_unnatural
+# from protlearn.features import aaindex1
 
 
 
@@ -986,3 +1001,98 @@ def parse_input_razor(request_json):
             "are allowed."
         )
     return seq, max_scan
+
+
+### SCALLION
+
+def aaindex1(X, *, standardize='none', start=1, end=None):
+    '''
+    from protlearn
+    '''
+
+        
+
+
+    # Number of indices
+    LEN = 553
+
+    # list of amino acids (IUPAC extended)
+    amino_acids = 'ACDEFGHIKLMNPQRSTVWY'
+
+    # load AAIndex1 data and get index names
+    aaind1 = pd.read_csv(os.path.join(os.path.dirname(__file__), 'models/scallion/aaindex1.csv'))
+    desc = aaind1['Description'].values
+
+    # convert to dict for better performance
+    aaind1 = {aa: aaind1[aa].to_numpy() for aa in amino_acids}
+
+    # initialize empty array with shape (n_samples, 553)
+    arr = np.zeros((len(X), LEN))
+
+    # fill array with mean of indices per protein/peptide
+    for i, seq in enumerate(X):
+        seq = seq[start-1:end] # positional information
+        tmp_arr = np.zeros((LEN, len(seq)) )
+
+        # fill temporary array with indices for each amino acid of the sequence
+        # and compute their mean across all rows
+        for j, aa in enumerate(seq):
+            tmp_arr[:,j] = aaind1[aa]
+
+        # fill rows with mean vector of tmp_arr
+        arr[i,:] = tmp_arr.mean(axis=1)
+
+    if standardize == 'none' or arr.shape[0] == 1:
+        return arr, desc
+
+
+
+def fasta_reader(file):
+    '''Converts .fasta to a pandas dataframe with accession as index
+    and sequence in a column 'sequence'
+    '''
+    fasta_df = pd.read_csv(file, sep='>', lineterminator='>', header=None)
+    fasta_df[['Accession', 'Sequence']] = fasta_df[0].str.split('\n', 1, \
+                                        expand=True)
+    fasta_df['Accession'] = fasta_df['Accession'].str.split('\s').apply(lambda x: x[0])
+    fasta_df['Sequence'] = fasta_df['Sequence'].replace('\n', '', regex=True).\
+                            astype(str).str.upper().replace('U', 'C')
+#    total_seq = fasta_df.shape[0]
+    fasta_df.drop(0, axis=1, inplace=True)
+    fasta_df = fasta_df[(fasta_df.Sequence != '') & (fasta_df.Sequence != 'NONE') & fasta_df['Sequence'].str.isalpha()]
+    # fasta_df['Sequence_'] = fasta_df.Sequence.apply(lambda x: len(remove_unnatural(x)))
+    # fasta_df = fasta_df[fasta_df.Sequence_==1].drop('Sequence_', axis=1)
+    fasta_df = fasta_df[(~fasta_df.Sequence.str.contains('X')) & (~fasta_df.Sequence.str.contains('Z'))]
+    final_df = fasta_df.dropna()
+#    remained_seq = final_df.shape[0]
+#     if total_seq != remained_seq:
+#         print("{} sequences were removed due to inconsistencies in"
+#                       "provided file.".format(total_seq-remained_seq))
+    return final_df
+
+
+def scallion(df):
+    try:
+        df = df[:100].copy()
+        aaind1, _ = aaindex1(df.Sequence.tolist())
+        df['AAindex'] = list(aaind1)
+        ids = df.Accession.tolist()
+        results = []
+        for i, v in enumerate(ids):
+            for j, k in enumerate(ids):
+                if i == len(ids):
+                    break
+                else:
+
+                    aaind_mean = list(np.mean([df[df.Accession==v].AAindex.tolist(), df[df.Accession==k].AAindex.tolist()], axis=0))
+                    pairs = sorted([v,k])
+    #                preds = pd.DataFrame([clf.predict_proba(aaind_mean)[:,1] for clf in clfs]).T
+                    results.append([pairs[0], pairs[1], [clf.predict_proba(aaind_mean)[:,1][0] for clf in SCALLION]])
+
+        result_df = pd.DataFrame(results, columns=['Protein 1', 'Protein 2', 'Results'])
+        result_df['Median'] = result_df['Results'].apply(np.median)
+        result_df[columns[2:]] = pd.DataFrame(result_df.Results.tolist(), index=result_df.index)
+        result_df.drop('Results', axis=1, inplace=True)
+        return result_df
+    except Exception as exp:
+        raise ValueError(str(exp))

@@ -17,15 +17,18 @@ from flask import make_response
 from flask import jsonify
 from flask_cors import CORS
 from flask import send_file
+import pandas as pd
 import numpy as np
 import functions
 from functions import Optimiser
 from razor import RAZOR
 import data
+import io
 
 
 app = Flask(__name__, static_folder='build')
 cors = CORS(app)
+
 
 @app.route('/optimise', methods=["POST"])
 def optimiser():
@@ -117,6 +120,17 @@ def razor_predict():
             'final_score_toxin':newObj.final_score_toxin,
         }
         return make_response(jsonify(response_dict), 200)
+    except Exception as exp:
+        return make_response(jsonify({'data':str(exp), }), 500)
+
+@app.route('/interactions', methods=["POST"])
+def scallion_web():
+    try:
+        file = request.json.get('inputSequenceScallion').\
+                                       upper()
+        df = functions.fasta_reader(io.StringIO(file))
+        res = functions.scallion(df).to_csv()
+        return make_response(jsonify(res), 200)
     except Exception as exp:
         return make_response(jsonify({'data':str(exp), }), 500)
 

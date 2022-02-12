@@ -100,6 +100,22 @@ const Navigation = (props) => {
                 Razor
               </Link>
             </p>
+
+            <p className="navbar-item">
+              <Link
+                to={{ pathname: "/lazypair", key: "nav-scallion" }}
+                style={{
+                  color: "inherit",
+                  textDecoration: "inherit",
+                  borderBottom:
+                    props.link === "/lazypair"
+                      ? "1px solid rgb(212, 212, 212)"
+                      : null,
+                }}
+              >
+                LazyPair
+              </Link>
+            </p>
           </div>
 
           <div className="navbar-end">
@@ -111,7 +127,7 @@ const Navigation = (props) => {
                 <span className="icon">
                   <i className="fab far fa-question-circle"></i>
                 </span>
-                <span>{props.link !== undefined ? `${props.link === '/tisigner' ? 'TIsigner' : (props.link === '/sodope' ? 'SoDoPE' : (props.link === '/razor' ? 'Razor' : null))}` : null} FAQ</span>
+                <span>{props.link !== undefined ? `${props.link === '/tisigner' ? 'TIsigner' : (props.link === '/sodope' ? 'SoDoPE' : (props.link === '/razor' ? 'Razor' : (props.link === '/lazypair'? 'LazyPair': null)))}` : null} FAQ</span>
               </Link>
             </p>
           </div>

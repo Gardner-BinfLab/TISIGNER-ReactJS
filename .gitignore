@@ -28,3 +28,6 @@ env/
 # test
 term.fa
 EndPoints.jsx
+
+#big model
+models/scallion/models.pkl
