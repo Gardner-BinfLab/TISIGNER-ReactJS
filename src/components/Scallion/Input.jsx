@@ -45,6 +45,42 @@ class ScallionInput extends Component {
     // }
   };
 
+  exampleInput = (event) => {
+    let exampleFasta = String.raw`>10090.ENSMUSP00000000001
+MGCTLSAEDKAAVERSKMIDRNLREDGEKAAKEVKLLLLGAGESGKSTIVKQMKIIHEDG
+YSEDECKQYKVVVYSNTIQSIIAIIRAMGRLKIDFGESARADDARQLFVLAGSAEEGVMT
+SELAGVIKRLWRDGGVQACFSRSREYQLNDSASYYLNDLDRISQTNYIPTQQDVLRTRVK
+TTGIVETHFTFKELYFKMFDVGGQRSERKKWIHCFEGVTAIIFCVALSDYDLVLAEDEEM
+NRMHESMKLFDSICNNKWFTDTSIILFLNKKDLFEEKIKRSPLTICYPEYTGSNTYEEAA
+AYIQCQFEDLNRRKDTKEVYTHFTCATDTKNVQFVFDAVTDVIIKNNLKECGLY
+>10090.ENSMUSP00000000003
+MMRVIILLLTLHVLGVSSVMSLKKKIDGPWQTIYLAASTMEKINEGSPLRTYFRHILCGR
+RCNQVYLYFFIKKGTKCQLYKVIGRKKQEVYYAQYEGSIAFMLKMVNEKILLFHYFNKNR
+RNDVTRVAGVLAKGKQLNKEEMTEFMNLVEEMGIEEENVQRIMDTDNCPSKIKP
+>10090.ENSMUSP00000109675
+MMRVIILLLTLHVLGVSSVMSLKKKIDGPWQTIYLAASTMEKINEGSPLRTYFRHILCGR
+RCNQVYLYFFIKKGTKCQLYKVIGRKKQEVYYAQYEGSIAFMLKMVNEKILLFHYFNKNR
+RNDVTRVAGVLAKGKQLNKEEMTEFMNLVEEMGIEEENVQRIMDTDNCPSKIKP
+>10090.ENSMUSP00000133919
+MSISGTLSSYYVDSIISHESEDAPPAKFPSGQYANPRQPGHAEHLDFPSCSFQPKAPVFG
+ASWAPLSPHASGSLPSVYHPYLQPQGAPAAESRYLRTWLEPAPRAEAAPGQGQAAVKAEP
+LLGAPGELLKQGTPEYSLETSAGREAVLSNQRAGYGDNKICEGSEDKERPDQTNPSANWL
+HARSSRKKRCPYTKYQTLELEKEFLFNMYLTRDRRHEVARLLNLSERQVKIWFQNRRMKM
+KKMNKEQGKE
+>10090.ENSMUSP00000000010
+MSISGTLSSYYVDSIISHESEDAPPAKFPSGQYANPRQPGHAEHLDFPSCSFQPKAPVFG
+ASWAPLSPHASGSLPSVYHPYLQPQGAPAAESRYLRTWLEPAPRAEAAPGQGQAAVKAEP
+LLGAPGELLKQGTPEYSLETSAGREAVLSNQRAGYGDNKICEGSEDKERPDQTNPSANWL
+HARSSRKKRCPYTKYQTLELEKEFLFNMYLTRDRRHEVARLLNLSERQVKIWFQNRRMKM
+KKMNKEQGKE
+
+    `;
+
+    this.setState({
+      currentSequence:exampleFasta,
+    })
+  }
+
   handleInput(event) {
     let currentSequence = event.target.value;
     this.sequenceInput(event, currentSequence);
@@ -52,6 +88,8 @@ class ScallionInput extends Component {
     //   this.sequenceInput(event, currentSequence);
     // }
   }
+
+
   sequenceInput(event, seq = null) {
     // let re = /\r\n|\n\r|\n|\r/g;
     // let fasta = event.target.value
@@ -232,6 +270,7 @@ class ScallionInput extends Component {
                 value={this.state.currentSequence}
                 disabled={!this.state.sequenceType ? true : false}
                 onKeyDown={this.handleKeyDown}
+                spellcheck="false"
               />
             </div>
             {/* <div className="control">
@@ -249,6 +288,10 @@ class ScallionInput extends Component {
           <p className="help is-success has-text-centered">
             This server limits 100 sequences. For large number of sequences, please use the command line tool
             from our GitHub.
+          </p>
+
+          <p className="help is-success has-text-centered" style={{cursor: "pointer"}} onClick={this.exampleInput}>
+            Click here for an example input.
           </p>
 
           {!this.state.isValidatedSequence ? (
