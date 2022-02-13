@@ -72,12 +72,12 @@ MSISGTLSSYYVDSIISHESEDAPPAKFPSGQYANPRQPGHAEHLDFPSCSFQPKAPVFG
 ASWAPLSPHASGSLPSVYHPYLQPQGAPAAESRYLRTWLEPAPRAEAAPGQGQAAVKAEP
 LLGAPGELLKQGTPEYSLETSAGREAVLSNQRAGYGDNKICEGSEDKERPDQTNPSANWL
 HARSSRKKRCPYTKYQTLELEKEFLFNMYLTRDRRHEVARLLNLSERQVKIWFQNRRMKM
-KKMNKEQGKE
-
-    `;
+KKMNKEQGKE`;
 
     this.setState({
       currentSequence:exampleFasta,
+      inputSequenceError: false,
+      isValidatedSequence: true,
     })
   }
 
@@ -105,7 +105,8 @@ KKMNKEQGKE
       error = "Please input FASTA with less than 100 sequences."
     }
 
-    if (!sequence) {
+
+    if (!sequence || !sequence.replace(/[\n\r]/g, '').length) {
       isValid = false;
       error = "Empty input!";
     }
