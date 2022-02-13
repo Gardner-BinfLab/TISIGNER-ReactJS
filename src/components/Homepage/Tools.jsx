@@ -108,7 +108,7 @@ class Tools extends Component {
         fullname: "",
         classes: "is-light",
         text:
-          "Protein-Protein Interaction (PPI) prediction",
+          "Scalable prediction of protein-protein interactions (PPI) and interaction types.",
         image: "/tisigner.png",
         cardText: (
           <Fragment>

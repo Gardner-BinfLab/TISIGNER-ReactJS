@@ -47,9 +47,10 @@ class ScallionInput extends Component {
 
   handleInput(event) {
     let currentSequence = event.target.value;
-    if (currentSequence) {
-      this.sequenceInput(event, currentSequence);
-    }
+    this.sequenceInput(event, currentSequence);
+    // if (currentSequence) {
+    //   this.sequenceInput(event, currentSequence);
+    // }
   }
   sequenceInput(event, seq = null) {
     // let re = /\r\n|\n\r|\n|\r/g;
@@ -68,7 +69,7 @@ class ScallionInput extends Component {
 
     if (!sequence) {
       isValid = false;
-      error = "Something's wrong!";
+      error = "Empty input!";
     }
 
     this.setState({
@@ -217,7 +218,7 @@ class ScallionInput extends Component {
                 autoFocus
                 className="textarea"
                 type="text"
-                placeholder="Paste your fasta sequences for predicting interactions."
+                placeholder="Paste your protein fasta sequences for predicting interactions."
                 onChange={this.handleInput}
                 value={this.state.currentSequence}
                 disabled={!this.state.sequenceType ? true : false}
@@ -253,9 +254,8 @@ class ScallionInput extends Component {
           <br />
           <div className="buttons has-addons is-grouped is-multiline is-centered">
             <button
-              className="button are-medium is-info is-outlined is-rounded"
               className={
-                "button is-info is-rounded " +
+                "button are-medium is-outlined is-info is-rounded " +
                 (this.state.isSubmitting ? " is-loading " : null)
               }
               onClick={this.submitInput}

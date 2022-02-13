@@ -47,7 +47,7 @@ const License = props => {
                   Disclaimer and Copyright
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  TISIGNER includes the tools TIsigner, SoDoPE and Razor.
+                  TISIGNER is a collection of tools in this website.
                   The programs and source code of TISIGNER are free
                   software. They are distributed in the hope that they will be
                   useful but WITHOUT ANY WARRANTY; without even the implied
