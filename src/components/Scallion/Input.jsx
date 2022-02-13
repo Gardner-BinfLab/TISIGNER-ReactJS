@@ -191,6 +191,15 @@ class ScallionInput extends Component {
                   </Button>
 
                 </div>
+                <br />
+                <div className="buttons has-addons is-grouped is-multiline is-centered">
+                  <button
+                    className="button are-medium is-outlined is-info is-rounded "
+                    onClick={() => this.setState({showResult: !this.state.showResult,})}
+                  >
+                    Back
+                  </button>
+                </div>
               </div>
             </div>
           </section>
