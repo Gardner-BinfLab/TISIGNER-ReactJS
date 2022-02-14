@@ -100,13 +100,13 @@ KKMNKEQGKE`;
     let s = seq === null ? event.target.value : seq;
     let sequence = s
 
-    if ((sequence.match(/>/g) || []).length > 100){
+    if ((sequence.match(/\n>/g) || []).length > 100){
       isValid = false;
       error = "Please input FASTA with less than 100 sequences."
     }
 
 
-    if (!sequence || !sequence.replace(/[\n\r]/g, '').length) {
+    if (!sequence || !sequence.replace(/[\n\r]/g, '').length || !sequence.replace(/[ \r]/g, '').length) {
       isValid = false;
       error = "Empty input!";
     }
@@ -271,7 +271,7 @@ KKMNKEQGKE`;
                 value={this.state.currentSequence}
                 disabled={!this.state.sequenceType ? true : false}
                 onKeyDown={this.handleKeyDown}
-                spellcheck="false"
+                spellCheck="false"
               />
             </div>
             {/* <div className="control">
@@ -288,7 +288,14 @@ KKMNKEQGKE`;
           </div>
           <p className="help is-success has-text-centered">
             This server limits 100 sequences. For large number of sequences, please use the command line tool
-            from our GitHub.
+            from our
+            <a
+              href="https://github.com/Gardner-BinfLab/PPI_Analysis_2022/blob/master/script"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              &nbsp;GitHub
+            </a>.
           </p>
 
           <p className="help is-success has-text-centered" style={{cursor: "pointer"}} onClick={this.exampleInput}>

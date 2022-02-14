@@ -5,9 +5,9 @@
   * @Last modified by:   bikash
   * @Last modified time: 2021-10-30T09:20:24+13:00
   */
- 
- 
- 
+
+
+
   import React, { Fragment, useEffect } from "react";
   import Navigation from "../Common/Navigation";
   import Footer from "../Homepage/Footer";
@@ -16,19 +16,19 @@
   import CookieConsent from "react-cookie-consent";
   import ReactGA from "react-ga";
 
- 
-  
+
+
   const ScallionDocumentation = (props) => {
     useEffect(() => {
       window.scrollTo(0, 0);
     }, []);
-  
+
     ReactGA.event({
       category: "Documentation",
       action: "Documentation clicked.",
       label: "Scallion",
     });
-  
+
     return (
       <Fragment>
         <Navigation link={"/lazypair"} />
@@ -56,20 +56,20 @@
                   */}
                   <ul>
                     <li>
-                      For each protein pair, 553 AAindex1 features are calculated for each protein. 
+                      For each protein pair, 553 AAindex1 features are calculated for each protein.
                       The values for each feature are averaged and used for prediction.
                     </li>
                   </ul>
-  
+
                   <Typography variant="subtitle2" gutterBottom>
                     Prediction output
                   </Typography>
                   <Typography variant="body2" gutterBottom>
-                    There are 18 models, one generic and 17 interaction-specific models. 
+                    There are 18 models, one generic and 17 interaction-specific models.
                     Median probability is provided as the final probability of PPI.
                   </Typography>
-  
-  
+
+
                   <Typography variant="h2" component="h3" gutterBottom>
                     Data used
                   </Typography>
@@ -82,7 +82,7 @@
                     </a>
                     .
                   </Typography>
-  
+
                   <Typography variant="body2" gutterBottom>
                     The dataset used for interaction-specific PPI prediction can be downloaded{" "}
                     <a href="https://version-10-5.string-db.org/download/protein.actions.v10.5/9606.protein.actions.v10.5.txt.gz" download>
@@ -97,50 +97,64 @@
                     </a>{" "}
                     <a href="http://www.ndexbio.org/#/network/76be57cd-afe8-11e9-8bb4-0ac135e8bacf" download>
                       here
-                    </a>{" "}                                                         
+                    </a>{" "}
                     .
                   </Typography>
-  
- 
+
+
                   <Typography variant="h2" component="h3" gutterBottom>
                     LazyPair FAQ
                   </Typography>
-  
+
                   <Typography variant="subtitle2" gutterBottom>
                     What is LazyPair?
                   </Typography>
                   <Typography variant="body2" gutterBottom>
                     LazyPair is a tool for predicting PPI.
                   </Typography>
-  
+
                   <Typography variant="subtitle2" gutterBottom>
                     What is STRING:full mean?
                   </Typography>
                   <Typography variant="body2" gutterBottom>
                     This is a predicted probability for generic PPI.
                   </Typography>
-  
+
                   <Typography variant="subtitle2" gutterBottom>
                     Why is median probability the final probability of PPI?
                   </Typography>
                   <Typography variant="body2" gutterBottom>
                     We find that median probability is more generalisable.
                   </Typography>
+
+                  <Typography variant="subtitle2" gutterBottom>
+                    Where can I find the command line version of LazyPair?
+                  </Typography>
+                  <Typography variant="body2" gutterBottom>
+                    This is in our
+                    <a
+                      href="https://github.com/Gardner-BinfLab/PPI_Analysis_2022/blob/master/script"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      &nbsp;GitHub
+                      </a>. The command line program is optimised to run on a very large number of sequences.
+                  </Typography>
                 </div>
               </div>
             </div>
           </div>
         </section>
-  
+
         <CookieConsent>
           This website uses cookies and local storage to enhance the user
           experience. You can read our privacy policy{" "}
           <Link to="/privacy">here</Link>.
         </CookieConsent>
-  
+
         <Footer />
       </Fragment>
     );
   };
-  
+
   export default ScallionDocumentation;
