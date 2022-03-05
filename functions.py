@@ -1005,9 +1005,10 @@ def parse_input_razor(request_json):
 
 ### SCALLION
 
+
 def aaindex1(X, *, standardize='none', start=1, end=None):
     '''
-    from protlearn
+    extracted from protlearn
     '''
 
 
@@ -1072,6 +1073,10 @@ def fasta_reader(file):
 
 
 def scallion(df):
+    '''
+    modified from script written by CS Lim at 
+    https://github.com/Gardner-BinfLab/PPI_Analysis_2022/tree/master/script
+    '''
     try:
         df = df[:100].copy()
         aaind1, _ = aaindex1(df.Sequence.tolist())
