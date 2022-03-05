@@ -115,7 +115,13 @@ class Tools extends Component {
             LazyPair is developed to predict PPI, with a high speed and accuracy.
             <br />
             DOI:{" "}
-
+            <a
+              href="https://doi.org/10.1101/2022.02.21.481370"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              10.1101/2022.02.21.481370
+            </a>
           </Fragment>
         ),
         link: "/lazypair",
