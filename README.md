@@ -27,6 +27,12 @@ Download the source and extract to a folder. If you have ```git``` installed, pl
 
 ```sh
 $ git clone https://github.com/Gardner-BinfLab/TISIGNER-ReactJS.git
+```
+Download the LazyPair models from [here](https://zenodo.org/record/6071630) and run the following commands:
+```sh
+$ gunzip lazypair_clfs.pickle.gz
+$ mv lazypair_clfs.pickle models.pkl
+$ mv models.pkl TISIGNER-ReactJS/models/scallion/
 $ cd TISIGNER-ReactJS/
 ```
 Once you are in the source code directory, run the following commands:
