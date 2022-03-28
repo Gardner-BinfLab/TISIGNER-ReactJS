@@ -28,7 +28,7 @@ PRIOR_ODDS = PRIOR_PROB/(1-PRIOR_PROB)
 CM = os.path.join(os.path.dirname(__file__), 'models/TIsigner/term.cm')
 
 ### Scallion
-SCALLION = pd.read_pickle(os.path.join(os.path.dirname(__file__), 'models/scallion/models.pkl'))
+# SCALLION = pd.read_pickle(os.path.join(os.path.dirname(__file__), 'models/scallion/models.pkl'))
 columns = ['Protein1', 'Protein2', \
            'STRING:full', 'STRING:binding', 'STRING:ptmod', \
            'STRING:activation', 'STRING:reaction', 'STRING:inhibition', \
@@ -1077,6 +1077,7 @@ def scallion(df):
     modified from script written by CS Lim at 
     https://github.com/Gardner-BinfLab/PPI_Analysis_2022/tree/master/script
     '''
+    SCALLION = pd.read_pickle(os.path.join(os.path.dirname(__file__), 'models/scallion/models.pkl'))
     try:
         df = df[:100].copy()
         aaind1, _ = aaindex1(df.Sequence.tolist())
