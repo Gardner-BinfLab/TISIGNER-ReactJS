@@ -162,12 +162,47 @@ class RazorResults extends Component {
     };
   }
 
+pollJobStatus = (event, jobId) => {
+  axios
+    .get(`https://www.ebi.ac.uk/Tools/hmmer/api/v1/result/${jobId}`)
+    .then((resultRes) => {
+      if (resultRes.data.status === 'SUCCESS') {
+        let jsondata = resultRes.data
+        jsondata.result.uuid = jobId
+        this.setState({
+          showResult: true,
+          sodopeResults: jsondata,
+          [event.target.name + "isSubmitting"]: false,
+        });
+        ReactGA.event({
+          category: "Razor Result Page",
+          action: "Analyse solubility button clicked.",
+          label: "HMMER results received.",
+        });
+      } else {
+        setTimeout(() => this.pollJobStatus(event, jobId), 5000); // Poll every 5 seconds
+      }
+    })
+    .catch((error) => {
+      this.setState({
+        isServerError: true,
+        serverError: error,
+        isSubmitting: false,
+      });
+      ReactGA.event({
+        category: "Razor Result Page",
+        action: "Analyse solubility button clicked.",
+        label: "HMMER query failed.",
+      });
+    });
+};
+
   hmmScan(event) {
     event.persist(); // because setState is async and event gets null by the time we set a new state
 
     const userObject = {
-      seq: this.props.protein, //Protein sequence here
-      hmmdb: "pfam",
+      input: ">test\n" + this.props.protein, //Protein sequence here
+      database: "pfam",
     };
 
     ReactGA.event({
@@ -182,18 +217,20 @@ class RazorResults extends Component {
     });
     !this.state.sodopeResults
       ? axios
-          .post("https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan", userObject)
+          .post("https://www.ebi.ac.uk/Tools/hmmer/api/v1/search/hmmscan", userObject)
           .then((res) => {
             // console.log(res)
-            this.setState({
-              sodopeResults: res.data,
-              [event.target.name + "isSubmitting"]: false,
-            });
-            ReactGA.event({
-              category: "Razor Result Page",
-              action: "Analyse solubility: ",
-              label: "HMMER results received.",
-            });
+            const jobId = res.data.id; 
+            this.pollJobStatus(event, jobId);
+            // this.setState({
+            //   sodopeResults: res.data,
+            //   [event.target.name + "isSubmitting"]: false,
+            // });
+            // ReactGA.event({
+            //   category: "Razor Result Page",
+            //   action: "Analyse solubility: ",
+            //   label: "HMMER results received.",
+            // });
           })
           .catch((error) => {
             this.setState({
