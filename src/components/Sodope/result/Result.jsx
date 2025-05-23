@@ -326,10 +326,10 @@ class SodopeResults extends Component {
     } else {
       return (
         <Fragment>
-          {!data.results ? null : (
+          {!data.result ? null : (
             <Fragment>
-              {!data.results.hits.length ||
-              !data.results.hasOwnProperty("hits") ? (
+              {!data.result.hits.length ||
+              !data.result.hasOwnProperty("hits") ? (
                 <Fragment>
                   <div className="card">
                     <header className="card-header">
@@ -358,7 +358,7 @@ class SodopeResults extends Component {
                 <a
                   href={
                     "https://www.ebi.ac.uk/Tools/hmmer/results/" +
-                    data.results.uuid
+                    data.result.uuid
                   }
                   target="_blank"
                   rel="noopener noreferrer"
@@ -394,11 +394,11 @@ class SodopeResults extends Component {
                   }}
                 ></div>
               )}
-              {!data.results || !data.results.hits
+              {!data.result || !data.result.hits
                 ? null
-                : data.results.hits.map((item, index) =>
+                : data.result.hits.map((item, index) =>
                     item.domains.map((d, idx) =>
-                      d.display ? (
+                      d.significant ? (
                         <Fragment key={idx + "domainButton_Fragment"}>
                           <button
                             key={index + "domainButton" + idx}
@@ -422,7 +422,7 @@ class SodopeResults extends Component {
                             value={[d.ienv, d.jenv]}
                             onClick={this.updateEvents}
                           >
-                            {d.alihmmname}
+                            {JSON.parse(d.alignment_display.hmmdesc)["i"]}
                           </button>
                           <Popover
                             className={classes.popover}
@@ -443,10 +443,10 @@ class SodopeResults extends Component {
                             }}
                           >
                             <Typography variant="h6" gutterBottom>
-                              {d.alihmmname} ({d.alihmmacc})
+                              {JSON.parse(d.alignment_display.hmmdesc)["i"]} ({JSON.parse(d.alignment_display.hmmdesc)["a"]})
                             </Typography>
                             <hr />
-                            <b>{d.alihmmdesc}</b>
+                            <b>{JSON.parse(d.alignment_display.hmmdesc)["d"]}</b>
                             <br />
                             Coordinates : {d.ienv} - {d.jenv}
                             <br />
