@@ -323,6 +323,42 @@ class SodopeInput extends Component {
     });
   }
 
+pollJobStatus = (jobId) => {
+  axios
+    .get(`https://www.ebi.ac.uk/Tools/hmmer/api/v1/result/${jobId}`)
+    .then((resultRes) => {
+      if (resultRes.data.status === 'SUCCESS') {
+        let jsondata = resultRes.data
+        jsondata.result.uuid = jobId
+        this.setState({
+          showResult: true,
+          result: jsondata,
+          isSubmitting: false,
+        });
+        ReactGA.event({
+          category: "SoDoPE Input Page",
+          action: "Submit button clicked.",
+          label: "HMMER results received.",
+        });
+      } else {
+        setTimeout(() => this.pollJobStatus(jobId), 5000); // Poll every 5 seconds
+      }
+    })
+    .catch((error) => {
+      this.setState({
+        isServerError: true,
+        serverError: error,
+        isSubmitting: false,
+      });
+      ReactGA.event({
+        category: "SoDoPE Input Page",
+        action: "Submit button clicked.",
+        label: "HMMER query failed.",
+      });
+    });
+};
+
+
   submitInput(event) {
     let sequence = this.state.inputSequenceProtein;
     let isValid = this.state.isValidatedSequence;
@@ -335,25 +371,17 @@ class SodopeInput extends Component {
     event.preventDefault();
     if (sequence && isValid) {
       const userObject = {
-        seq: sequence, //Protein sequence here
-        hmmdb: "pfam",
+        input: ">test\n" + sequence, //Protein sequence here
+        database: "pfam",
       };
       this.setState({ isSubmitting: true, showResult: true });
 
       axios
-        .post("https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan", userObject)
-        .then((res) => {
-          // console.log(res)
-          this.setState({
-            showResult: true,
-            result: res.data,
-            isSubmitting: false,
-          });
-          ReactGA.event({
-            category: "SoDoPE Input Page",
-            action: "Submit button clicked.",
-            label: "HMMER results received.",
-          });
+        .post("https://www.ebi.ac.uk/Tools/hmmer/api/v1/search/hmmscan", userObject)
+          .then((res) => {
+            // console.log(res)
+            const jobId = res.data.id; // Assuming the job ID is in the response data
+            this.pollJobStatus(jobId);
         })
         .catch((error) => {
           this.setState({
