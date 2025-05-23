@@ -48,12 +48,47 @@ class TisignerResult extends Component {
     });
   }
 
+pollJobStatus = (event, jobId) => {
+  axios
+    .get(`https://www.ebi.ac.uk/Tools/hmmer/api/v1/result/${jobId}`)
+    .then((resultRes) => {
+      if (resultRes.data.status === 'SUCCESS') {
+        let jsondata = resultRes.data
+        jsondata.result.uuid = jobId
+        this.setState({
+          showResult: true,
+          result: jsondata,
+          [event.target.name + "isSubmitting"]: false,
+        });
+        ReactGA.event({
+          category: "TIsigner Result Page",
+          action: "Analyse solubility:",
+          label: "HMMER results received.",
+        });
+      } else {
+        setTimeout(() => this.pollJobStatus(event, jobId), 5000); // Poll every 5 seconds
+      }
+    })
+    .catch((error) => {
+      this.setState({
+        isServerError: true,
+        serverError: error,
+        isSubmitting: false,
+      });
+      ReactGA.event({
+        category: "TIsigner Result Page",
+        action: "Analyse solubility:",
+        label: "HMMER query failed.",
+      });
+    });
+};
+
   hmmScan(event) {
     event.persist(); // because setState is async and event gets null by the time we set a new state
     this.graphButton(event);
     const userObject = {
-      seq: this.props.inputSequenceProtein, //Protein sequence here
-      hmmdb: "pfam",
+      input: ">test\n" + this.props.inputSequenceProtein, //Protein sequence here
+      database: "pfam",
     };
 
     ReactGA.event({
@@ -65,18 +100,20 @@ class TisignerResult extends Component {
     this.setState({ [event.target.name + "isSubmitting"]: true });
     !this.state.result
       ? axios
-          .post("https://www.ebi.ac.uk/Tools/hmmer/search/hmmscan", userObject)
+          .post("https://www.ebi.ac.uk/Tools/hmmer/api/v1/search/hmmscan", userObject)
           .then((res) => {
             // console.log(res)
-            this.setState({
-              result: res.data,
-              [event.target.name + "isSubmitting"]: false,
-            });
-            ReactGA.event({
-              category: "TIsigner Result Page",
-              action: "Analyse solubility: ",
-              label: "HMMER results received.",
-            });
+            const jobId = res.data.id; 
+            this.pollJobStatus(event, jobId);
+            // this.setState({
+            //   result: res.data,
+            //   [event.target.name + "isSubmitting"]: false,
+            // });
+            // ReactGA.event({
+            //   category: "TIsigner Result Page",
+            //   action: "Analyse solubility: ",
+            //   label: "HMMER results received.",
+            // });
           })
           .catch((error) => {
             this.setState({
