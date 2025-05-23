@@ -421,22 +421,33 @@ class SodopeInput extends Component {
                         <header className="card-header">
                           <p className="card-header-title has-text-danger">
                             Error:{" "}
-                            {this.state.serverError.response.status
-                              ? this.state.serverError.response.status
-                              : "Network"}{" "}
-                            {this.state.serverError.response.statusText
-                              ? "| " +
-                                this.state.serverError.response.statusText
-                              : ""}
+                            {this.state.serverError.response ? (
+                              <>
+                                {this.state.serverError.response.status
+                                  ? this.state.serverError.response.status
+                                  : "Network"}{" "}
+                                {this.state.serverError.response.statusText
+                                  ? "| " +
+                                    this.state.serverError.response.statusText
+                                  : ""}
+                              </>
+                            ) : null}
                           </p>
                           <p className="card-header-title has-text-danger"></p>
                         </header>
                         <div className="card-content">
                           <div className="content">
                             <small>
-                              {this.state.serverError.response.data.seq[0]
-                                ? this.state.serverError.response.data.seq[0]
-                                : "This happens when HMMER webserver is either too busy or is undergoing maintenence or you are having network issues! You can use the slider to explore the sequence."}
+                              {this.state.serverError.response ? (
+                                <>
+                                  {this.state.serverError.response.data.seq[0]
+                                    ? this.state.serverError.response.data
+                                        .seq[0]
+                                    : "This happens when HMMER webserver is either too busy or is undergoing maintenence or you are having network issues! You can use the slider to explore the sequence."}{" "}
+                                </>
+                              ) : (
+                                "This happens when HMMER webserver is not responding in the way we expect! We are working on fixing this. In the meantime, you can use the slider to explore the sequence."
+                              )}
                             </small>
                           </div>
                         </div>
