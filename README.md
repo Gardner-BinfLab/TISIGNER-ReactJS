@@ -9,7 +9,7 @@ TISIGNER (tie-SIGN-er) runs at [https://tisigner.com](https://tisigner.com), whi
 This is a reimplementation of TISIGNER in ReactJS, with more features and smoother integration between the biological sequence optimisation tools. The source code for the older website can be found [here](https://github.com/Gardner-BinfLab/TIsigner/tree/master/TIsigner_web).
 
 ## Changelog
-- Updates to support HMMER API and JSON output format changes. Please hard refresh your browser (cmd+shift+r on macOS or ctrl+ shift+r on Windows/Linux).
+- 24 May 2025: Updates to support HMMER API and JSON output format changes. Please hard refresh your browser (cmd+shift+r on macOS or ctrl+ shift+r on Windows/Linux).
 
 ## Installation
 
