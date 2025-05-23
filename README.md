@@ -8,6 +8,9 @@ TISIGNER (tie-SIGN-er) runs at [https://tisigner.com](https://tisigner.com), whi
 
 This is a reimplementation of TISIGNER in ReactJS, with more features and smoother integration between the biological sequence optimisation tools. The source code for the older website can be found [here](https://github.com/Gardner-BinfLab/TIsigner/tree/master/TIsigner_web).
 
+## Changelog
+- Updates to support HMMER API and JSON output format changes. Please hard refresh your browser (cmd+shift+r on macOS or ctrl+ shift+r on Windows/Linux).
+
 ## Installation
 
 ### Requirements
@@ -54,10 +57,10 @@ $ python3 tisigner.py
 The local website will now run at [http://localhost:5050](http://localhost:5050).
 **TIsigner** will run at [http://localhost:5050/tisigner](http://localhost:5050/tisigner), **SoDoPE** at [http://localhost:5050/sodope](http://localhost:5050/sodope) and **Razor** at [http://localhost:5050/razor](http://localhost:5050/razor).
 
-### Bugs/Errors
+## Bugs/Errors
 If you found any bugs or errors, please report it to us by opening an issue!
 
-### Cite
+## Cite
 - Lim, C.S., Bhandari, B.K., Gardner, P.P., (2022). LazyPair: scalable prediction of protein-protein interactions and interaction types. *bioRxiv*. DOI:[10.1101/2022.02.21.481370 ](https://doi.org/10.1101/2022.02.21.481370)
 - Bhandari, B.K., Lim, C.S., Remus D.M., Chen A., Dolleweerd C.,Gardner, P.P. (2021) Analysis of 11,430 recombinant protein production experiments reveals that protein yield is tunable by synonymous codon changes of translation initiation sites. *PLOS Comp. Bio*. DOI:[10.1371/journal.pcbi.1009461](https://doi.org/10.1371/journal.pcbi.1009461)
 - Bhandari, B.K., Lim, C.S., Gardner, P.P., (2021) TISIGNER.com:web services for improving recombinant protein production. *Nucleic Acids Research*. DOI:[10.1093/nar/gkab175](https://doi.org/10.1093/nar/gkab175)
