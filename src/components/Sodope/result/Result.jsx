@@ -398,7 +398,7 @@ class SodopeResults extends Component {
                 ? null
                 : data.result.hits.map((item, index) =>
                     item.domains.map((d, idx) =>
-                      d.display && d.significantt ? (
+                      d.display && d.significant ? (
                         <Fragment key={idx + "domainButton_Fragment"}>
                           <button
                             key={index + "domainButton" + idx}
