@@ -6,8 +6,6 @@
  * @Last modified time: 2021-10-30T08:40:45+13:00
  */
 
-
-
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import SodopeResults from "./result/Result";
@@ -55,6 +53,8 @@ class SodopeInput extends Component {
         currentInputSequence: "",
         inputSequenceProtein: "",
         inputSequenceNucleotide: "",
+        inputSequenceError: "",
+        isValidatedSequence: true
       });
       ReactGA.event({
         category: "SoDoPE sequence type selection",
@@ -81,9 +81,8 @@ class SodopeInput extends Component {
       this.setState({
         currentInputSequence: exampleNucleotide,
         inputSequenceNucleotide: exampleNucleotide,
-        inputSequenceProtein: this.translateSequence(
-          exampleNucleotide
-        ).toUpperCase(),
+        inputSequenceProtein:
+          this.translateSequence(exampleNucleotide).toUpperCase(),
         inputSequenceError: "",
         isValidatedSequence: true,
       });
