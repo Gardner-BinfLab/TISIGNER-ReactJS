@@ -354,7 +354,9 @@ class SodopeResults extends Component {
               ) : null}
 
               <p>
-                Protein domains annotated by
+                We found {data.result.hits.reduce((acc, x) => acc + x.domains.filter(y => y.significant && y.display).length, 0)} significant hits in your sequence using {data.result.stats.algo} and {data.result.stats.database} database ({data.result.stats.nmodels} models). The significant domains are displayed below and can be hovered over for more details. Straight edge if present, indicates a mismatch between the <abbr title="The region of the target sequence that is similar to the query profile HMM">envelope</abbr> and the <abbr title="The pairwise alignment between the query sequence and the target sequence, showing the precise correspondence between residues">alignment</abbr> at that end.
+                <br />
+                See detailed results on 
                 <a
                   href={
                     "https://www.ebi.ac.uk/Tools/hmmer/results/" +
@@ -365,7 +367,7 @@ class SodopeResults extends Component {
                 >
                   {" "}
                   HMMER
-                </a>
+                </a>.
               </p>
               <br />
             </Fragment>
@@ -399,9 +401,9 @@ class SodopeResults extends Component {
                 : data.result.hits.map((item, index) =>
                     item.domains.map((d, idx) =>
                       d.display && d.significant ? (
-                        <Fragment key={idx + "domainButton_Fragment"}>
+                        <Fragment key={idx + "domainButton_Fragment" + d.alignment_display.aseq}>
                           <button
-                            key={index + "domainButton" + idx}
+                            key={index + "domainButton" + idx + d.alignment_display.aseq}
                             className="button is-info is-rounded is-link"
                             style={{
                               width:
@@ -411,6 +413,30 @@ class SodopeResults extends Component {
                               left:
                                 (d.ienv * this.state.width) / prot.length + 12,
                               position: "absolute",
+                              backgroundColor: JSON.parse(d.alignment_display.hmmdesc)["cl"],
+                              whiteSpace: 'nowrap',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              // gradient if env and ali don't match, else solid colour
+                              // background: d.ienv !== d.iali && d.jenv !== d.jali
+                              // ? `linear-gradient(to right, white, ${JSON.parse(d.alignment_display.hmmdesc)["cl"]}, white)`
+                              // : d.ienv !== d.iali
+                              // ? `linear-gradient(to left, ${JSON.parse(d.alignment_display.hmmdesc)["cl"]}, white)`
+                              // : d.jenv !== d.jali
+                              // ? `linear-gradient(to right, ${JSON.parse(d.alignment_display.hmmdesc)["cl"]}, white)`
+                              // : JSON.parse(d.alignment_display.hmmdesc)["cl"],
+                              // straight edge if env and ali don't match, else curved edge
+                              borderRadius: d.ienv !== d.iali && d.jenv !== d.jali
+                                ? "0px" // Flat on both sides if both conditions are true
+                                : d.ienv !== d.iali
+                                ? "0px 20px 20px 0px" // Flat left, rounded right
+                                : d.jenv !== d.jali
+                                ? "20px 0px 0px 20px" // Flat right, rounded left
+                                : "20px", // Fully rounded if both conditions are false
+                              // border: "1px solid black", /* Default border */
+                              // borderLeft: d.ienv !== d.iali ? "none" : "1px solid black", /* Remove left border if straight */
+                              // borderRight: d.jenv !== d.jali ? "none" : "1px solid black", /* Remove right border if straight */
+
                             }}
                             onMouseEnter={(e) =>
                               this.handlePopoverOpen(
@@ -448,9 +474,15 @@ class SodopeResults extends Component {
                             <hr />
                             <b>{JSON.parse(d.alignment_display.hmmdesc)["d"]}</b>
                             <br />
-                            Coordinates : {d.ienv} - {d.jenv}
+                            Envelope region: {d.ienv} - {d.jenv}
                             <br />
                             Alignment region: {d.iali} - {d.jali}
+                            <br />
+                            Bitscore: {d.bitscore.toPrecision(5)}
+                            <br />
+                            Conditional E-value: {d.cevalue.toPrecision(5)}
+                            <br />
+                            Independent E-value: {d.ievalue.toPrecision(5)}
                           </Popover>
                         </Fragment>
                       ) : null
